@@ -1,0 +1,1084 @@
+<mvc:View controllerName="zexim.controller.PreShipmentReport"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m" xmlns:F="sap.ui.layout.form" xmlns:C="sap.ui.core" xmlns:Tab="sap.ui.table">
+    <Page id="page"  title="Pre Shipment Report" titleAlignment="Center" >
+        <content>
+            <F:SimpleForm id="Form1" layout="ResponsiveGridLayout" columnsL="3" columnsXL="3" columnsM="3" editable="true">
+                <F:content>   
+                    <Label design="Bold" textAlign="Center" width="100%" id="InvoiceNumber_Label"  text="Invoice no." />
+                    <Input maxLength="10" id="Invoice" submit="GetAllServiceData" />
+                    <!-- <Label textAlign="Center" width="100%" design="Bold" id="ButtonLab"/>
+                    <Button id="GotoNextViewButton" text="Get" press="GetTableData"/> -->
+                    <C:Title id="coret"/>
+                </F:content>
+            </F:SimpleForm>
+            <Tab:Table class="EximPreShipmentReport" visibleRowCountMode="Auto" selectionMode="None" id="FirstTable" rows="{oTableDataModel>/aTableData}" >
+                <Tab:extension>
+                    <OverflowToolbar id="Table_OverflowToolbar"  style="Clear">
+                        <ToolbarSpacer id="Table_ToolbarSpacer" />
+                    </OverflowToolbar>
+                </Tab:extension>                    
+                <Tab:columns>
+                    <Tab:Column  headerSpan="48" width="15rem" id="GeneralTabs_Table_tcDocumentNumber" >
+                        <Tab:multiLabels>
+                            <Label id="GeneralTabColumn1" textAlign="Center" width="100%" text="General"/>
+                            <Label textAlign="Center" width="100%" id="GeneralTabs_Table_LabelDocumentNumber" text="Document Number" />
+                        </Tab:multiLabels>
+                        <Tab:template>
+                            <Text id="GeneralTabs_Table_InputDocumentNumber" text="{oTableDataModel>Docno}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="GeneralTabs_Table_tcDocumentType" >
+                        <Tab:multiLabels>
+                            <Label id="GeneralTabColumn2" textAlign="Center" width="100%" text="General"/>
+                            <Label textAlign="Center" width="100%" id="GeneralTabs_Table_LabelDocumentType" text="Document Type" />
+                        </Tab:multiLabels>
+                        <Tab:template>
+                            <Text id="GeneralTabs_Table_InputDocumentType" text="{oTableDataModel>Doctype}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="GeneralTabs_Table_tcDocumentDate" >
+                        <Tab:multiLabels>
+                            <Label id="GeneralTabColumn3" textAlign="Center" width="100%" text="General"/>
+                            <Label textAlign="Center" width="100%" id="GeneralTabs_Table_LabelDocumentDate" text="Document Date" />
+                        </Tab:multiLabels>
+                        <Tab:template>
+                            <Text id="GeneralTabs_Table_InputDocumentDate" text="{oTableDataModel>DocDate}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="GeneralTabs_Table_tc1" >
+                        <Tab:multiLabels>
+                            <Label id="GeneralTabColumn4" textAlign="Center" width="100%" text="General"/>
+                            <Label textAlign="Center" width="100%" id="GeneralTabs_Table_Label1" text="Buyer Reference No." />
+                        </Tab:multiLabels>
+                        <Tab:template>
+                            <Text id="GeneralTabs_Table_Input1" text="{oTableDataModel>RefreanceNo}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="GeneralTabs_Table_tc111" >
+                        <Tab:multiLabels>
+                            <Label id="GeneralTabColumn5" textAlign="Center" width="100%" text="General"/>
+                            <Label textAlign="Center" width="100%" id="GeneralTabs_Table_Label111" text="Buyer Reference Date" />
+                        </Tab:multiLabels><Tab:template>
+                            <Text id="GeneralTabs_Table_Input111" text="{oTableDataModel>RefreanceDate}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="GeneralTabs_Table_tc2" >
+                        <Tab:multiLabels>
+                            <Label id="GeneralTabColumn6" textAlign="Center" width="100%" text="General"/>
+                            <Label textAlign="Center" width="100%" id="GeneralTabs_Table_Label2" text="Performa Invoice No." />
+                        </Tab:multiLabels><Tab:template>
+                            <Text id="GeneralTabs_Table_Input2" text="{oTableDataModel>Peformano}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="GeneralTabs_Table_tc3" >
+                        <Tab:multiLabels>
+                            <Label id="GeneralTabColumn7" textAlign="Center" width="100%" text="General"/>
+                            <Label textAlign="Center" width="100%" id="PerformaInvoiceDate_Label" text="Performa Invoice Date" />
+                        </Tab:multiLabels><Tab:template>
+                            <Text id="GeneralTabs_Table_Input3" text="{oTableDataModel>Peformadate}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="GeneralTabs_Table_tc4" >
+                        <Tab:multiLabels>
+                            <Label id="GeneralTabColumn8" textAlign="Center" width="100%" text="General"/>
+                            <Label textAlign="Center" width="100%" id="DeliveryNumber_Label" text="Delivery No." />
+                        </Tab:multiLabels><Tab:template>
+                            <Text id="GeneralTabs_Table_Input4" text="{oTableDataModel>Deliveryno}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="GeneralTabs_Table_tc5" >
+                        <Tab:multiLabels>
+                            <Label id="GeneralTabColumn9" textAlign="Center" width="100%" text="General"/>
+                            <Label textAlign="Center" width="100%" id="DeliveryDate_Label" text="Delivery Date" />
+                        </Tab:multiLabels><Tab:template>
+                            <Text id="GeneralTabs_Table_Input5" text="{oTableDataModel>Deliverydate}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="GeneralTabs_Table_tc6" >
+                        <Tab:multiLabels>
+                            <Label id="GeneralTabColumn10" textAlign="Center" width="100%" text="General"/>
+                            <Label textAlign="Center" width="100%" id="TransporterName_Label" text="Transporter Name" />
+                        </Tab:multiLabels><Tab:template>
+                            <Text id="GeneralTabs_Table_Input6" text="{oTableDataModel>TransporterName}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="GeneralTabs_Table_tc7" >
+                        <Tab:multiLabels>
+                            <Label id="GeneralTabColumn11" textAlign="Center" width="100%" text="General"/>
+                            <Label textAlign="Center" width="100%" id="LrNumber_Label" text="LR No." />
+                        </Tab:multiLabels><Tab:template>
+                            <Text id="GeneralTabs_Table_Input7" text="{oTableDataModel>Lrno}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="GeneralTabs_Table_tc8" >
+                        <Tab:multiLabels>
+                            <Label id="GeneralTabColumn12" textAlign="Center" width="100%" text="General"/>
+                            <Label textAlign="Center" width="100%" id="LrDate_Label" text="LR Date" />
+                        </Tab:multiLabels><Tab:template>
+                            <Text id="GeneralTabs_Table_Input8" text="{oTableDataModel>LrDate}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="GeneralTabs_Table_tc9" >
+                        <Tab:multiLabels>
+                            <Label id="GeneralTabColumn13" textAlign="Center" width="100%" text="General"/>
+                            <Label textAlign="Center" width="100%" id="TruckNumber_Label" text="Truck No." />
+                        </Tab:multiLabels><Tab:template>
+                            <Text id="GeneralTabs_Table_Input9" text="{oTableDataModel>TruckNo}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="GeneralTabs_Table_tc10" >
+                    <Tab:multiLabels>
+                            <Label id="GeneralTabColumn14" textAlign="Center" width="100%" text="General"/>
+                            <Label textAlign="Center" width="100%" id="ContainerNumber_Label" text="Container No." />
+                        </Tab:multiLabels><Tab:template>
+                            <Text id="GeneralTabs_Table_Input10" text="{oTableDataModel>Containerno}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="GeneralTabs_Table_tc11" >
+                        <Tab:multiLabels>
+                            <Label id="GeneralTabColumn15" textAlign="Center" width="100%" text="General"/>
+                            <Label textAlign="Center" width="100%" id="ContainerSize_Label" text="Container Size" />
+                        </Tab:multiLabels><Tab:template>
+                            <Text id="GeneralTabs_Table_Input11" text="{oTableDataModel>ContainerSize}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="GeneralTabs_Table_tc12" >
+                        <Tab:multiLabels>
+                            <Label id="GeneralTabColumn16" textAlign="Center" width="100%" text="General"/>
+                            <Label textAlign="Center" width="100%" id="RFIDNumber_Label" text="RFID no." />
+                        </Tab:multiLabels><Tab:template>
+                            <Text id="GeneralTabs_Table_Input12" text="{oTableDataModel>RfidNo}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="GeneralTabs_Table_tc13" >
+                        <Tab:multiLabels>
+                            <Label id="GeneralTabColumn17" textAlign="Center" width="100%" text="General"/>
+                            <Label textAlign="Center" width="100%" id="LineSealNumber_Label" text="Line Seal No." />
+                        </Tab:multiLabels><Tab:template>
+                            <Text id="GeneralTabs_Table_Input13" text="{oTableDataModel>Lineseal}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="GeneralTabs_Table_tc14" >
+                        <Tab:multiLabels>
+                            <Label id="GeneralTabColumn18" textAlign="Center" width="100%" text="General"/>
+                            <Label textAlign="Center" width="100%" id="Vessel_FlightNumber_Label" text="Vessel/Flight No." />
+                        </Tab:multiLabels><Tab:template>
+                            <Text id="GeneralTabs_Table_Input14" text="{oTableDataModel>Vesselno}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="GeneralTabs_Table_tc15" >
+                        <Tab:multiLabels>
+                            <Label id="GeneralTabColumn19" textAlign="Center" width="100%" text="General"/>
+                            <Label textAlign="Center" width="100%" id="ShipmentType_Label" text="Shipment Type" />
+                        </Tab:multiLabels><Tab:template>
+                            <Text id="GeneralTabs_Table_Input15" text="{oTableDataModel>shipmenttype}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="GeneralTabs_Table_tc16" >
+                        <Tab:multiLabels>
+                            <Label id="GeneralTabColumn20" textAlign="Center" width="100%" text="General"/>
+                            <Label textAlign="Center" width="100%" id="PrecarrierBy_ModeofTransport_Label" text="Precarrier By/Mode of Transport" />
+                        </Tab:multiLabels><Tab:template>
+                            <Text id="GeneralTabs_Table_Input16" text="{oTableDataModel>Precarrier}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="GeneralTabs_Table_tc17" >
+                        <Tab:multiLabels>
+                            <Label id="GeneralTabColumn21" textAlign="Center" width="100%" text="General"/>
+                            <Label textAlign="Center" width="100%" id="PortofLoading_Label" text="Port of Loading" />
+                        </Tab:multiLabels><Tab:template>
+                            <Text id="GeneralTabs_Table_Input17" text="{oTableDataModel>Portofloading}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="GeneralTabs_Table_tc18" >
+                        <Tab:multiLabels>
+                            <Label id="GeneralTabColumn22" textAlign="Center" width="100%" text="General"/>
+                            <Label textAlign="Center" width="100%" id="PortofDischarge_Label" text="Port of Discharge" />
+                        </Tab:multiLabels><Tab:template>
+                            <Text id="GeneralTabs_Table_Input18" text="{oTableDataModel>Portofdischarge}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="GeneralTabs_Table_tc19" >
+                        <Tab:multiLabels>
+                            <Label id="GeneralTabColumn23" textAlign="Center" width="100%" text="General"/>
+                            <Label textAlign="Center" width="100%" id="EPCG_MIESNo_Label" text="EPCG/MIES No." />
+                        </Tab:multiLabels><Tab:template>
+                            <Text id="GeneralTabs_Table_Input19" text="{oTableDataModel>Epcgno}"/>
+                        </Tab:template>
+                    </Tab:Column>                   
+                    <Tab:Column width="15rem" id="GeneralTabs_Table_tc20" >
+                        <Tab:multiLabels>
+                            <Label id="GeneralTabColumn24" textAlign="Center" width="100%" text="General"/>
+                            <Label textAlign="Center" width="100%" id="EPCG_MIESDate_Label" text="EPCG/MIES Date" />
+                        </Tab:multiLabels><Tab:template>
+                            <Text id="GeneralTabs_Table_Input20" text="{oTableDataModel>Epcgdate}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="GeneralTabs_Table_tc21" >
+                        <Tab:multiLabels>
+                            <Label id="GeneralTabColumn25" textAlign="Center" width="100%" text="General"/>
+                            <Label textAlign="Center" width="100%" id="MaxPermissibleContainerWeight_Label" text="Max Permissible Container Weight" />
+                        </Tab:multiLabels><Tab:template>
+                            <Text id="GeneralTabs_Table_Input21" text="{oTableDataModel>Maxperwt}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="GeneralTabs_Table_tc22" >
+                        <Tab:multiLabels>
+                            <Label id="GeneralTabColumn26" textAlign="Center" width="100%" text="General"/>
+                            <Label textAlign="Center" width="100%" id="ContainerWeight_Label" text="Container Weight" />
+                        </Tab:multiLabels><Tab:template>
+                            <Text id="GeneralTabs_Table_Input22" text="{oTableDataModel>Contareweight}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="GeneralTabs_Table_tc23" >
+                        <Tab:multiLabels>
+                            <Label id="GeneralTabColumn27" textAlign="Center" width="100%" text="General"/>
+                            <Label textAlign="Center" width="100%" id="WeighingSlipNo_Label" text="Weighing Slip No." />
+                        </Tab:multiLabels><Tab:template>
+                            <Text id="GeneralTabs_Table_Input23" text="{oTableDataModel>Weighslip}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="GeneralTabs_Table_tc24" >
+                        <Tab:multiLabels>
+                            <Label id="GeneralTabColumn28" textAlign="Center" width="100%" text="General"/>
+                            <Label textAlign="Center" width="100%" id="PaymentTerms_Label" text="Payment Terms" />
+                        </Tab:multiLabels><Tab:template>
+                            <Text id="GeneralTabs_Table_Input24" text="{oTableDataModel>PaymentTerms}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="GeneralTabs_Table_tc25" >
+                        <Tab:multiLabels>
+                            <Label id="GeneralTabColumn29" textAlign="Center" width="100%" text="General"/>
+                            <Label textAlign="Center" width="100%" id="DeliveryTerms_Label" text="Delivery Terms" />
+                        </Tab:multiLabels><Tab:template>
+                            <Text id="GeneralTabs_Table_Input25" text="{oTableDataModel>Deliveryterms}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="GeneralTabs_Table_tc26" >
+                        <Tab:multiLabels>
+                            <Label id="GeneralTabColumn30" textAlign="Center" width="100%" text="General"/>
+                            <Label textAlign="Center" width="100%" id="IncotermsLocation_Label" text="Incoterms Location" />
+                        </Tab:multiLabels><Tab:template>
+                            <Text id="GeneralTabs_Table_Input26" text="{oTableDataModel>Incotermslocation}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="GeneralTabs_Table_tc27" >
+                        <Tab:multiLabels>
+                            <Label id="GeneralTabColumn31" textAlign="Center" width="100%" text="General"/>
+                            <Label textAlign="Center" width="100%" id="ShipmentMark_Label" text="Shipment Mark" />
+                        </Tab:multiLabels><Tab:template>
+                            <Text id="GeneralTabs_Table_Input27" text="{oTableDataModel>Shipmentmark}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="GeneralTabs_Table_tc28" >
+                        <Tab:multiLabels>
+                            <Label id="GeneralTabColumn32" textAlign="Center" width="100%" text="General"/>
+                            <Label textAlign="Center" width="100%" id="Shipment_Date_Label" text="Shipment Date" />
+                        </Tab:multiLabels><Tab:template>
+                            <Text id="GeneralTabs_Table_Input28" text="{oTableDataModel>Shipmentdate}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="GeneralTabs_Table_tc29" >
+                        <Tab:multiLabels>
+                            <Label id="GeneralTabColumn33" textAlign="Center" width="100%" text="General"/>
+                            <Label textAlign="Center" width="100%" id="WeightofContainer_Label" text="Weight of Cotainer" />
+                        </Tab:multiLabels><Tab:template>
+                            <Text id="GeneralTabs_Table_Input29" text="{oTableDataModel>Weightofcontainer}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="GeneralTabs_Table_tc30" >
+                        <Tab:multiLabels>
+                            <Label id="GeneralTabColumn34" textAlign="Center" width="100%" text="General"/>
+                            <Label textAlign="Center" width="100%" id="ExportData_Label"  design="Bold" text="Export Data" />
+                        </Tab:multiLabels><Tab:template>
+                            <Text id="GeneralTabs_Table_Input30" text="{}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="GeneralTabs_Table_tc31" >
+                        <Tab:multiLabels>
+                            <Label id="GeneralTabColumn35" textAlign="Center" width="100%" text="General"/>
+                            <Label textAlign="Center" width="100%" id="ExportName1_Label" text="Name" />
+                        </Tab:multiLabels><Tab:template>
+                            <Text id="GeneralTabs_Table_Input31" text="{oTableDataModel>Exportname1}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column  width="15rem"  id="GeneralTabs_Table_tc32" >
+                        <Tab:multiLabels>
+                            <Label id="GeneralTabColumn36" textAlign="Center" width="100%" text="General"/>
+                            <Label textAlign="Center" width="100%" id="Street1_Label" text="Street 1" />
+                        </Tab:multiLabels><Tab:template>
+                            <Text id="GeneralTabs_Table_Input32" text="{oTableDataModel>Street1}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="GeneralTabs_Table_tc33" >
+                        <Tab:multiLabels>
+                            <Label id="GeneralTabColumn37" textAlign="Center" width="100%" text="General"/>
+                            <Label textAlign="Center" width="100%" id="Street2_Label" text="Street 2" />
+                        </Tab:multiLabels><Tab:template>
+                            <Text id="GeneralTabs_Table_Input33" text="{oTableDataModel>Street2}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="GeneralTabs_Table_tc34" >
+                        <Tab:multiLabels>
+                            <Label id="GeneralTabColumn38" textAlign="Center" width="100%" text="General"/>
+                            <Label textAlign="Center" width="100%" id="Street3_Label" text="Street 3" />
+                        </Tab:multiLabels><Tab:template>
+                            <Text id="GeneralTabs_Table_Input34" text="{oTableDataModel>Street3}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="GeneralTabs_Table_tc35" >
+                        <Tab:multiLabels>
+                            <Label id="GeneralTabColumn39" textAlign="Center" width="100%" text="General"/>
+                            <Label textAlign="Center" width="100%" id="City_Label" text="City" />
+                        </Tab:multiLabels><Tab:template>
+                            <Text id="GeneralTabs_Table_Input35" text="{oTableDataModel>City}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="GeneralTabs_Table_tc36" >
+                        <Tab:multiLabels>
+                            <Label id="GeneralTabColumn40" textAlign="Center" width="100%" text="General"/>
+                            <Label textAlign="Center" width="100%" id="Country_Label" text="Country" />
+                        </Tab:multiLabels><Tab:template>
+                            <Text id="GeneralTabs_Table_Input36" text="{oTableDataModel>Country}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="GeneralTabs_Table_tc37" >
+                        <Tab:multiLabels>
+                            <Label id="GeneralTabColumn41" textAlign="Center" width="100%" text="General"/>
+                            <Label textAlign="Center" width="100%" id="ExporterIECno_Label" text="Exporter IEC No." />
+                        </Tab:multiLabels><Tab:template>
+                            <Text id="GeneralTabs_Table_Input37" text="{oTableDataModel>Exporteriecno}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="GeneralTabs_Table_tc38" >
+                        <Tab:multiLabels>
+                            <Label id="GeneralTabColumn42" textAlign="Center" width="100%" text="General"/>
+                            <Label textAlign="Center" width="100%" id="AuthorisedSigntory_Label"  text="Authorized Signatory" />
+                        </Tab:multiLabels><Tab:template>
+                            <Text id="GeneralTabs_Table_Input38" text="{oTableDataModel>Authorisedsigntory}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="GeneralTabs_Table_tc39" >
+                        <Tab:multiLabels>
+                            <Label id="GeneralTabColumn43" textAlign="Center" width="100%" text="General"/>
+                            <Label textAlign="Center" width="100%" id="Designation_Label" text="Designation" />
+                        </Tab:multiLabels><Tab:template>
+                            <Text id="GeneralTabs_Table_Input39" text="{oTableDataModel>Designation}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="GeneralTabs_Table_tc40" >
+                        <Tab:multiLabels>
+                            <Label id="GeneralTabColumn44" textAlign="Center" width="100%" text="General"/>
+                            <Label textAlign="Center" width="100%" id="NameofCustomsBroker_Label" text="Name of Customs Broker" />
+                        </Tab:multiLabels><Tab:template>
+                            <Text id="GeneralTabs_Table_Input40" text="{oTableDataModel>Nameofcustomsbroker}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="GeneralTabs_Table_tc41" >
+                        <Tab:multiLabels>
+                            <Label id="GeneralTabColumn45" textAlign="Center" width="100%" text="General"/>
+                            <Label textAlign="Center" width="100%" id="AuthorisedContactDetails_Label" text="Authorised Contact Details" />
+                        </Tab:multiLabels><Tab:template>
+                            <Text id="GeneralTabs_Table_Input41" text="{oTableDataModel>Authorisedsigntoryno}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="GeneralTabs_Table_tc42" >
+                        <Tab:multiLabels>
+                            <Label id="GeneralTabColumn46" textAlign="Center" width="100%" text="General"/>
+                            <Label textAlign="Center" width="100%" id="Remarks_Label" text="Remarks" />
+                        </Tab:multiLabels><Tab:template>
+                            <Text id="GeneralTabs_Table_Input42" text="{oTableDataModel>Remarks}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="GeneralTabs_Table_tc43" >
+                        <Tab:multiLabels>
+                            <Label id="GeneralTabColumn47" textAlign="Center" width="100%" text="General"/>
+                            <Label textAlign="Center" width="100%" id="Remarks1_Label" text="Remarks 1" />
+                        </Tab:multiLabels><Tab:template>
+                            <Text id="GeneralTabs_Table_Input43" text="{oTableDataModel>Remarks1}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="GeneralTabs_Table_tc44" >
+                        <Tab:multiLabels>
+                            <Label id="GeneralTabColumn48" textAlign="Center" width="100%" text="General"/>
+                            <Label textAlign="Center" width="100%" id="Remarks2_Label" text="Remarks 2" />
+                        </Tab:multiLabels><Tab:template>
+                            <Text id="GeneralTabs_Table_Input44" text="{oTableDataModel>Remarks2}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                </Tab:columns>
+                <Tab:columns>
+                    <Tab:Column headerSpan="37" width="15rem" id="BuyerDataTabs_Table_tcDocumentNumber1" >
+                        <Tab:multiLabels>
+                            <Label id="BuyerDataTabColumn1" textAlign="Center" width="100%" text="Buyer Data"/>
+                            <Label textAlign="Center" width="100%" id="BuyerDataTabs_Table_Label1" text="Buyer Name" />
+                        </Tab:multiLabels>
+                        <Tab:template>
+                            <Text id="BuyerDataTabs_Table_Input1" text="{oTableDataModel>Billtobuyrname}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="BuyerDataTabs_Table_tcDocumentNumber2" >
+                        <Tab:multiLabels>
+                            <Label id="BuyerDataTabColumn2" textAlign="Center" width="100%" text="Buyer Data"/>
+                            <Label textAlign="Center" width="100%" id="BuyerDataTabs_Table_Label2" text="Street 1" />
+                        </Tab:multiLabels>
+                        <Tab:template>
+                            <Text id="BuyerDataTabs_Table_Input2" text="{oTableDataModel>Billtostreet1}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="BuyerDataTabs_Table_tcDocumentNumber3" >
+                        <Tab:multiLabels>
+                            <Label id="BuyerDataTabColumn3" textAlign="Center" width="100%" text="Buyer Data"/>
+                            <Label textAlign="Center" width="100%" id="BuyerDataTabs_Table_Label3" text="Street 2" />
+                        </Tab:multiLabels>
+                        <Tab:template>
+                            <Text id="BuyerDataTabs_Table_Input3" text="{oTableDataModel>Billtostreet2}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="BuyerDataTabs_Table_tcDocumentNumber4" >
+                        <Tab:multiLabels>
+                            <Label id="BuyerDataTabColumn4" textAlign="Center" width="100%" text="Buyer Data"/>
+                            <Label textAlign="Center" width="100%" id="BuyerDataTabs_Table_Label4" text="Street 3" />
+                        </Tab:multiLabels>
+                        <Tab:template>
+                            <Text id="BuyerDataTabs_Table_Input4" text="{oTableDataModel>Billtostreet3}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="BuyerDataTabs_Table_tcDocumentNumber5" >
+                        <Tab:multiLabels>
+                            <Label id="BuyerDataTabColumn5" textAlign="Center" width="100%" text="Buyer Data"/>
+                            <Label textAlign="Center" width="100%" id="BuyerDataTabs_Table_Label5" text="City" />
+                        </Tab:multiLabels>
+                        <Tab:template>
+                            <Text id="BuyerDataTabs_Table_Input5" text="{oTableDataModel>Billtocity}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="BuyerDataTabs_Table_tcDocumentNumber6" >
+                        <Tab:multiLabels>
+                            <Label id="BuyerDataTabColumn6" textAlign="Center" width="100%" text="Buyer Data"/>
+                            <Label textAlign="Center" width="100%" id="BuyerDataTabs_Table_Label6" text="Country" />
+                        </Tab:multiLabels>
+                        <Tab:template>
+                            <Text id="BuyerDataTabs_Table_Input6" text="{oTableDataModel>Billtocountry}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="BuyerDataTabs_Table_tcDocumentNumber7" >
+                        <Tab:multiLabels>
+                            <Label id="BuyerDataTabColumn7" textAlign="Center" width="100%" text="Buyer Data"/>
+                            <Label textAlign="Center" width="100%" id="BuyerDataTabs_Table_Label7" text="Tax ID" />
+                        </Tab:multiLabels>
+                        <Tab:template>
+                            <Text id="BuyerDataTabs_Table_Input7" text="{oTableDataModel>}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="BuyerDataTabs_Table_tcDocumentNumber8" >
+                        <Tab:multiLabels>
+                            <Label id="BuyerDataTabColumn8" textAlign="Center" width="100%" text="Buyer Data"/>
+                            <Label textAlign="Center" width="100%" id="BuyerDataTabs_Table_Label8" text="Consignee Name" />
+                        </Tab:multiLabels>
+                        <Tab:template>
+                            <Text id="BuyerDataTabs_Table_Input8" text="{oTableDataModel>Constoname}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="BuyerDataTabs_Table_tcDocumentNumber9" >
+                        <Tab:multiLabels>
+                            <Label id="BuyerDataTabColumn9" textAlign="Center" width="100%" text="Buyer Data"/>
+                            <Label textAlign="Center" width="100%" id="BuyerDataTabs_Table_Label9" text="Street 1" />
+                        </Tab:multiLabels>
+                        <Tab:template>
+                            <Text id="BuyerDataTabs_Table_Input9" text="{oTableDataModel>Constostreet1}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="BuyerDataTabs_Table_tcDocumentNumber10" >
+                        <Tab:multiLabels>
+                            <Label id="BuyerDataTabColumn10" textAlign="Center" width="100%" text="Buyer Data"/>
+                            <Label textAlign="Center" width="100%" id="BuyerDataTabs_Table_Label10" text="Street 2" />
+                        </Tab:multiLabels>
+                        <Tab:template>
+                            <Text id="BuyerDataTabs_Table_Input10" text="{oTableDataModel>Constostreet2}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="BuyerDataTabs_Table_tcDocumentNumber11" >
+                        <Tab:multiLabels>
+                            <Label id="BuyerDataTabColumn11" textAlign="Center" width="100%" text="Buyer Data"/>
+                            <Label textAlign="Center" width="100%" id="BuyerDataTabs_Table_Label11" text="Street 3" />
+                        </Tab:multiLabels>
+                        <Tab:template>
+                            <Text id="BuyerDataTabs_Table_Input11" text="{oTableDataModel>Constostreet3}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="BuyerDataTabs_Table_tcDocumentNumber12" >
+                        <Tab:multiLabels>
+                            <Label id="BuyerDataTabColumn12" textAlign="Center" width="100%" text="Buyer Data"/>
+                            <Label textAlign="Center" width="100%" id="BuyerDataTabs_Table_Label12" text="City" />
+                        </Tab:multiLabels>
+                        <Tab:template>
+                            <Text id="BuyerDataTabs_Table_Input12" text="{oTableDataModel>Constocity}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="BuyerDataTabs_Table_tcDocumentNumber13" >
+                        <Tab:multiLabels>
+                            <Label id="BuyerDataTabColumn13" textAlign="Center" width="100%" text="Buyer Data"/>
+                            <Label textAlign="Center" width="100%" id="BuyerDataTabs_Table_Label13" text="Country" />
+                        </Tab:multiLabels>
+                        <Tab:template>
+                            <Text id="BuyerDataTabs_Table_Input13" text="{oTableDataModel>Constocountry}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="BuyerDataTabs_Table_tcDocumentNumber14" >
+                        <Tab:multiLabels>
+                            <Label id="BuyerDataTabColumn14" textAlign="Center" width="100%" text="Buyer Data"/>
+                            <Label textAlign="Center" width="100%" id="BuyerDataTabs_Table_Label14" text="Notify Party 1 Name" />
+                        </Tab:multiLabels>
+                        <Tab:template>
+                            <Text id="BuyerDataTabs_Table_Input14" text="{oTableDataModel>Notifyname}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="BuyerDataTabs_Table_tcDocumentNumber15" >
+                        <Tab:multiLabels>
+                            <Label id="BuyerDataTabColumn15" textAlign="Center" width="100%" text="Buyer Data"/>
+                            <Label textAlign="Center" width="100%" id="BuyerDataTabs_Table_Label15" text="Street 1" />
+                        </Tab:multiLabels>
+                        <Tab:template>
+                            <Text id="BuyerDataTabs_Table_Input15" text="{oTableDataModel>Notifystreet1}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="BuyerDataTabs_Table_tcDocumentNumber16" >
+                        <Tab:multiLabels>
+                            <Label id="BuyerDataTabColumn16" textAlign="Center" width="100%" text="Buyer Data"/>
+                            <Label textAlign="Center" width="100%" id="BuyerDataTabs_Table_Label16" text="Street 2" />
+                        </Tab:multiLabels>
+                        <Tab:template>
+                            <Text id="BuyerDataTabs_Table_Input16" text="{oTableDataModel>Notifystreet2}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="BuyerDataTabs_Table_tcDocumentNumber17" >
+                        <Tab:multiLabels>
+                            <Label id="BuyerDataTabColumn17" textAlign="Center" width="100%" text="Buyer Data"/>
+                            <Label textAlign="Center" width="100%" id="BuyerDataTabs_Table_Label17" text="Street 3" />
+                        </Tab:multiLabels>
+                        <Tab:template>
+                            <Text id="BuyerDataTabs_Table_Input17" text="{oTableDataModel>Notifystreet3}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="BuyerDataTabs_Table_tcDocumentNumber18" >
+                        <Tab:multiLabels>
+                            <Label id="BuyerDataTabColumn18" textAlign="Center" width="100%" text="Buyer Data"/>
+                            <Label textAlign="Center" width="100%" id="BuyerDataTabs_Table_Label18" text="City" />
+                        </Tab:multiLabels>
+                        <Tab:template>
+                            <Text id="BuyerDataTabs_Table_Input18" text="{oTableDataModel>Notifycity}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="BuyerDataTabs_Table_tcDocumentNumber19" >
+                        <Tab:multiLabels>
+                            <Label id="BuyerDataTabColumn19" textAlign="Center" width="100%" text="Buyer Data"/>
+                            <Label textAlign="Center" width="100%" id="BuyerDataTabs_Table_Label19" text="Country" />
+                        </Tab:multiLabels>
+                        <Tab:template>
+                            <Text id="BuyerDataTabs_Table_Input19" text="{oTableDataModel>Notifycountry}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="BuyerDataTabs_Table_tcDocumentNumber20" >
+                        <Tab:multiLabels>
+                            <Label id="BuyerDataTabColumn20" textAlign="Center" width="100%" text="Buyer Data"/>
+                            <Label textAlign="Center" width="100%" id="BuyerDataTabs_Table_Label20" text="Notify Party 2 Name" />
+                        </Tab:multiLabels>
+                        <Tab:template>
+                            <Text id="BuyerDataTabs_Table_Input20" text="{oTableDataModel>Notify2name}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="BuyerDataTabs_Table_tcDocumentNumber21" >
+                        <Tab:multiLabels>
+                            <Label id="BuyerDataTabColumn21" textAlign="Center" width="100%" text="Buyer Data"/>
+                            <Label textAlign="Center" width="100%" id="BuyerDataTabs_Table_Label21" text="Street 1" />
+                        </Tab:multiLabels>
+                        <Tab:template>
+                            <Text id="BuyerDataTabs_Table_Input21" text="{oTableDataModel>Notify2street1}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="BuyerDataTabs_Table_tcDocumentNumber22" >
+                        <Tab:multiLabels>
+                            <Label id="BuyerDataTabColumn22" textAlign="Center" width="100%" text="Buyer Data"/>
+                            <Label textAlign="Center" width="100%" id="BuyerDataTabs_Table_Label22" text="Street 2" />
+                        </Tab:multiLabels>
+                        <Tab:template>
+                            <Text id="BuyerDataTabs_Table_Input22" text="{oTableDataModel>Notify2street2}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="BuyerDataTabs_Table_tcDocumentNumber23" >
+                        <Tab:multiLabels>
+                            <Label id="BuyerDataTabColumn23" textAlign="Center" width="100%" text="Buyer Data"/>
+                            <Label textAlign="Center" width="100%" id="BuyerDataTabs_Table_Label23" text="Street 3" />
+                        </Tab:multiLabels>
+                        <Tab:template>
+                            <Text id="BuyerDataTabs_Table_Input23" text="{oTableDataModel>Notify2street3}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="BuyerDataTabs_Table_tcDocumentNumber24" >
+                        <Tab:multiLabels>
+                            <Label id="BuyerDataTabColumn24" textAlign="Center" width="100%" text="Buyer Data"/>
+                            <Label textAlign="Center" width="100%" id="BuyerDataTabs_Table_Label24" text="City" />
+                        </Tab:multiLabels>
+                        <Tab:template>
+                            <Text id="BuyerDataTabs_Table_Input24" text="{oTableDataModel>Notify2city}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="BuyerDataTabs_Table_tcDocumentNumber25" >
+                        <Tab:multiLabels>
+                            <Label id="BuyerDataTabColumn25" textAlign="Center" width="100%" text="Buyer Data"/>
+                            <Label textAlign="Center" width="100%" id="BuyerDataTabs_Table_Label25" text="Country" />
+                        </Tab:multiLabels>
+                        <Tab:template>
+                            <Text id="BuyerDataTabs_Table_Input25" text="{oTableDataModel>Notify2country}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="BuyerDataTabs_Table_tcDocumentNumber26" >
+                        <Tab:multiLabels>
+                            <Label id="BuyerDataTabColumn26" textAlign="Center" width="100%" text="Buyer Data"/>
+                            <Label textAlign="Center" width="100%" id="BuyerDataTabs_Table_Label26" text="Consignee Name" />
+                        </Tab:multiLabels>
+                        <Tab:template>
+                            <Text id="BuyerDataTabs_Table_Input26" text="{oTableDataModel>Conslctoname}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="BuyerDataTabs_Table_tcDocumentNumber27" >
+                        <Tab:multiLabels>
+                            <Label id="BuyerDataTabColumn27" textAlign="Center" width="100%" text="Buyer Data"/>
+                            <Label textAlign="Center" width="100%" id="BuyerDataTabs_Table_Label27" text="Street 1" />
+                        </Tab:multiLabels>
+                        <Tab:template>
+                            <Text id="BuyerDataTabs_Table_Input27" text="{oTableDataModel>Conslctostreet1}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="BuyerDataTabs_Table_tcDocumentNumber28" >
+                        <Tab:multiLabels>
+                            <Label id="BuyerDataTabColumn28" textAlign="Center" width="100%" text="Buyer Data"/>
+                            <Label textAlign="Center" width="100%" id="BuyerDataTabs_Table_Label28" text="Street 2" />
+                        </Tab:multiLabels>
+                        <Tab:template>
+                            <Text id="BuyerDataTabs_Table_Input28" text="{oTableDataModel>Conslctostreet2}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="BuyerDataTabs_Table_tcDocumentNumber29" >
+                        <Tab:multiLabels>
+                            <Label id="BuyerDataTabColumn29" textAlign="Center" width="100%" text="Buyer Data"/>
+                            <Label textAlign="Center" width="100%" id="BuyerDataTabs_Table_Label29" text="Street 3" />
+                        </Tab:multiLabels>
+                        <Tab:template>
+                            <Text id="BuyerDataTabs_Table_Input29" text="{oTableDataModel>Conslctostreet3}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="BuyerDataTabs_Table_tcDocumentNumber30" >
+                        <Tab:multiLabels>
+                            <Label id="BuyerDataTabColumn30" textAlign="Center" width="100%" text="Buyer Data"/>
+                            <Label textAlign="Center" width="100%" id="BuyerDataTabs_Table_Label30" text="City" />
+                        </Tab:multiLabels>
+                        <Tab:template>
+                            <Text id="BuyerDataTabs_Table_Input30" text="{oTableDataModel>Conslctocity}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="BuyerDataTabs_Table_tcDocumentNumber31" >
+                        <Tab:multiLabels>
+                            <Label id="BuyerDataTabColumn32" textAlign="Center" width="100%" text="Buyer Data"/>
+                            <Label textAlign="Center" width="100%" id="BuyerDataTabs_Table_Label31" text="Country" />
+                        </Tab:multiLabels>
+                        <Tab:template>
+                            <Text id="BuyerDataTabs_Table_Input31" text="{oTableDataModel>Conslctocountry}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="BuyerDataTabs_Table_tcDocumentNumber32" >
+                        <Tab:multiLabels>
+                            <Label id="BuyerDataTabColumn33" textAlign="Center" width="100%" text="Buyer Data"/>
+                            <Label textAlign="Center" width="100%" id="BuyerDataTabs_Table_Label32" text="Notify Party 3 Name" />
+                        </Tab:multiLabels>
+                        <Tab:template>
+                            <Text id="BuyerDataTabs_Table_Input32" text="{oTableDataModel>Notify3name}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="BuyerDataTabs_Table_tcDocumentNumber33" >
+                        <Tab:multiLabels>
+                            <Label id="BuyerDataTabColumn34" textAlign="Center" width="100%" text="Buyer Data"/>
+                            <Label textAlign="Center" width="100%" id="BuyerDataTabs_Table_Label33" text="Street 1" />
+                        </Tab:multiLabels>
+                        <Tab:template>
+                            <Text id="BuyerDataTabs_Table_Input33" text="{oTableDataModel>Notify3street1}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="BuyerDataTabs_Table_tcDocumentNumber34" >
+                        <Tab:multiLabels>
+                            <Label id="BuyerDataTabColumn35" textAlign="Center" width="100%" text="Buyer Data"/>
+                            <Label textAlign="Center" width="100%" id="BuyerDataTabs_Table_Label34" text="Street 2" />
+                        </Tab:multiLabels>
+                        <Tab:template>
+                            <Text id="BuyerDataTabs_Table_Input34" text="{oTableDataModel>Notify3street2}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="BuyerDataTabs_Table_tcDocumentNumber35" >
+                        <Tab:multiLabels>
+                            <Label id="BuyerDataTabColumn36" textAlign="Center" width="100%" text="Buyer Data"/>
+                            <Label textAlign="Center" width="100%" id="BuyerDataTabs_Table_Label35" text="Street 3" />
+                        </Tab:multiLabels>
+                        <Tab:template>
+                            <Text id="BuyerDataTabs_Table_Input35" text="{oTableDataModel>Notify3street3}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="BuyerDataTabs_Table_tcDocumentNumber36" >
+                        <Tab:multiLabels>
+                            <Label id="BuyerDataTabColumn37" textAlign="Center" width="100%" text="Buyer Data"/>
+                            <Label textAlign="Center" width="100%" id="BuyerDataTabs_Table_Label36" text="City" />
+                        </Tab:multiLabels>
+                        <Tab:template>
+                            <Text id="BuyerDataTabs_Table_Input36" text="{oTableDataModel>Notify3city}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="BuyerDataTabs_Table_tcDocumentNumber37" >
+                        <Tab:multiLabels>
+                            <Label id="BuyerDataTabColumn38" textAlign="Center" width="100%" text="Buyer Data"/>
+                            <Label textAlign="Center" width="100%" id="BuyerDataTabs_Table_Label37" text="Country" />
+                        </Tab:multiLabels>
+                        <Tab:template>
+                            <Text id="BuyerDataTabs_Table_Input37" text="{oTableDataModel>Notify3country}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                </Tab:columns>
+                <Tab:columns>
+                    <Tab:Column  headerSpan="37" width="15rem" id="CalculationTabs_Table_tcDocumentNumber1" >
+                        <Tab:multiLabels>
+                            <Label id="CalculationTabs_Column1" textAlign="Center" width="100%" text="Calculation"/>
+                            <Label textAlign="Center" width="100%" id="CalculationTabs_Table_Label1" text="Total Qty." />
+                        </Tab:multiLabels>
+                        <Tab:template>
+                            <Text id="CalculationTabs_Table_InputDocumentNumber1" text="{oTableDataModel>Totalqty}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column  width="15rem" id="CalculationTabs_Table_tcDocumentNumber2" >
+                        <Tab:multiLabels>
+                            <Label id="CalculationTabs_Column2" textAlign="Center" width="100%" text="Calculation"/>
+                            <Label textAlign="Center" width="100%" id="CalculationTabs_Table_Label2" text="Total Net Wt" />
+                        </Tab:multiLabels>
+                        <Tab:template>
+                            <Text id="CalculationTabs_Table_InputDocumentNumber2" text="{oTableDataModel>Totalnetqty}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column  width="15rem" id="CalculationTabs_Table_tcDocumentNumber3" >
+                        <Tab:multiLabels>
+                            <Label id="CalculationTabs_Column3" textAlign="Center" width="100%" text="Calculation"/>
+                            <Label textAlign="Center" width="100%" id="CalculationTabs_Table_Label3" text="Total Gross Wt" />
+                        </Tab:multiLabels>
+                        <Tab:template>
+                            <Text id="CalculationTabs_Table_InputDocumentNumber3" text="{oTableDataModel>Totalgrosswt}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column  width="15rem" id="CalculationTabs_Table_tcDocumentNumber4" >
+                        <Tab:multiLabels>
+                            <Label id="CalculationTabs_Column4" textAlign="Center" width="100%" text="Calculation"/>
+                            <Label textAlign="Center" width="100%" id="CalculationTabs_Table_Label4" text="Total Packages" />
+                        </Tab:multiLabels>
+                        <Tab:template>
+                            <Text id="CalculationTabs_Table_InputDocumentNumber4" text="{oTableDataModel>Totalpackages}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column  width="15rem" id="CalculationTabs_Table_tcDocumentNumber5" >
+                        <Tab:multiLabels>
+                            <Label id="CalculationTabs_Column5" textAlign="Center" width="100%" text="Calculation"/>
+                            <Label textAlign="Center" width="100%" id="CalculationTabs_Table_Label5" text="Type of Packages" />
+                        </Tab:multiLabels>
+                        <Tab:template>
+                            <Text id="CalculationTabs_Table_InputDocumentNumber5" text="{oTableDataModel>Typeofpackages}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column  width="15rem" id="CalculationTabs_Table_tcDocumentNumber6" >
+                        <Tab:multiLabels>
+                            <Label id="CalculationTabs_Column6" textAlign="Center" width="100%" text="Calculation"/>
+                            <Label textAlign="Center" width="100%" id="CalculationTabs_Table_Label6" text="Doc. Currency" />
+                        </Tab:multiLabels>
+                        <Tab:template>
+                            <Text id="CalculationTabs_Table_InputDocumentNumber6" text="{oTableDataModel>Doccurrency}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column  width="15rem" id="CalculationTabs_Table_tcDocumentNumber7" >
+                        <Tab:multiLabels>
+                            <Label id="CalculationTabs_Column7" textAlign="Center" width="100%" text="Calculation"/>
+                            <Label textAlign="Center" width="100%" id="CalculationTabs_Table_Label7" text="Exchange Rate" />
+                        </Tab:multiLabels>
+                        <Tab:template>
+                            <Text id="CalculationTabs_Table_InputDocumentNumber7" text="{oTableDataModel>Exchangerate}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column  width="15rem" id="CalculationTabs_Table_tcDocumentNumber8" >
+                        <Tab:multiLabels>
+                            <Label id="CalculationTabs_Column8" textAlign="Center" width="100%" text="Calculation"/>
+                            <Label textAlign="Center" width="100%" id="CalculationTabs_Table_Label8" text="Commission" />
+                        </Tab:multiLabels>
+                        <Tab:template>
+                            <Text id="CalculationTabs_Table_InputDocumentNumber8" text="{oTableDataModel>Commission}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column  width="15rem" id="CalculationTabs_Table_tcDocumentNumber9" >
+                        <Tab:multiLabels>
+                            <Label id="CalculationTabs_Column9" textAlign="Center" width="100%" text="Calculation"/>
+                            <Label textAlign="Center" width="100%" id="CalculationTabs_Table_Label9" text="Insurance" />
+                        </Tab:multiLabels>
+                        <Tab:template>
+                            <Text id="CalculationTabs_Table_InputDocumentNumber9" text="{oTableDataModel>Insurance}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column  width="15rem" id="CalculationTabs_Table_tcDocumentNumber10" >
+                        <Tab:multiLabels>
+                            <Label id="CalculationTabs_Column10" textAlign="Center" width="100%" text="Calculation"/>
+                            <Label textAlign="Center" width="100%" id="CalculationTabs_Table_Label10" text="Freight" />
+                        </Tab:multiLabels>
+                        <Tab:template>
+                            <Text id="CalculationTabs_Table_InputDocumentNumber10" text="{oTableDataModel>Freight}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column  width="15rem" id="CalculationTabs_Table_tcDocumentNumber11" >
+                        <Tab:multiLabels>
+                            <Label id="CalculationTabs_Column11" textAlign="Center" width="100%" text="Calculation"/>
+                            <Label textAlign="Center" width="100%" id="CalculationTabs_Table_Label11" text="Ocean Freight" />
+                        </Tab:multiLabels>
+                        <Tab:template>
+                            <Text id="CalculationTabs_Table_InputDocumentNumber11" text="{oTableDataModel>Oceanfreight}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column  width="15rem" id="CalculationTabs_Table_tcDocumentNumber12" >
+                        <Tab:multiLabels>
+                            <Label id="CalculationTabs_Column12" textAlign="Center" width="100%" text="Calculation"/>
+                            <Label textAlign="Center" width="100%" id="CalculationTabs_Table_Label12" text="Duty Calculation" />
+                        </Tab:multiLabels>
+                        <Tab:template>
+                            <Text id="CalculationTabs_Table_InputDocumentNumber12" text="{oTableDataModel>Dutycalculation}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column  width="15rem" id="CalculationTabs_Table_tcDocumentNumber13" >
+                        <Tab:multiLabels>
+                            <Label id="CalculationTabs_Column13" textAlign="Center" width="100%" text="Calculation"/>
+                            <Label textAlign="Center" width="100%" id="CalculationTabs_Table_Label13" text="Assessable value in Rs." />
+                        </Tab:multiLabels>
+                        <Tab:template>
+                            <Text id="CalculationTabs_Table_InputDocumentNumber13" text="{oTableDataModel>Assessablevalueinrs}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column  width="15rem" id="CalculationTabs_Table_tcDocumentNumber14" >
+                        <Tab:multiLabels>
+                            <Label id="CalculationTabs_Column14" textAlign="Center" width="100%" text="Calculation"/>
+                            <Label textAlign="Center" width="100%" id="CalculationTabs_Table_Label14" text="GST" />
+                        </Tab:multiLabels>
+                        <Tab:template>
+                            <Text id="CalculationTabs_Table_InputDocumentNumber14" text="{oTableDataModel>Gst}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column  width="15rem" id="CalculationTabs_Table_tcDocumentNumber15" >
+                        <Tab:multiLabels>
+                            <Label id="CalculationTabs_Column15" textAlign="Center" width="100%" text="Calculation"/>
+                            <Label textAlign="Center" width="100%" id="CalculationTabs_Table_Label15" text="Invoice Amount" />
+                        </Tab:multiLabels>
+                        <Tab:template>
+                            <Text id="CalculationTabs_Table_InputDocumentNumber15" text="{oTableDataModel>Invoiceamount}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column  width="15rem" id="CalculationTabs_Table_tcDocumentNumber16" >
+                        <Tab:multiLabels>
+                            <Label id="CalculationTabs_Column16" textAlign="Center" width="100%" text="Calculation"/>
+                            <Label textAlign="Center" width="100%" id="CalculationTabs_Table_Label16" text="Add Amt." />
+                        </Tab:multiLabels>
+                        <Tab:template>
+                            <Text id="CalculationTabs_Table_InputDocumentNumber16" text="{oTableDataModel>Addamt}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column  width="15rem" id="CalculationTabs_Table_tcDocumentNumber17" >
+                        <Tab:multiLabels>
+                            <Label id="CalculationTabs_Column17" textAlign="Center" width="100%" text="Calculation"/>
+                            <Label textAlign="Center" width="100%" id="CalculationTabs_Table_Label17" text="Less Amt." />
+                        </Tab:multiLabels>
+                        <Tab:template>
+                            <Text id="CalculationTabs_Table_InputDocumentNumber17" text="{oTableDataModel>Lessamt}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column  width="15rem" id="CalculationTabs_Table_tcDocumentNumber18" >
+                        <Tab:multiLabels>
+                            <Label id="CalculationTabs_Column18" textAlign="Center" width="100%" text="Calculation"/>
+                            <Label textAlign="Center" width="100%" id="CalculationTabs_Table_Label18" text="Grand Total Amount" />
+                        </Tab:multiLabels>
+                        <Tab:template>
+                            <Text id="CalculationTabs_Table_InputDocumentNumber18" text="{oTableDataModel>Grandtotalamount}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column  width="15rem" id="CalculationTabs_Table_tcDocumentNumber19" >
+                        <Tab:multiLabels>
+                            <Label id="CalculationTabs_Column19" textAlign="Center" width="100%" text="Calculation"/>
+                            <Label textAlign="Center" width="100%" id="CalculationTabs_Table_Label19" text="Amount in Words" />
+                        </Tab:multiLabels>
+                        <Tab:template>
+                            <Text id="CalculationTabs_Table_InputDocumentNumber19" text="{oTableDataModel>Amountinwords}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column  width="15rem" id="CalculationTabs_Table_tcDocumentNumber20" >
+                        <Tab:multiLabels>
+                            <Label id="CalculationTabs_Column20" textAlign="Center" width="100%" text="Calculation"/>
+                            <Label textAlign="Center" width="100%" id="CalculationTabs_Table_Label20" text="Freight Charges Type" />
+                        </Tab:multiLabels>
+                        <Tab:template>
+                            <Text id="CalculationTabs_Table_InputDocumentNumber20" text="{oTableDataModel>Frightchargetype}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column  width="15rem" id="CalculationTabs_Table_tcDocumentNumber21" >
+                        <Tab:multiLabels>
+                            <Label id="CalculationTabs_Column21" textAlign="Center" width="100%" text="Calculation"/>
+                            <Label textAlign="Center" width="100%" id="CalculationTabs_Table_Label21" text="Lc No." />
+                        </Tab:multiLabels>
+                        <Tab:template>
+                            <Text id="CalculationTabs_Table_InputDocumentNumber21" text="{oTableDataModel>Lcno}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column  width="15rem" id="CalculationTabs_Table_tcDocumentNumber22" >
+                        <Tab:multiLabels>
+                            <Label id="CalculationTabs_Column22" textAlign="Center" width="100%" text="Calculation"/>
+                            <Label textAlign="Center" width="100%" id="CalculationTabs_Table_Label22" text="Lc Date" />
+                        </Tab:multiLabels>
+                        <Tab:template>
+                            <Text id="CalculationTabs_Table_InputDocumentNumber22" text="{oTableDataModel>Lcdate}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column  width="15rem" id="CalculationTabs_Table_tcDocumentNumber23" >
+                        <Tab:multiLabels>
+                            <Label id="CalculationTabs_Column23" textAlign="Center" width="100%" text="Calculation"/>
+                            <Label textAlign="Center" width="100%" id="CalculationTabs_Table_Label23" text="Issuing Bank" />
+                        </Tab:multiLabels>
+                        <Tab:template>
+                            <Text id="CalculationTabs_Table_InputDocumentNumber23" text="{oTableDataModel>Issueingbank}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column  width="15rem" id="CalculationTabs_Table_tcDocumentNumber24" >
+                        <Tab:multiLabels>
+                            <Label id="CalculationTabs_Column24" textAlign="Center" width="100%" text="Calculation"/>
+                            <Label textAlign="Center" width="100%" id="CalculationTabs_Table_Label24" text="Bank Name" />
+                        </Tab:multiLabels>
+                        <Tab:template>
+                            <Text id="CalculationTabs_Table_InputDocumentNumber24" text="{oTableDataModel>Bank}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column  width="15rem" id="CalculationTabs_Table_tcDocumentNumber25" >
+                        <Tab:multiLabels>
+                            <Label id="CalculationTabs_Column25" textAlign="Center" width="100%" text="Calculation"/>
+                            <Label textAlign="Center" width="100%" id="CalculationTabs_Table_Label25" text="Ad Code Bank" />
+                        </Tab:multiLabels>
+                        <Tab:template>
+                            <Text id="CalculationTabs_Table_InputDocumentNumber25" text="{oTableDataModel>Adcodebank}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column  width="15rem" id="CalculationTabs_Table_tcDocumentNumber26" >
+                        <Tab:multiLabels>
+                            <Label id="CalculationTabs_Column26" textAlign="Center" width="100%" text="Calculation"/>
+                            <Label textAlign="Center" width="100%" id="CalculationTabs_Table_Label26" text="Foreign Bank Address" />
+                        </Tab:multiLabels>
+                        <Tab:template>
+                            <Text id="CalculationTabs_Table_InputDocumentNumber26" text="{oTableDataModel>Foreignbank}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column  width="15rem" id="CalculationTabs_Table_tcDocumentNumber27" >
+                        <Tab:multiLabels>
+                            <Label id="CalculationTabs_Column27" textAlign="Center" width="100%" text="Calculation"/>
+                            <Label textAlign="Center" width="100%" id="CalculationTabs_Table_Label27" text="Buyer Name" />
+                        </Tab:multiLabels>
+                        <Tab:template>
+                            <Text id="CalculationTabs_Table_InputDocumentNumber27" text="{oTableDataModel>Buyername}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column  width="15rem" id="CalculationTabs_Table_tcDocumentNumber28" >
+                        <Tab:multiLabels>
+                            <Label id="CalculationTabs_Column28" textAlign="Center" width="100%" text="Calculation"/>
+                            <Label textAlign="Center" width="100%" id="CalculationTabs_Table_Label28" text="Street1" />
+                        </Tab:multiLabels>
+                        <Tab:template>
+                            <Text id="CalculationTabs_Table_InputDocumentNumber28" text="{oTableDataModel>Calculation_Street1}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column  width="15rem" id="CalculationTabs_Table_tcDocumentNumber29" >
+                        <Tab:multiLabels>
+                            <Label id="CalculationTabs_Column29" textAlign="Center" width="100%" text="Calculation"/>
+                            <Label textAlign="Center" width="100%" id="CalculationTabs_Table_Label29" text="Street2" />
+                        </Tab:multiLabels>
+                        <Tab:template>
+                            <Text id="CalculationTabs_Table_InputDocumentNumber29" text="{oTableDataModel>Calculation_Street2}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column  width="15rem" id="CalculationTabs_Table_tcDocumentNumber30" >
+                        <Tab:multiLabels>
+                            <Label id="CalculationTabs_Column30" textAlign="Center" width="100%" text="Calculation"/>
+                            <Label textAlign="Center" width="100%" id="CalculationTabs_Table_Label30" text="Street3" />
+                        </Tab:multiLabels>
+                        <Tab:template>
+                            <Text id="CalculationTabs_Table_InputDocumentNumber30" text="{oTableDataModel>Calculation_Street3}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column  width="15rem" id="CalculationTabs_Table_tcDocumentNumber31" >
+                        <Tab:multiLabels>
+                            <Label id="CalculationTabs_Column31" textAlign="Center" width="100%" text="Calculation"/>
+                            <Label textAlign="Center" width="100%" id="CalculationTabs_Table_Label31" text="Shipping Line" />
+                        </Tab:multiLabels>
+                        <Tab:template>
+                            <Text id="CalculationTabs_Table_InputDocumentNumber31" text="{oTableDataModel>Shippingline}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column  width="15rem" id="CalculationTabs_Table_tcDocumentNumber32" >
+                        <Tab:multiLabels>
+                            <Label id="CalculationTabs_Column32" textAlign="Center" width="100%" text="Calculation"/>
+                            <Label textAlign="Center" width="100%" id="CalculationTabs_Table_Label32" text="ETD Date" />
+                        </Tab:multiLabels>
+                        <Tab:template>
+                            <Text id="CalculationTabs_Table_InputDocumentNumber32" text="{oTableDataModel>Etddate}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column  width="15rem" id="CalculationTabs_Table_tcDocumentNumber33" >
+                        <Tab:multiLabels>
+                            <Label id="CalculationTabs_Column33" textAlign="Center" width="100%" text="Calculation"/>
+                            <Label textAlign="Center" width="100%" id="CalculationTabs_Table_Label33" text="ETA Date" />
+                        </Tab:multiLabels>
+                        <Tab:template>
+                            <Text id="CalculationTabs_Table_InputDocumentNumber33" text="{oTableDataModel>Etadate}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column  width="15rem" id="CalculationTabs_Table_tcDocumentNumber34" >
+                        <Tab:multiLabels>
+                            <Label id="CalculationTabs_Column34" textAlign="Center" width="100%" text="Calculation"/>
+                            <Label textAlign="Center" width="100%" id="CalculationTabs_Table_Label34" text="Stuff file perm No." />
+                        </Tab:multiLabels>
+                        <Tab:template>
+                            <Text id="CalculationTabs_Table_InputDocumentNumber34" text="{oTableDataModel>Stufffileno}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column  width="15rem" id="CalculationTabs_Table_tcDocumentNumber35" >
+                        <Tab:multiLabels>
+                            <Label id="CalculationTabs_Column35" textAlign="Center" width="100%" text="Calculation"/>
+                            <Label textAlign="Center" width="100%" id="CalculationTabs_Table_Label35" text="Stuff file perm Date" />
+                        </Tab:multiLabels>
+                        <Tab:template>
+                            <Text id="CalculationTabs_Table_InputDocumentNumber35" text="{oTableDataModel>Stufffilpermdate}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="CalculationTabs_Table_tcDocumentNumber36" >
+                        <Tab:multiLabels>
+                            <Label id="CalculationTabs_Column36" textAlign="Center" width="100%" text="Calculation"/>
+                            <Label textAlign="Center" width="100%" id="CalculationTabs_Table_Label36" text="Export under" />
+                        </Tab:multiLabels>
+                        <Tab:template>
+                            <Text id="CalculationTabs_Table_InputDocumentNumber36" text="{oTableDataModel>Exportunder}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column width="15rem" id="CalculationTabs_Table_tcDocumentNumber37">
+                        <Tab:multiLabels>
+                            <Label id="CalculationTabs_Column37" textAlign="Center" width="100%" text="Calculation"/>
+                            <Label textAlign="Center" width="100%" id="CalculationTabs_Table_Label37" text="Advance License" />
+                        </Tab:multiLabels>
+                        <Tab:template>
+                            <Text id="CalculationTabs_Table_InputDocumentNumber37" text="{oTableDataModel>Advancelicense}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                </Tab:columns>
+            </Tab:Table>
+        </content>
+    </Page>
+</mvc:View>

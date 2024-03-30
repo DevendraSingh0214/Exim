@@ -1,0 +1,148 @@
+<mvc:View controllerName="zexim.controller.BRCRegisterScreen" xmlns:table="sap.ui.table" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:form="sap.ui.layout.form" xmlns:mvc="sap.ui.core.mvc">
+    <Page id="page1" title="BRC Register Screen">
+        <content>
+            <form:SimpleForm id="Form1">
+                <form:content>
+                    <table:Table id="BRCTable" rows="{oTableItemModel>/aTableItem}" selectionMode="MultiToggle" ariaLabelledBy="title">
+                        <table:extension>
+                            <OverflowToolbar id="Table_OverflowToolbar1" style="Clear">
+                                <ToolbarSpacer id="Table_ToolbarSpacer1" />
+                                <!-- <Button icon="sap-icon://add" tooltip="Add item" press="onAddNewRows" /> -->
+                                <Button id="Table_SaveButton" icon="sap-icon://save" tooltip="Delete Table records" press="onDeleteSelectedData" />
+                            </OverflowToolbar>
+                        </table:extension>
+                        <table:columns>
+                            <table:Column id="Table_Column1" width="8rem">
+                                <Label id="Table_Label1" text="Material Type" />
+                                <table:template>
+                                    <Text id="Table_Text1" wrapping="false" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column id="Table_Column2" width="8rem">
+                                <Label id="Table_Label2" text="Invoice No" />
+                                <table:template>
+                                    <Text id="Table_Text2" wrapping="false" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column id="Table_Column3" width="8rem">
+                                <Label id="Table_Label3" text="Invoice Date" />
+                                <table:template>
+                                    <Text id="Table_Text3" wrapping="false" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column id="Table_Column4" width="7rem">
+                                <Label id="Table_Label4" text="S.B.No" />
+                                <table:template>
+                                    <Text id="Table_Text4" wrapping="false" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column id="Table_Column5" width="8rem">
+                                <Label id="Table_Label5" text="S.B.Date" />
+                                <table:template>
+                                    <Text id="Table_Text5" wrapping="false" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column id="Table_Column6" width="8rem">
+                                <Label id="Table_Label6" text="Invoice Qty" />
+                                <table:template>
+                                    <Text id="Table_Text6" wrapping="false" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column id="Table_Column7" width="5rem">
+                                <Label id="Table_Label7" text="Currency" />
+                                <table:template>
+                                    <Text id="Table_Text7" wrapping="false" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column id="Table_Column8" width="7rem">
+                                <Label id="Table_Label8" text="Exchange Rate" />
+                                <table:template>
+                                    <Text id="Table_Text8" wrapping="false" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column id="Table_Column9" width="7rem">
+                                <Label id="Table_Label9" text="Country" />
+                                <table:template>
+                                    <Text id="Table_Text9" wrapping="false" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column id="Table_Column10" width="4rem">
+                                <Label id="Table_Label10" text="Plant" />
+                                <table:template>
+                                    <Text id="Table_Text10" wrapping="false" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column id="Table_Column11" width="11rem">
+                                <Label id="Table_Label11" text="FOB Value FC(BRC)USD" />
+                                <table:template>
+                                    <Text id="Table_Text11" wrapping="false" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column id="Table_Column12" width="11rem">
+                                <Label id="Table_Label12" text="FOB Value(FC)USD(USD)" />
+                                <table:template>
+                                    <Text id="Table_Text12" wrapping="false" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column id="Table_Column13" width="11rem">
+                                <Label id="Table_Label13" text="FOB Value(RS)SB(INR)" />
+                                <table:template>
+                                    <Text id="Table_Text13" wrapping="false" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column id="Table_Column14" width="11rem">
+                                <Label id="Table_Label14" text="LEO Date" />
+                                <table:template>
+                                    <Text id="Table_Text14" wrapping="false" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column id="Table_Column15" width="11rem">
+                                <Label id="Table_Label15" text="BRC No" />
+                                <table:template>
+                                    <Text id="Table_Text15" wrapping="false" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column id="Table_Column16" width="11rem">
+                                <Label id="Table_Label16" text="BRC Date" />
+                                <table:template>
+                                    <Text id="Table_Text16" wrapping="false" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column id="Table_Column17" width="11rem">
+                                <Label id="Table_Label17" text="Scroll No" />
+                                <table:template>
+                                    <Text id="Table_Text17" wrapping="false" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column id="Table_Column18" width="11rem">
+                                <Label id="Table_Label18" text="DBK Amount" />
+                                <table:template>
+                                    <Text id="Table_Text18" wrapping="false" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column id="Table_Column19" width="11rem">
+                                <Label id="Table_Label19" text="Road Tap" />
+                                <table:template>
+                                    <Text id="Table_Text19" wrapping="false" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column id="Table_Column20" width="11rem">
+                                <Label id="Table_Label20" text="Amount" />
+                                <table:template>
+                                    <Text id="Table_Text20" wrapping="false" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column id="Table_Column21" width="11rem">
+                                <Label id="Table_Label21" text="Port Of Loading" />
+                                <table:template>
+                                    <Text id="Table_Text21" wrapping="false" />
+                                </table:template>
+                            </table:Column>
+
+                        </table:columns>
+                    </table:Table>
+                </form:content>
+            </form:SimpleForm>
+        </content>
+    </Page>
+</mvc:View>

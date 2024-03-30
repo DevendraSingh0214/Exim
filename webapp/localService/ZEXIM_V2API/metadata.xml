@@ -1,0 +1,531 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="https://my410662-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my410662-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my410662-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my410662-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CODELIST',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="SAP__CodeList"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my410662-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my410662-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my410662-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my410662-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my410662-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my410662-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="cds_zpregn_exiprojser" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="YEINVOICE_CDSType" sap:label="Yenvoice Cds For E-envoicing" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="BillingDocument"/>
+                    <PropertyRef Name="BillingDocumentItem"/>
+                </Key>
+                <Property Name="BillingDocument" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Billing Document"/>
+                <Property Name="BillingDocumentItem" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="NonNegative" sap:label="Item" sap:quickinfo="Billing Item"/>
+                <Property Name="Plant" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant"/>
+                <Property Name="Material" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:label="Material" sap:quickinfo="Material Number"/>
+                <Property Name="Division" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Division"/>
+                <Property Name="MaterialDescription" Type="Edm.String" MaxLength="40" sap:label="Product Description"/>
+                <Property Name="Hsncode" Type="Edm.String" MaxLength="16" sap:display-format="UpperCase" sap:label="Control Code" sap:quickinfo="Control code for consumption taxes in foreign trade"/>
+                <Property Name="BillingQuantityUnit" Type="Edm.String" MaxLength="3" sap:label="Sales Unit" sap:semantics="unit-of-measure"/>
+                <Property Name="BillingQuantity" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="BillingQuantityUnit" sap:label="Invoiced Quantity" sap:quickinfo="Actual Invoiced Quantity"/>
+                <Property Name="TransactionCurrency" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Document Currency" sap:quickinfo="SD Document Currency" sap:semantics="currency-code"/>
+                <Property Name="unit" Type="Edm.String" MaxLength="3" sap:label="Sales Unit" sap:semantics="unit-of-measure"/>
+                <Property Name="NetAmount" Type="Edm.Decimal" Precision="15" Scale="3" sap:unit="TransactionCurrency" sap:variable-scale="true" sap:label="Net Value" sap:quickinfo="Net Value of Billing item in Document Currency"/>
+                <Property Name="GrossAmount" Type="Edm.Decimal" Precision="15" Scale="3" sap:unit="TransactionCurrency" sap:variable-scale="true" sap:label="Gross Value" sap:quickinfo="Gross Value of the Billing Item in Document Currency"/>
+                <Property Name="TaxAmount" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="TransactionCurrency" sap:variable-scale="true" sap:label="Tax Amount" sap:quickinfo="Tax Amount in Document Currency"/>
+                <Property Name="DELIVERY_NUMBER" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Reference Document" sap:quickinfo="Document Number of Reference Document"/>
+                <Property Name="DELIVERY_NUMBER_item" Type="Edm.String" MaxLength="6" sap:display-format="NonNegative" sap:label="Reference Item" sap:quickinfo="Item Number of the Reference Item"/>
+                <Property Name="SDDOCU" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Sales Document"/>
+                <Property Name="SDDOCUITEM" Type="Edm.String" MaxLength="6" sap:display-format="NonNegative" sap:label="Sales Document Item"/>
+                <Property Name="PaymentTermsDescription" Type="Edm.String" MaxLength="1024" sap:display-format="UpperCase" sap:label="Payment Terms" sap:quickinfo="Payment Terms Description"/>
+                <Property Name="BILLTOPARTY" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Customer" sap:quickinfo="Customer Number"/>
+                <Property Name="CustomerName" Type="Edm.String" MaxLength="80" sap:label="Name of Customer"/>
+                <Property Name="CustomerFullName" Type="Edm.String" MaxLength="220" sap:display-format="UpperCase" sap:label="Customer Name" sap:quickinfo="Customer Full Name"/>
+                <Property Name="billinggstin" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:label="Tax Number 3"/>
+                <Property Name="StreetName" Type="Edm.String" MaxLength="35" sap:label="Street" sap:quickinfo="Street and House Number"/>
+                <Property Name="Region" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Region" sap:quickinfo="Region (State, Province, County)"/>
+                <Property Name="CityName" Type="Edm.String" MaxLength="35" sap:label="City"/>
+                <Property Name="PostalCode" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Postal Code"/>
+                <Property Name="ShippingPartner" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Customer" sap:quickinfo="Customer Number"/>
+                <Property Name="SHIPTONAME" Type="Edm.String" MaxLength="80" sap:label="Name of Customer"/>
+                <Property Name="SHIPTOFULLNAME" Type="Edm.String" MaxLength="220" sap:display-format="UpperCase" sap:label="Customer Name" sap:quickinfo="Customer Full Name"/>
+                <Property Name="SHIPTOADDRSS" Type="Edm.String" MaxLength="35" sap:label="Street" sap:quickinfo="Street and House Number"/>
+                <Property Name="SHIPPINGPARTNRgstin" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:label="Tax Number 3"/>
+                <Property Name="SHIPTOREGION" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Region" sap:quickinfo="Region (State, Province, County)"/>
+                <Property Name="SHIPTOCITY" Type="Edm.String" MaxLength="35" sap:label="City"/>
+                <Property Name="SHIPTOPO" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Postal Code"/>
+                <Property Name="transpoter1" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Address Number"/>
+                <Property Name="transpotercustomer" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Customer" sap:quickinfo="Customer Number"/>
+                <Property Name="transpotersupplier" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Supplier" sap:quickinfo="Account Number of Supplier"/>
+                <Property Name="TRANSID" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:label="Tax Number 3"/>
+                <Property Name="transname" Type="Edm.String" MaxLength="80" sap:label="Name of Supplier"/>
+                <Property Name="TRANSPORTERNAME" Type="Edm.String" MaxLength="220" sap:display-format="UpperCase" sap:label="Supplier Name" sap:quickinfo="Supplier Full Name"/>
+                <Property Name="TransDocNo1" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:text="SupplierName" sap:label="Supplier" sap:quickinfo="Account Number of Supplier"/>
+                <Property Name="VEHICLENUMBER2" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:label="Tax Number 4"/>
+                <Property Name="CONDTYPE" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Condition Type"/>
+                <Property Name="CURRENCY" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Currency" sap:quickinfo="Currency Key" sap:semantics="currency-code"/>
+                <Property Name="BASICRATE" Type="Edm.Decimal" Precision="24" Scale="9" sap:unit="ConditionCurrency" sap:label="Condition Amount"/>
+                <Property Name="Basic_Amount" Type="Edm.Decimal" Precision="15" Scale="3" sap:unit="TransactionCurrency" sap:variable-scale="true" sap:label="Condition Value"/>
+                <Property Name="CONDTY" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Condition Type"/>
+                <Property Name="ConditionRateRatioUnit" Type="Edm.String" MaxLength="3" sap:label="Internal UoM" sap:quickinfo="Unit of Measurement" sap:semantics="unit-of-measure"/>
+                <Property Name="INSURANCEPERCENTAGE" Type="Edm.Decimal" Precision="24" Scale="9" sap:unit="TransactionCurrency" sap:variable-scale="true" sap:label="Ratio" sap:quickinfo="Condition Ratio (in Percent or Per Mille)"/>
+                <Property Name="insuranceamt" Type="Edm.Decimal" Precision="15" Scale="3" sap:unit="TransactionCurrency" sap:variable-scale="true" sap:label="Condition Value"/>
+                <Property Name="FREIGHT1" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Condition Type"/>
+                <Property Name="FREIGHT1AMT" Type="Edm.Decimal" Precision="15" Scale="3" sap:unit="TransactionCurrency" sap:variable-scale="true" sap:label="Condition Value"/>
+                <Property Name="FREIGHT2" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Condition Type"/>
+                <Property Name="FREIGHT1AMT2" Type="Edm.Decimal" Precision="15" Scale="3" sap:unit="TransactionCurrency" sap:variable-scale="true" sap:label="Condition Value"/>
+                <Property Name="ZPCA_AMT" Type="Edm.Decimal" Precision="15" Scale="3" sap:unit="TransactionCurrency" sap:variable-scale="true" sap:label="Condition Value"/>
+                <Property Name="ZPCA_COND" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Condition Type"/>
+                <Property Name="ZLDA_AMT" Type="Edm.Decimal" Precision="15" Scale="3" sap:unit="TransactionCurrency" sap:variable-scale="true" sap:label="Condition Value"/>
+                <Property Name="ZLDA_COND" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Condition Type"/>
+                <Property Name="ZDIN_AMT" Type="Edm.Decimal" Precision="15" Scale="3" sap:unit="TransactionCurrency" sap:variable-scale="true" sap:label="Condition Value"/>
+                <Property Name="ZDIN_COND" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Condition Type"/>
+                <Property Name="ZFDO_AMT" Type="Edm.Decimal" Precision="15" Scale="3" sap:unit="TransactionCurrency" sap:variable-scale="true" sap:label="Condition Value"/>
+                <Property Name="ZFDO_COND" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Condition Type"/>
+                <Property Name="Oceam_freight" Type="Edm.Decimal" Precision="15" Scale="3" sap:unit="TransactionCurrency" sap:variable-scale="true" sap:label="Condition Value"/>
+                <Property Name="ZFOC_COND" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Condition Type"/>
+                <Property Name="ZEIN_AMT" Type="Edm.Decimal" Precision="15" Scale="3" sap:unit="TransactionCurrency" sap:variable-scale="true" sap:label="Condition Value"/>
+                <Property Name="ZEIN_COND" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Condition Type"/>
+                <Property Name="TAXCOND1" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Condition Type"/>
+                <Property Name="igstunit" Type="Edm.String" MaxLength="3" sap:label="Internal UoM" sap:quickinfo="Unit of Measurement" sap:semantics="unit-of-measure"/>
+                <Property Name="IGSTRATE" Type="Edm.Decimal" Precision="24" Scale="9" sap:unit="TransactionCurrency" sap:variable-scale="true" sap:label="Ratio" sap:quickinfo="Condition Ratio (in Percent or Per Mille)"/>
+                <Property Name="IGST" Type="Edm.Decimal" Precision="15" Scale="3" sap:unit="TransactionCurrency" sap:variable-scale="true" sap:label="Condition Value"/>
+                <Property Name="Assesmentvalue_inIgst" Type="Edm.Decimal" Precision="24" Scale="9" sap:label="Condition Basis"/>
+                <Property Name="TAXCOND2" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Condition Type"/>
+                <Property Name="cgstunit" Type="Edm.String" MaxLength="3" sap:label="Internal UoM" sap:quickinfo="Unit of Measurement" sap:semantics="unit-of-measure"/>
+                <Property Name="CGSTRATE" Type="Edm.Decimal" Precision="24" Scale="9" sap:unit="TransactionCurrency" sap:variable-scale="true" sap:label="Ratio" sap:quickinfo="Condition Ratio (in Percent or Per Mille)"/>
+                <Property Name="CGST" Type="Edm.Decimal" Precision="15" Scale="3" sap:unit="TransactionCurrency" sap:variable-scale="true" sap:label="Condition Value"/>
+                <Property Name="Assesmentvalue_inGst" Type="Edm.Decimal" Precision="24" Scale="9" sap:label="Condition Basis"/>
+                <Property Name="TAXCOND3" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Condition Type"/>
+                <Property Name="sgstunit" Type="Edm.String" MaxLength="3" sap:label="Internal UoM" sap:quickinfo="Unit of Measurement" sap:semantics="unit-of-measure"/>
+                <Property Name="SGSTRATE" Type="Edm.Decimal" Precision="24" Scale="9" sap:unit="TransactionCurrency" sap:variable-scale="true" sap:label="Ratio" sap:quickinfo="Condition Ratio (in Percent or Per Mille)"/>
+                <Property Name="SGST" Type="Edm.Decimal" Precision="15" Scale="3" sap:unit="TransactionCurrency" sap:variable-scale="true" sap:label="Condition Value"/>
+                <Property Name="totalGST" Type="Edm.Decimal" Precision="17" Scale="3" sap:unit="TransactionCurrency" sap:variable-scale="true"/>
+                <Property Name="totalTCS" Type="Edm.Decimal" Precision="16" Scale="3" sap:unit="TransactionCurrency" sap:variable-scale="true"/>
+                <Property Name="totalfreight" Type="Edm.Decimal" Precision="16" Scale="3" sap:unit="TransactionCurrency" sap:variable-scale="true"/>
+                <Property Name="OTHERCHARGES" Type="Edm.Decimal" Precision="18" Scale="3" sap:unit="TransactionCurrency" sap:variable-scale="true"/>
+                <Property Name="BillingDocumentDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Billing Date"/>
+                <Property Name="docuhead_netamt" Type="Edm.Decimal" Precision="15" Scale="3" sap:unit="TransactionCurrency" sap:variable-scale="true" sap:label="Net Value" sap:quickinfo="Net Value in Document Currency"/>
+                <Property Name="docuhead_total_tax" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="TransactionCurrency" sap:variable-scale="true" sap:label="Tax Amount" sap:quickinfo="Tax Amount in Document Currency"/>
+                <Property Name="IncotermsClassification" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Incoterms" sap:quickinfo="Incoterms (Part 1)"/>
+                <Property Name="PaymentMethod" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Payment Method"/>
+                <Property Name="SDPricingProcedure" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:label="Pricing Procedure" sap:quickinfo="Pricing Procedure in Pricing"/>
+                <Property Name="CustomerPaymentTerms" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Terms of Payment" sap:quickinfo="Key for Terms of Payment"/>
+                <Property Name="IncotermsTransferLocation" Type="Edm.String" MaxLength="28" sap:label="Incoterms (Part 2)"/>
+                <Property Name="VEHICLENUMBER" Type="Edm.String" MaxLength="10" sap:label="Vehicle Number"/>
+                <Property Name="TransDocNo" Type="Edm.String" MaxLength="20" sap:label="LR Number"/>
+                <Property Name="lrdate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="LR Date"/>
+                <Property Name="vesselflightnu" Type="Edm.String" MaxLength="20" sap:label="Vessel/Flight No"/>
+                <Property Name="portofloading" Type="Edm.String" MaxLength="2" sap:label="Port of Loading"/>
+                <Property Name="portofdis" Type="Edm.String" MaxLength="48" sap:label="Port of Discharge"/>
+                <Property Name="containernumber" Type="Edm.String" MaxLength="20" sap:label="Container Number"/>
+                <Property Name="deliveryterm" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Incoterms" sap:quickinfo="Incoterms (Part 1)"/>
+                <Property Name="paymentterms" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Terms of Payment" sap:quickinfo="Key for Terms of Payment"/>
+                <Property Name="PRECARRIER" Type="Edm.String" MaxLength="20" sap:label="Place of Receipt by PreCarrier"/>
+                <Property Name="PRECARRIERBYTRANSPORT" Type="Edm.String" MaxLength="1" sap:label="PreCarrier By/Transport Mode"/>
+                <Property Name="incotermlocation" Type="Edm.String" MaxLength="70" sap:label="Incoterms Location 1"/>
+                <Property Name="exchangerate" Type="Edm.Decimal" Precision="9" Scale="5" sap:label="Accounting Exchange Rate" sap:quickinfo="Exchange Rate for FI Postings"/>
+                <Property Name="LcNo" Type="Edm.String" MaxLength="20" sap:label="LC No."/>
+                <Property Name="LcDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="LC Date"/>
+                <Property Name="SignedInv" Type="Edm.String"/>
+                <Property Name="SignedQrcode" Type="Edm.String"/>
+                <Property Name="Irn" Type="Edm.String" MaxLength="64"/>
+                <Property Name="IrnStatus" Type="Edm.String" MaxLength="10"/>
+                <Property Name="AckNo" Type="Edm.String" MaxLength="21"/>
+                <Property Name="AckDate" Type="Edm.String" MaxLength="21"/>
+                <Property Name="Ebillno" Type="Edm.String" MaxLength="12" sap:display-format="NonNegative"/>
+                <Property Name="EgenDat" Type="Edm.String" MaxLength="8"/>
+                <Property Name="Status" Type="Edm.String" MaxLength="1"/>
+                <Property Name="Distance" Type="Edm.String" MaxLength="10"/>
+                <Property Name="DeliveryDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Delivery Date"/>
+                <Property Name="TransferLocation" Type="Edm.String" MaxLength="28" sap:label="Incoterms (Part 2)"/>
+                <Property Name="YY1_LotNo_DLI" Type="Edm.String" MaxLength="10" sap:label="Lot No"/>
+                <Property Name="SalesDocumentDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Document Date" sap:quickinfo="Document Date (Date Received/Sent)"/>
+                <Property Name="Buyerrefrence" Type="Edm.String" MaxLength="35" sap:label="Customer Reference"/>
+                <Property Name="Buyerrefrencedate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Customer Reference Date"/>
+                <Property Name="billtostreet1" Type="Edm.String" MaxLength="40" sap:label="Street 2"/>
+                <Property Name="billtostreet2" Type="Edm.String" MaxLength="40" sap:label="Street 3"/>
+                <Property Name="billltostreet3" Type="Edm.String" MaxLength="40" sap:label="Street 4"/>
+                <Property Name="billltocountry" Type="Edm.String" MaxLength="50" sap:label="Country/Region Name"/>
+                <Property Name="shiptostreet1" Type="Edm.String" MaxLength="40" sap:label="Street 2"/>
+                <Property Name="shiptostreet2" Type="Edm.String" MaxLength="40" sap:label="Street 3"/>
+                <Property Name="shiptostreet3" Type="Edm.String" MaxLength="40" sap:label="Street 4"/>
+                <Property Name="shiptocountry" Type="Edm.String" MaxLength="50" sap:label="Country/Region Name"/>
+                <Property Name="totalgrossquantity" Type="Edm.Decimal" Precision="10" Scale="2"/>
+                <Property Name="unit1" Type="Edm.String" MaxLength="3" sap:label="Sales Unit" sap:semantics="unit-of-measure"/>
+                <Property Name="totalnetquantity" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="unit1"/>
+                <Property Name="zpackage" Type="Edm.Int32"/>
+                <Property Name="trancurr" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Document Currency" sap:quickinfo="SD Document Currency" sap:semantics="currency-code"/>
+                <Property Name="gst_exim" Type="Edm.Decimal" Precision="15" Scale="3" sap:unit="TransactionCurrency" sap:variable-scale="true"/>
+                <Property Name="assesible" Type="Edm.Decimal" Precision="24" Scale="9" sap:unit="TransactionCurrency" sap:variable-scale="true"/>
+                <Property Name="frt1_exim" Type="Edm.Decimal" Precision="15" Scale="3" sap:unit="TransactionCurrency" sap:variable-scale="true"/>
+                <Property Name="frt2_exim" Type="Edm.Decimal" Precision="15" Scale="3" sap:unit="TransactionCurrency" sap:variable-scale="true"/>
+                <Property Name="OCEANFREIGHT_exim" Type="Edm.Decimal" Precision="15" Scale="3" sap:unit="TransactionCurrency" sap:variable-scale="true"/>
+                <Property Name="INSURANCE_exim" Type="Edm.Decimal" Precision="15" Scale="3" sap:unit="TransactionCurrency" sap:variable-scale="true"/>
+                <Property Name="ADDAMT_exim" Type="Edm.Decimal" Precision="15" Scale="3" sap:unit="TransactionCurrency" sap:variable-scale="true"/>
+                <Property Name="COMMISION1_exim" Type="Edm.Decimal" Precision="15" Scale="3" sap:unit="TransactionCurrency" sap:variable-scale="true"/>
+                <Property Name="commision_exim" Type="Edm.Decimal" Precision="15" Scale="3" sap:unit="TransactionCurrency" sap:variable-scale="true"/>
+                <Property Name="INSURANCEPREMIUM" Type="Edm.Decimal" Precision="15" Scale="3" sap:unit="TransactionCurrency" sap:variable-scale="true"/>
+                <Property Name="DISCOUNT_exim" Type="Edm.Decimal" Precision="15" Scale="3" sap:unit="TransactionCurrency" sap:variable-scale="true"/>
+            </EntityType>
+            <EntityType Name="YCONSIGNEDATAType" sap:label="Consignee Data  For  Preshipment Data" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Docno"/>
+                    <PropertyRef Name="Doctype"/>
+                </Key>
+                <Property Name="Docno" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="Doctype" Type="Edm.String" Nullable="false" MaxLength="2"/>
+                <Property Name="Billtobuyrname" Type="Edm.String" MaxLength="100"/>
+                <Property Name="Billtostreet1" Type="Edm.String" MaxLength="100"/>
+                <Property Name="Billtostreet2" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Billtostreet3" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Billtocity" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Billtocountry" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Constoname" Type="Edm.String" MaxLength="100"/>
+                <Property Name="Constostreet1" Type="Edm.String" MaxLength="100"/>
+                <Property Name="Constostreet2" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Constostreet3" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Constocity" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Constocountry" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Notifyname" Type="Edm.String" MaxLength="100"/>
+                <Property Name="Notifystreet1" Type="Edm.String" MaxLength="100"/>
+                <Property Name="Notifystreet2" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Notifystreet3" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Notifycity" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Notifycountry" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Conslctoname" Type="Edm.String" MaxLength="100"/>
+                <Property Name="Conslctostreet1" Type="Edm.String" MaxLength="100"/>
+                <Property Name="Conslctostreet2" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Conslctostreet3" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Conslctocity" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Conslctocountry" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Notify2name" Type="Edm.String" MaxLength="100"/>
+                <Property Name="Notify2street1" Type="Edm.String" MaxLength="100"/>
+                <Property Name="Notify2street2" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Notify2street3" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Notify2city" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Notify2country" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Notify3name" Type="Edm.String" MaxLength="100"/>
+                <Property Name="Notify3street1" Type="Edm.String" MaxLength="100"/>
+                <Property Name="Notify3street2" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Notify3street3" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Notify3city" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Notify3country" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Tobecontinue" Type="Edm.String" MaxLength="1"/>
+                <Property Name="Taxid" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Secondbuyer" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Secondbuyername" Type="Edm.String" MaxLength="100"/>
+                <Property Name="Secondstreet1" Type="Edm.String" MaxLength="100"/>
+                <Property Name="Secondstreet2" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Secondstreet3" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Secondcity" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Secondcountry" Type="Edm.String" MaxLength="50"/>
+            </EntityType>
+            <EntityType Name="Draft_BlType" sap:label="Draft CDS view" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Docno"/>
+                    <PropertyRef Name="Doctype"/>
+                    <PropertyRef Name="Litem"/>
+                </Key>
+                <Property Name="Docno" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="Doctype" Type="Edm.String" Nullable="false" MaxLength="2"/>
+                <Property Name="Litem" Type="Edm.String" Nullable="false" MaxLength="6"/>
+                <Property Name="Material" Type="Edm.String" MaxLength="30"/>
+                <Property Name="Mdesp" Type="Edm.String" MaxLength="200"/>
+                <Property Name="Lot" Type="Edm.String" MaxLength="25"/>
+                <Property Name="Fromto" Type="Edm.String" MaxLength="25"/>
+                <Property Name="Taxid" Type="Edm.String" MaxLength="25"/>
+                <Property Name="Details" Type="Edm.String" MaxLength="1100"/>
+                <Property Name="Deliveryno" Type="Edm.String" MaxLength="15"/>
+                <Property Name="Containerno" Type="Edm.String" MaxLength="50"/>
+            </EntityType>
+            <EntityType Name="ZcalculationType" sap:label="CALCULATION PRE SHIP PROJECTION VIEW" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Docno"/>
+                    <PropertyRef Name="Doctype"/>
+                </Key>
+                <Property Name="Docno" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="Doctype" Type="Edm.String" Nullable="false" MaxLength="2"/>
+                <Property Name="Totalqty" Type="Edm.Decimal" Precision="15" Scale="3"/>
+                <Property Name="Totalnetqty" Type="Edm.Decimal" Precision="15" Scale="3"/>
+                <Property Name="Totalgrosswt" Type="Edm.Decimal" Precision="15" Scale="3"/>
+                <Property Name="Totalpackages" Type="Edm.String" MaxLength="6"/>
+                <Property Name="Typeofpackages" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Doccurrency" Type="Edm.String" MaxLength="10"/>
+                <Property Name="Exchangerate" Type="Edm.Decimal" Precision="9" Scale="5"/>
+                <Property Name="Commission" Type="Edm.Decimal" Precision="15" Scale="4"/>
+                <Property Name="Insurance" Type="Edm.Decimal" Precision="15" Scale="4"/>
+                <Property Name="Insurancepre" Type="Edm.Decimal" Precision="15" Scale="4"/>
+                <Property Name="Freight" Type="Edm.Decimal" Precision="15" Scale="4"/>
+                <Property Name="Oceanfreight" Type="Edm.Decimal" Precision="15" Scale="4"/>
+                <Property Name="Dutycalculation" Type="Edm.Decimal" Precision="15" Scale="4"/>
+                <Property Name="Assessablevalueinrs" Type="Edm.Decimal" Precision="15" Scale="4"/>
+                <Property Name="Gst" Type="Edm.Decimal" Precision="15" Scale="4"/>
+                <Property Name="Invoiceamount" Type="Edm.Decimal" Precision="15" Scale="4"/>
+                <Property Name="Addamt" Type="Edm.Decimal" Precision="15" Scale="4"/>
+                <Property Name="Lessamt" Type="Edm.Decimal" Precision="15" Scale="4"/>
+                <Property Name="Grandtotalamount" Type="Edm.Decimal" Precision="15" Scale="4"/>
+                <Property Name="Amountinwords" Type="Edm.String" MaxLength="256"/>
+                <Property Name="Lcno" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Lcdate" Type="Edm.String" MaxLength="10"/>
+                <Property Name="Issueingbank" Type="Edm.String" MaxLength="256"/>
+                <Property Name="Bank" Type="Edm.String" MaxLength="256"/>
+                <Property Name="Adcodebank" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Buyername" Type="Edm.String" MaxLength="100"/>
+                <Property Name="Street1" Type="Edm.String" MaxLength="100"/>
+                <Property Name="Street2" Type="Edm.String" MaxLength="100"/>
+                <Property Name="Street3" Type="Edm.String" MaxLength="100"/>
+                <Property Name="Stufffileno" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Stufffilpermdate" Type="Edm.String" MaxLength="30"/>
+                <Property Name="Exportunder" Type="Edm.String" MaxLength="5"/>
+                <Property Name="Advancelicense" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Frightchargetype" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Buyerinsname" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Buyerinsaddress1" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Buyerinsaddress2" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Buyerinsaddress3" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Buyerinsaddress4" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Covernoteno" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Covernotedate" Type="Edm.String" MaxLength="10"/>
+                <Property Name="Etddate" Type="Edm.String" MaxLength="10"/>
+                <Property Name="Etadate" Type="Edm.String" MaxLength="10"/>
+                <Property Name="Foreignbank" Type="Edm.String" MaxLength="256"/>
+                <Property Name="Draweesiftcode" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Countryfinaldest" Type="Edm.String" MaxLength="100"/>
+                <Property Name="Shippingadvicedate" Type="Edm.String" MaxLength="10"/>
+                <Property Name="Boeheader" Type="Edm.String" MaxLength="100"/>
+                <Property Name="Boeitem" Type="Edm.String" MaxLength="100"/>
+                <Property Name="Boebanksname" Type="Edm.String" MaxLength="100"/>
+                <Property Name="Shippingline" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Lcdate1" Type="Edm.DateTime" Precision="0" sap:display-format="Date"/>
+                <Property Name="Documentthrough" Type="Edm.String" MaxLength="200"/>
+            </EntityType>
+            <EntityType Name="ZFREGHTCHARGESType" sap:label="FREGHT CHARGES" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Docno"/>
+                    <PropertyRef Name="Deliveryno"/>
+                </Key>
+                <Property Name="Docno" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="Deliveryno" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="Invoicedate" Type="Edm.String" MaxLength="10"/>
+                <Property Name="Portofdischarge" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Forwarder" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Transportername" Type="Edm.String" MaxLength="100"/>
+                <Property Name="Shippingline" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Emptycontainer" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Frecontainerno" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Portofloading" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Oceanfreight" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Oceanfreightbillno" Type="Edm.String" MaxLength="15"/>
+                <Property Name="Othshiplinebillno" Type="Edm.String" MaxLength="15"/>
+                <Property Name="Traspoerterbillno" Type="Edm.String" MaxLength="15"/>
+                <Property Name="Agencybillno" Type="Edm.String" MaxLength="15"/>
+                <Property Name="Bltellexbillno" Type="Edm.String" MaxLength="15"/>
+                <Property Name="Conecorebillno" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Bltellexbillamt" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Conecoreamt" Type="Edm.String" MaxLength="10"/>
+                <Property Name="Thc" Type="Edm.String" MaxLength="10"/>
+                <Property Name="Doccharge" Type="Edm.String" MaxLength="10"/>
+                <Property Name="Inlandfreight" Type="Edm.String" MaxLength="10"/>
+                <Property Name="Agencycharge" Type="Edm.String" MaxLength="10"/>
+                <Property Name="Totalcharge" Type="Edm.String" MaxLength="10"/>
+            </EntityType>
+            <EntityType Name="generaltab_Type" sap:label="ZPREGN_EXIPROJ" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Docno"/>
+                    <PropertyRef Name="Doctype"/>
+                </Key>
+                <Property Name="Docno" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="Doctype" Type="Edm.String" Nullable="false" MaxLength="2"/>
+                <Property Name="DocDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date"/>
+                <Property Name="RefreanceNo" Type="Edm.String" MaxLength="40"/>
+                <Property Name="RefreanceDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date"/>
+                <Property Name="Peformano" Type="Edm.String" MaxLength="10"/>
+                <Property Name="Peformadate" Type="Edm.DateTime" Precision="0" sap:display-format="Date"/>
+                <Property Name="Deliveryno" Type="Edm.String" MaxLength="10"/>
+                <Property Name="Deliverydate" Type="Edm.DateTime" Precision="0" sap:display-format="Date"/>
+                <Property Name="TransporterName" Type="Edm.String" MaxLength="100"/>
+                <Property Name="Lrno" Type="Edm.String" MaxLength="15"/>
+                <Property Name="LrDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date"/>
+                <Property Name="TruckNo" Type="Edm.String" MaxLength="45"/>
+                <Property Name="Containerno" Type="Edm.String" MaxLength="100"/>
+                <Property Name="Containersize" Type="Edm.String" MaxLength="10"/>
+                <Property Name="RfidNo" Type="Edm.String" MaxLength="100"/>
+                <Property Name="Lineseal" Type="Edm.String" MaxLength="100"/>
+                <Property Name="Vesselno" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Precarrier" Type="Edm.String" MaxLength="15"/>
+                <Property Name="Portofdischarge" Type="Edm.String" MaxLength="100"/>
+                <Property Name="Portofloading" Type="Edm.String" MaxLength="70"/>
+                <Property Name="Epcgno" Type="Edm.String" MaxLength="15"/>
+                <Property Name="Epcgdate" Type="Edm.DateTime" Precision="0" sap:display-format="Date"/>
+                <Property Name="Remarks" Type="Edm.String" MaxLength="100"/>
+                <Property Name="Remarks1" Type="Edm.String" MaxLength="100"/>
+                <Property Name="Remarks2" Type="Edm.String" MaxLength="100"/>
+                <Property Name="PaymentTerms" Type="Edm.String" MaxLength="60"/>
+                <Property Name="Deliveryterms" Type="Edm.String" MaxLength="10"/>
+                <Property Name="Incotermslocation" Type="Edm.String" MaxLength="100"/>
+                <Property Name="Shipmentmark" Type="Edm.String" MaxLength="10"/>
+                <Property Name="Shipmentdate" Type="Edm.DateTime" Precision="0" sap:display-format="Date"/>
+                <Property Name="Weightofcontainer" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Exportname1" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Street1" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Street2" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Street3" Type="Edm.String" MaxLength="40"/>
+                <Property Name="City" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Country" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Exporteriecno" Type="Edm.String" MaxLength="15"/>
+                <Property Name="Authorisedsigntory" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Designation" Type="Edm.String" MaxLength="80"/>
+                <Property Name="Authorisedsigntoryno" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Nameofcustomsbroker" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Maxperwt" Type="Edm.String" MaxLength="15"/>
+                <Property Name="Contareweight" Type="Edm.String" MaxLength="15"/>
+                <Property Name="Weighslip" Type="Edm.String" MaxLength="20"/>
+                <Property Name="shipmenttype" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Marksndnumber" Type="Edm.String" MaxLength="1100"/>
+                <Property Name="Descgoods" Type="Edm.String" MaxLength="1100"/>
+                <Property Name="Salesdocumentdate" Type="Edm.DateTime" Precision="0" sap:display-format="Date"/>
+                <Property Name="Blno" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Bldate" Type="Edm.String" MaxLength="10"/>
+                <Property Name="Descgoodsother" Type="Edm.String" MaxLength="1100"/>
+                <Property Name="Detailsbylc" Type="Edm.String" MaxLength="1100"/>
+                <Property Name="Otherdetails" Type="Edm.String" MaxLength="800"/>
+                <Property Name="Billofexchange" Type="Edm.String" MaxLength="500"/>
+                <Property Name="Nonegotiable" Type="Edm.String" MaxLength="500"/>
+                <Property Name="PerformaNoMore" Type="Edm.String" MaxLength="10"/>
+            </EntityType>
+            <EntityContainer Name="cds_zpregn_exiprojser_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="YEINVOICE_CDS" EntityType="cds_zpregn_exiprojser.YEINVOICE_CDSType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="YCONSIGNEDATA" EntityType="cds_zpregn_exiprojser.YCONSIGNEDATAType" sap:content-version="1"/>
+                <EntitySet Name="Draft_Bl" EntityType="cds_zpregn_exiprojser.Draft_BlType" sap:content-version="1"/>
+                <EntitySet Name="Zcalculation" EntityType="cds_zpregn_exiprojser.ZcalculationType" sap:content-version="1"/>
+                <EntitySet Name="ZFREGHTCHARGES" EntityType="cds_zpregn_exiprojser.ZFREGHTCHARGESType" sap:content-version="1"/>
+                <EntitySet Name="generaltab_" EntityType="cds_zpregn_exiprojser.generaltab_Type" sap:content-version="1"/>
+            </EntityContainer>
+            <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <Annotations Target="cds_zpregn_exiprojser.cds_zpregn_exiprojser_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+            </Annotations>
+            <Annotations Target="cds_zpregn_exiprojser.cds_zpregn_exiprojser_Entities/YEINVOICE_CDS" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="FilterExpressionRestrictions">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="SignedInv"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SearchExpression"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="SignedQrcode"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SearchExpression"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>SignedInv</PropertyPath>
+                                <PropertyPath>SignedQrcode</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zpregn_exiprojser.cds_zpregn_exiprojser_Entities/Draft_Bl" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="true"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__core.OptimisticConcurrency">
+                    <Collection/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zpregn_exiprojser.cds_zpregn_exiprojser_Entities/YCONSIGNEDATA" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="true"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__core.OptimisticConcurrency">
+                    <Collection/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zpregn_exiprojser.cds_zpregn_exiprojser_Entities/ZFREGHTCHARGES" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="true"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__core.OptimisticConcurrency">
+                    <Collection/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zpregn_exiprojser.cds_zpregn_exiprojser_Entities/Zcalculation" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="true"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__core.OptimisticConcurrency">
+                    <Collection/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zpregn_exiprojser.cds_zpregn_exiprojser_Entities/generaltab_" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="true"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__core.OptimisticConcurrency">
+                    <Collection/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zpregn_exiprojser.cds_zpregn_exiprojser_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Org.OData.Capabilities.V1.BatchSupport">
+                    <Record Type="Org.OData.Capabilities.V1.BatchSupportType">
+                        <PropertyValue Property="ReferencesAcrossChangeSetsSupported" Bool="true"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <atom:link rel="self" href="https://my410662-api.s4hana.cloud.sap/sap/opu/odata/sap/ZEXIM_V2API/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="https://my410662-api.s4hana.cloud.sap/sap/opu/odata/sap/ZEXIM_V2API/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

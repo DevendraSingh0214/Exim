@@ -1,0 +1,30 @@
+<mvc:View controllerName="zexim.controller.BRCRegister" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:form="sap.ui.layout.form" xmlns:mvc="sap.ui.core.mvc">
+    <Page id="page1" title="BRC Details">
+        <content>
+            <Panel id="Panel1">
+                <form:SimpleForm columnsL="3" columnsM="2" columnsXL="2" editable="true" id="form" layout="ResponsiveGridLayout">
+                    <form:content>
+                        <Label id="label1" text="Billing Document No." design="Bold" />
+                        <Input id="idBillingDoc" type="Text" submit="onSubmit" />
+                        <!-- <Input id="to1" type="Text" placeholder="To" /> -->
+                    </form:content>
+                    <form:content>
+                        <Label id="label2" text="Billing Date" design="Bold" />
+                        <DatePicker id="fromDate" value="{oDataModel>/fromDate}" displayFormat="yyyy-MM-dd" valueFormat="yyyy-MM-dd" />
+                        <DatePicker id="toDate" value="{oDataModel>/toDate}" displayFormat="yyyy-MM-dd" valueFormat="yyyy-MM-dd" />
+                        <!-- <DatePicker id="ToDate" placeholder="Enter To Date" /> -->
+                    </form:content>
+
+                    <core:Title id="core1" />
+                </form:SimpleForm>
+                <form:SimpleForm id="Form1" class="sapUiTinyMarginTop">
+                <VBox id="VBox1">
+                    <HBox id="HBox1" direction="Column">
+                        <Button icon="sap-icon://sys-next-page" text="Execute" id="Execute_Button" press="onSubmit" />
+                    </HBox>
+                </VBox>
+            </form:SimpleForm>
+            </Panel>
+        </content>
+    </Page>
+</mvc:View>

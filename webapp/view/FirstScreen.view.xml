@@ -1,0 +1,72 @@
+<mvc:View controllerName="zexim.controller.FirstScreen"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m" xmlns:core="sap.ui.core">
+    <Page id="page" showHeader="false"  title="{i18n>title}"  class="myBackgroundStyle">
+        <content>
+            <RadioButtonGroup class="sapUiSmallMarginTop" select="onChangeAction" columns="3" id="GateEntryAction">
+                <buttons>
+                    <RadioButton  id="Create_RadioButton"  text="Extraction of Data" />
+                    <RadioButton id="Change_RadioButton"  text="Prints" />
+                    <RadioButton id="Display_RadioButton" text="Report" />
+                </buttons>
+            </RadioButtonGroup>
+            <Panel id="panel1" class="Panel1_Class" backgroundDesign="Transparent">
+                <FlexBox id="fb1" direction="Column">
+                    <items>
+                        <Button id="button1" text="Pre-Shipment Details" press="Pre_Shipment_Details" />
+                        <Button id="button2" text="Post-Shipment Details" press="Post_Shipment_Details" />
+                        <Button id="button5" text="Sample Invoice" press="SampleInvoice" />
+                    </items>
+                </FlexBox>
+            </Panel>
+            <Panel id="panel2" backgroundDesign="Transparent">
+                <FlexBox id="fb2" direction="Column">
+                    <items>
+                        <HBox id="hb1">
+                            <VBox id="vb1">
+                                <Input placeholder="Enter invoice here" liveChange="Invoice_Enter_Function" maxLength="10" id="idInp" />
+                            </VBox>
+                        </HBox>
+                        <Label id="l1"/>
+                        <Button id="idCustom" text="Custom Invoice" press="onSubmit" />
+                        <Button id="idNotif" text="Notification" press="onSubmit" />
+                        <Button id="idAnnex" text="Annexure A" press="onSubmit" />
+                        <Button id="idVGM" text="Verified Gross Mass (VGM)" press="onSubmit" />
+                        <Button id="idNhava" text="Self Sealing Nhava Sheva" press="onSubmit" />
+                        <Button id="idMandi" text="Self Sealing" press="onSubmit" />
+                        <Button id="idPreShipmentAdvice" text="Pre Shipment Advice" press="onSubmit"></Button>
+                        <Button id="idBLDraft" text="BL Draft" press="onSubmit" />
+                        <Button id="idCommercial" text="Commercial Invoice" press="onSubmit" />
+                        <Button id="idPacking" text="Packing List" press="onSubmit" />
+                        <Button id="idShipping" text="Shipping Advice" press="onSubmit" />
+                        <Button id="idOrigin" text="Country of Origin" press="onSubmit" />
+                        <Button id="idManufacturing" text="Beneficiary Certificate (Non-Negotiable)" press="onSubmit" />
+                        <Button id="idExhange" text="Bill of Exchange" press="onSubmit" />
+                        <Button id="idWeightList" text="Weight List" press="onSubmit" />
+                        <Button id="idQuantWeight" text="Certificate of Quantity and Weight" press="onSubmit" />
+                        <Button id="idWeightMeasureList" text="Weight and Measurement List" press="onSubmit" />
+                        <Button id="idPrerequisite" text="Prerequisite Form" press="onSubmit" />
+                        <Button id="idExhangeAdvance" text="Bill of Exchange Advance" press="onSubmit" />
+                        <Button id="idFORH" text="Beneficiary Certificate (FORH)" press="onSubmit" />
+                        <Button id="id5050" text="Beneficiary Certificate (50/50)" press="onSubmit" />
+                        <Button id="idNonPlastic" text="Beneficiary Certificate Non Plastic" press="onSubmit" />
+                        <Button id="idPackingDetail" text="Packing List Detail" press="onSubmit" />
+                        <Button id="idShippingAdvice" text="Shipping Advice (Weber)" press="onSubmit" />
+
+                    </items>
+                </FlexBox>
+            </Panel>
+            <Panel id="panel3" backgroundDesign="Transparent" >
+                <FlexBox id="18" direction="Column">
+                    <items>
+                        <Button id="button3" text="Freight Capturing" press="Freight_Capturing_Report" />
+                        <Button id="button6" text="Pre Shipment Report" press="PreShipmentReport" />
+                        <Button id="button7" text="Draw Back Report" press="DrawBackReport" />
+                        <!-- <Button id="button851" text="Freight Charges Report" press="FreightChargesReport" />
+                        <Button id="button85" text="BRC Register Report" press="BRCRegisterReport" /> -->
+                    </items>
+                </FlexBox>
+        </Panel>
+        </content>
+    </Page>
+</mvc:View>

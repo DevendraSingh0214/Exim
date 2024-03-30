@@ -1,0 +1,199 @@
+<mvc:View controllerName="zexim.controller.BRCRegisterReport" xmlns:table="sap.ui.table" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:form="sap.ui.layout.form" xmlns:mvc="sap.ui.core.mvc">
+    <Page id="page1" title="BRC Register Report">
+         <content>
+            <Panel id="panel1" class="sapUiSmallMarginBottom">
+                <content>        
+                    <form:SimpleForm columnsL="3" columnsM="3" columnsXL="3" editable="true"  id="form" layout="ResponsiveGridLayout" >
+                    <form:content>
+                        <Button icon="sap-icon://action" width="10%" type="Transparent" press="OnExecute" />
+                        <Label id="label1" text="Plant" design="Bold" />
+                        <ComboBox id="FromPlant" placeholder="From">
+                            <items>
+                                <core:Item id="com1" text="1101" />
+                                <core:Item id="com2" text="1102" />
+                                <core:Item id="com3" text="1103" />
+                                <core:Item id="com4" text="1104" />
+                                <core:Item id="com5" text="1105" />
+                            </items>
+                        </ComboBox>
+                        <ComboBox id="ToPlant" placeholder="To">
+                            <items>
+                                <core:Item id="com6" text="1101" />
+                                <core:Item id="com7" text="1102" />
+                                <core:Item id="com8" text="1103" />
+                                <core:Item id="com9" text="1104" />
+                                <core:Item id="com10" text="1105" />
+                            </items>
+                        </ComboBox>
+                    </form:content>
+                    <form:content>
+                        <Label id="label3" text="Billing Date" design="Bold" />
+                        <!-- <Input id="from3" type="Text" placeholder="From" /> -->
+                        <!-- <Input id="to3" type="Text" placeholder="To" /> -->
+                        <DatePicker id="FromBillingDt" placeholder="From"/>
+                        <DatePicker id="ToBillingDt" placeholder="To"/>
+                    </form:content>
+                    <core:Title id="core1"/>
+                    </form:SimpleForm>
+                </content>
+            </Panel>
+            <Panel id="Panel2" displayBlock="true">
+                 <table:Table id="BRCTable" rows="{oTableItemModel>/aTableItem}" selectionMode="MultiToggle" ariaLabelledBy="title">
+                        <table:extension>
+                            <OverflowToolbar style="Clear">
+                                <ToolbarSpacer />
+                                <!-- <Button icon="sap-icon://add" tooltip="Add item" press="onAddNewRows" /> -->
+                                <Button icon="sap-icon://save" tooltip="Delete Table records" press="onDeleteSelectedData" />
+                            </OverflowToolbar>
+                        </table:extension>
+                        <table:columns>
+                            <table:Column width="8rem">
+                                <Label text="Invoice No" />
+                                <table:template>
+                                    <Text wrapping="false" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column width="8rem">
+                                <Label text="Invoice Date" />
+                                <table:template>
+                                    <Text wrapping="false" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column width="7rem">
+                                <Label text="Division" />
+                                <table:template>
+                                    <Text wrapping="false" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column width="8rem">
+                                <Label text="Mat. Type" />
+                                <table:template>
+                                    <Text wrapping="false" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column width="8rem">
+                                <Label text="Shipping bill" />
+                                <table:template>
+                                    <Text wrapping="false" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column width="8rem">
+                                <Label text="Shipping bill date" />
+                                <table:template>
+                                    <Text wrapping="false" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column width="8rem">
+                                <Label text="Invoice Qty" />
+                                <table:template>
+                                    <Text wrapping="false" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column width="5rem">
+                                <Label text="Currency" />
+                                <table:template>
+                                    <Text wrapping="false" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column width="7rem">
+                                <Label text="EXE Rate" />
+                                <table:template>
+                                    <Text wrapping="false" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column width="7rem">
+                                <Label text="COUNTRY NAME" />
+                                <table:template>
+                                    <Text wrapping="false" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column width="11rem">
+                                <Label text="FOB VALUE(BRC)USD" />
+                                <table:template>
+                                    <Text wrapping="false" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column width="11rem">
+                                <Label text="FOB VALUE(FC)(USD)" />
+                                <table:template>
+                                    <Text wrapping="false" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column width="11rem">
+                                <Label text="FOB Value(RS)(INR)" />
+                                <table:template>
+                                    <Text wrapping="false" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column width="11rem">
+                                <Label text="LEO Date" />
+                                <table:template>
+                                    <Text wrapping="false" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column width="11rem">
+                                <Label text="BRC No" />
+                                <table:template>
+                                    <Text wrapping="false" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column width="11rem">
+                                <Label text="BRC Date" />
+                                <table:template>
+                                    <Text wrapping="false" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column width="11rem">
+                                <Label text="DBK Amt AsPer S/B" />
+                                <table:template>
+                                    <Text wrapping="false" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column width="11rem">
+                                <Label text="SCRIPT NO" />
+                                <table:template>
+                                    <Text wrapping="false" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column width="11rem">
+                                <Label text="DBK RES" />
+                                <table:template>
+                                    <Text wrapping="false" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column width="11rem">
+                                <Label text="RODTEP" />
+                                <table:template>
+                                    <Text wrapping="false" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column width="11rem">
+                                <Label text="RODTEP Amt AsPer S/B" />
+                                <table:template>
+                                    <Text wrapping="false" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column width="11rem">
+                                <Label text="Scroll No" />
+                                <table:template>
+                                    <Text wrapping="false" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column width="11rem">
+                                <Label text="Port Of Loading" />
+                                <table:template>
+                                    <Text wrapping="false" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column width="11rem">
+                                <Label text="EPCG Lic" />
+                                <table:template>
+                                    <Text wrapping="false" />
+                                </table:template>
+                            </table:Column>
+                        </table:columns>
+                    </table:Table>
+            </Panel>
+        </content>
+    </Page>
+</mvc:View>

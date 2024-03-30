@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="https://my410662-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my410662-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my410662-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my410662-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CODELIST',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="SAP__CodeList"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my410662-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my410662-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my410662-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my410662-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my410662-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my410662-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="cds_yeximallcds" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="ZEXIM_ALLType" sap:label="EXIM ALL CDS VIEW" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Docno"/>
+                    <PropertyRef Name="Doctype"/>
+                </Key>
+                <Property Name="Docno" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="Doctype" Type="Edm.String" Nullable="false" MaxLength="2"/>
+                <Property Name="DocDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date"/>
+                <Property Name="RefreanceNo" Type="Edm.String" MaxLength="40"/>
+                <Property Name="RefreanceDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date"/>
+                <Property Name="Peformano" Type="Edm.String" MaxLength="10"/>
+                <Property Name="Peformadate" Type="Edm.DateTime" Precision="0" sap:display-format="Date"/>
+                <Property Name="Deliveryno" Type="Edm.String" MaxLength="10"/>
+                <Property Name="Deliverydate" Type="Edm.DateTime" Precision="0" sap:display-format="Date"/>
+                <Property Name="TransporterName" Type="Edm.String" MaxLength="100"/>
+                <Property Name="Lrno" Type="Edm.String" MaxLength="15"/>
+                <Property Name="LrDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date"/>
+                <Property Name="TruckNo" Type="Edm.String" MaxLength="45"/>
+                <Property Name="Containerno" Type="Edm.String" MaxLength="100"/>
+                <Property Name="Containersize" Type="Edm.String" MaxLength="10"/>
+                <Property Name="RfidNo" Type="Edm.String" MaxLength="100"/>
+                <Property Name="Lineseal" Type="Edm.String" MaxLength="100"/>
+                <Property Name="Vesselno" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Precarrier" Type="Edm.String" MaxLength="15"/>
+                <Property Name="Portofdischarge" Type="Edm.String" MaxLength="100"/>
+                <Property Name="Portofloading" Type="Edm.String" MaxLength="70"/>
+                <Property Name="Epcgno" Type="Edm.String" MaxLength="15"/>
+                <Property Name="Epcgdate" Type="Edm.DateTime" Precision="0" sap:display-format="Date"/>
+                <Property Name="Remarks" Type="Edm.String" MaxLength="100"/>
+                <Property Name="Remarks1" Type="Edm.String" MaxLength="100"/>
+                <Property Name="Remarks2" Type="Edm.String" MaxLength="100"/>
+                <Property Name="PaymentTerms" Type="Edm.String" MaxLength="60"/>
+                <Property Name="Deliveryterms" Type="Edm.String" MaxLength="10"/>
+                <Property Name="Incotermslocation" Type="Edm.String" MaxLength="100"/>
+                <Property Name="Shipmentmark" Type="Edm.String" MaxLength="10"/>
+                <Property Name="Shipmentdate" Type="Edm.DateTime" Precision="0" sap:display-format="Date"/>
+                <Property Name="Weightofcontainer" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Exportname1" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Street1" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Street2" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Street3" Type="Edm.String" MaxLength="40"/>
+                <Property Name="City" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Country" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Exporteriecno" Type="Edm.String" MaxLength="15"/>
+                <Property Name="Authorisedsigntory" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Designation" Type="Edm.String" MaxLength="80"/>
+                <Property Name="Authorisedsigntoryno" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Nameofcustomsbroker" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Maxperwt" Type="Edm.String" MaxLength="15"/>
+                <Property Name="Contareweight" Type="Edm.String" MaxLength="15"/>
+                <Property Name="Weighslip" Type="Edm.String" MaxLength="20"/>
+                <Property Name="shipmenttype" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Billtobuyrname" Type="Edm.String" MaxLength="100"/>
+                <Property Name="Billtostreet1" Type="Edm.String" MaxLength="100"/>
+                <Property Name="Billtostreet2" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Billtostreet3" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Billtocity" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Billtocountry" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Constoname" Type="Edm.String" MaxLength="100"/>
+                <Property Name="Constostreet1" Type="Edm.String" MaxLength="100"/>
+                <Property Name="Constostreet2" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Constostreet3" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Constocity" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Constocountry" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Notifyname" Type="Edm.String" MaxLength="100"/>
+                <Property Name="Notifystreet1" Type="Edm.String" MaxLength="100"/>
+                <Property Name="Notifystreet2" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Notifystreet3" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Notifycity" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Notifycountry" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Conslctoname" Type="Edm.String" MaxLength="100"/>
+                <Property Name="Conslctostreet1" Type="Edm.String" MaxLength="100"/>
+                <Property Name="Conslctostreet2" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Conslctostreet3" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Conslctocity" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Conslctocountry" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Notify2name" Type="Edm.String" MaxLength="100"/>
+                <Property Name="Notify2street1" Type="Edm.String" MaxLength="100"/>
+                <Property Name="Notify2street2" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Notify2street3" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Notify2city" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Notify2country" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Notify3name" Type="Edm.String" MaxLength="100"/>
+                <Property Name="Notify3street1" Type="Edm.String" MaxLength="100"/>
+                <Property Name="Notify3street2" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Notify3street3" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Notify3city" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Notify3country" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Tobecontinue" Type="Edm.String" MaxLength="1"/>
+                <Property Name="Totalqty" Type="Edm.Decimal" Precision="15" Scale="3"/>
+                <Property Name="Totalnetqty" Type="Edm.Decimal" Precision="15" Scale="3"/>
+                <Property Name="Totalgrosswt" Type="Edm.Decimal" Precision="15" Scale="3"/>
+                <Property Name="Totalpackages" Type="Edm.String" MaxLength="6"/>
+                <Property Name="Typeofpackages" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Doccurrency" Type="Edm.String" MaxLength="10"/>
+                <Property Name="Exchangerate" Type="Edm.Decimal" Precision="9" Scale="5"/>
+                <Property Name="Commission" Type="Edm.Decimal" Precision="15" Scale="4"/>
+                <Property Name="Insurance" Type="Edm.Decimal" Precision="15" Scale="4"/>
+                <Property Name="Insurancepre" Type="Edm.Decimal" Precision="15" Scale="4"/>
+                <Property Name="Freight" Type="Edm.Decimal" Precision="15" Scale="4"/>
+                <Property Name="Oceanfreight" Type="Edm.Decimal" Precision="15" Scale="4"/>
+                <Property Name="Dutycalculation" Type="Edm.Decimal" Precision="15" Scale="4"/>
+                <Property Name="Assessablevalueinrs" Type="Edm.Decimal" Precision="15" Scale="4"/>
+                <Property Name="Gst" Type="Edm.Decimal" Precision="15" Scale="4"/>
+                <Property Name="Invoiceamount" Type="Edm.Decimal" Precision="15" Scale="4"/>
+                <Property Name="Addamt" Type="Edm.Decimal" Precision="15" Scale="4"/>
+                <Property Name="Lessamt" Type="Edm.Decimal" Precision="15" Scale="4"/>
+                <Property Name="Grandtotalamount" Type="Edm.Decimal" Precision="15" Scale="4"/>
+                <Property Name="Amountinwords" Type="Edm.String" MaxLength="256"/>
+                <Property Name="Lcno" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Lcdate" Type="Edm.String" MaxLength="10"/>
+                <Property Name="Issueingbank" Type="Edm.String" MaxLength="256"/>
+                <Property Name="Bank" Type="Edm.String" MaxLength="256"/>
+                <Property Name="Adcodebank" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Buyername" Type="Edm.String" MaxLength="100"/>
+                <Property Name="Stufffileno" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Stufffilpermdate" Type="Edm.String" MaxLength="30"/>
+                <Property Name="Exportunder" Type="Edm.String" MaxLength="5"/>
+                <Property Name="Advancelicense" Type="Edm.String" MaxLength="20"/>
+            </EntityType>
+            <EntityContainer Name="cds_yeximallcds_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="ZEXIM_ALL" EntityType="cds_yeximallcds.ZEXIM_ALLType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+            </EntityContainer>
+            <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <Annotations Target="cds_yeximallcds.cds_yeximallcds_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+            </Annotations>
+            <Annotations Target="cds_yeximallcds.cds_yeximallcds_Entities/ZEXIM_ALL" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_yeximallcds.cds_yeximallcds_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Org.OData.Capabilities.V1.BatchSupport">
+                    <Record Type="Org.OData.Capabilities.V1.BatchSupportType">
+                        <PropertyValue Property="ReferencesAcrossChangeSetsSupported" Bool="true"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <atom:link rel="self" href="https://my410662-api.s4hana.cloud.sap/sap/opu/odata/sap/YEXIMALLCDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="https://my410662-api.s4hana.cloud.sap/sap/opu/odata/sap/YEXIMALLCDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

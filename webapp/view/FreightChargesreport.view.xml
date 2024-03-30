@@ -1,0 +1,182 @@
+<mvc:View controllerName="zexim.controller.FreightChargesreport" xmlns:table="sap.ui.table" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:form="sap.ui.layout.form" xmlns:mvc="sap.ui.core.mvc">
+    <Page id="page1" title="Freight Charges Report">
+        <content>
+            <Panel id="panel1" class="sapUiSmallMarginBottom">
+                <content>        
+                    <form:SimpleForm columnsL="3" columnsM="3" columnsXL="3" editable="true"  id="form" layout="ResponsiveGridLayout" >
+                    <form:content>
+                        <!-- <Button icon="sap-icon://action" width="10%" type="Transparent" press="onExecute" /> -->
+                        <Label id="label1" text="Billing Document No" design="Bold" />
+                        <Input maxLength="10" id="idDoc"></Input>
+                        <!-- <Input id="from1" type="Text" placeholder="From" /> -->
+                        <!-- <Input id="to1" type="Text" placeholder="To" /> -->
+                        <!-- <ComboBox id="FromPlant" change="PlantData" placeholder="From">
+                            <items>
+                                <core:Item id="com1" text="1101" />
+                                <core:Item id="com2" text="1102" />
+                                <core:Item id="com3" text="1103" />
+                                <core:Item id="com4" text="1104" />
+                                <core:Item id="com5" text="1105" />
+                            </items>
+                        </ComboBox>
+                        <ComboBox id="ToPlant" change="PlantData" placeholder="To">
+                            <items>
+                                <core:Item id="com6" text="1101" />
+                                <core:Item id="com7" text="1102" />
+                                <core:Item id="com8" text="1103" />
+                                <core:Item id="com9" text="1104" />
+                                <core:Item id="com10" text="1105" />
+                            </items>
+                        </ComboBox> -->
+                    </form:content>
+                    <form:content>
+                        <Label id="label3" text="Billing Date" design="Bold" />
+                        <!-- <Input id="from3" type="Text" placeholder="From" /> -->
+                        <!-- <Input id="to3" type="Text" placeholder="To" /> -->
+                        <DatePicker id="FromBillingDt" displayFormat="dd-MM-yyyy" valueFormat="dd-MM-yyyy" placeholder="From"/>
+                        <DatePicker id="ToBillingDt" displayFormat="dd-MM-yyyy" valueFormat="dd-MM-yyyy" placeholder="To"/>
+                        <Label design="Bold" text="Forwarder"></Label>
+                        <ComboBox id="idComboForwarder">
+                            <core:Item text="AQUASKY LOGISTICS PVT LTD"></core:Item>
+                            <core:Item text="DAHNAY LOGISTICS PVT LTD"></core:Item>
+                            <core:Item text="STAR INDIA CONTAINER LINE PVT LTD"></core:Item>
+                            <core:Item text="RADARMAGIK VENTURE PRIVATE LIMITED"></core:Item>
+                            <core:Item text="FLOMIC GLOBAL LOGISTICS LTD"></core:Item>
+                            <core:Item text="GLOBESTAR LOGISTICS LLP"></core:Item>
+                            <core:Item text="DIVYA SHIPPING LINE"></core:Item>
+                        </ComboBox>
+                        <Label design="Bold" text="Agency Name"></Label>
+                            <ComboBox id="idComboAgency">
+                                    <core:Item text="SEA ASISA SHIPPING SERVICES LLP"></core:Item>
+                                    <core:Item text="PS PRAJAPATI EXIM PVT LTD"></core:Item>
+                            </ComboBox>
+                    </form:content>
+                    <core:Title id="core1"/>
+                    </form:SimpleForm>
+                    <form:SimpleForm class="sapUiTinyMarginTop">
+                    <VBox>
+                        <HBox direction="Column">
+                            <Button icon="sap-icon://sys-next-page" text="Execute" press="onExecute" />
+                        </HBox>
+                    </VBox>
+                </form:SimpleForm>
+                </content>
+            </Panel>
+            <!-- <Panel id="Panel2">
+                <table:Table id="table2" rows="{oTableItemModel>/aTableItem}" selectionMode="MultiToggle" ariaLabelledBy="title">
+                        <table:extension>
+                            <OverflowToolbar style="Clear">
+                                <ToolbarSpacer />
+                                
+                                <Button icon="sap-icon://save" tooltip="Save Table records" press="onSave" />
+                            </OverflowToolbar>
+                        </table:extension>
+                        <table:columns>
+                            <table:Column width="11rem">
+                                <Label text="Sales Document" />
+                                <table:template>
+                                    <Text value="{oTableItemModel>Docno}" wrapping="false" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column width="11rem">
+                                <Label text="Billing Date" />
+                                <table:template>
+                                    <Text value="{oTableItemModel>Invoicedate}" wrapping="false" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column width="11rem">
+                                <Label text="Item Description" />
+                                <table:template>
+                                    <Text value="{oTableItemModel>Agencycharge}" wrapping="false" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column width="11rem">
+                                <Label text="Container no." />
+                                <table:template>
+                                    <Text value="{oTableItemModel>Agencycharge}" wrapping="false" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column width="11rem">
+                                <Label text="Consignee Name" />
+                                <table:template>
+                                    <Text value="{oTableItemModel>Agencycharge}" wrapping="false" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column width="11rem">
+                                <Label text="Port of Discharge" />
+                                <table:template>
+                                    <Text value="{oTableItemModel>Portofdischarge}" wrapping="false" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column width="11rem">
+                                <Label text="Transporter Detail" />
+                                <table:template>
+                                    <Text value="{oTableItemModel>Transportername}" wrapping="false" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column width="11rem">
+                                <Label text="Forwarder" />
+                                <table:template>
+                                    <Text value="{oTableItemModel>Forwarder}" wrapping="false" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column width="11rem">
+                                <Label text="Shipline Name" />
+                                <table:template>
+                                    <Text value="{oTableItemModel>Shippingline}" wrapping="false" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column width="11rem">
+                                <Label text="Empty Container" />
+                                <table:template>
+                                    <Text value="{oTableItemModel>Emptycontainer}" wrapping="false" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column width="11rem">
+                                <Label text="Port of Loading" />
+                                <table:template>
+                                    <Text value="{oTableItemModel>Portofloading}" wrapping="false" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column width="11rem">
+                                <Label text="Ocean Fr." />
+                                <table:template>
+                                    <Text value="{oTableItemModel>Oceanfreight}" wrapping="false" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column width="11rem">
+                                <Label text="THC" />
+                                <table:template>
+                                    <Text value="{oTableItemModel>Thc}" wrapping="false" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column width="11rem">
+                                <Label text="Doc. Charg" />
+                                <table:template>
+                                    <Text value="{oTableItemModel>Doccharge}" wrapping="false" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column width="11rem">
+                                <Label text="Inland Charg" />
+                                <table:template>
+                                    <Text value="{oTableItemModel>Inlandfreight}" wrapping="false" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column width="11rem">
+                                <Label text="Agency Ch." />
+                                <table:template>
+                                    <Text value="{oTableItemModel>Agencycharge}" wrapping="false" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column width="11rem">
+                                <Label text="Remark" />
+                                <table:template>
+                                    <Text value="{oTableItemModel>Agencycharge}" wrapping="false" />
+                                </table:template>
+                            </table:Column>
+                        </table:columns>
+                    </table:Table>
+            </Panel> -->
+        </content>
+    </Page>
+</mvc:View>

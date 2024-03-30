@@ -1,0 +1,97 @@
+<mvc:View controllerName="zexim.controller.SampleInvoice"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m" xmlns:F="sap.ui.layout.form" xmlns:C="sap.ui.core" xmlns:Tab="sap.ui.table">
+    <Page id="page"  title="Sample Invoice" titleAlignment="Center" >
+        <content>
+            <F:SimpleForm id="Form1" layout="ResponsiveGridLayout" columnsL="2" columnsXL="2" columnsM="2" editable="true">
+                <F:content>      
+                    <Label design="Bold" id="ExporterLab" text="Exporter" />
+                    <TextArea id="Exporter" editable="true" rows="3"></TextArea>
+                    <Label design="Bold" id="Consigne_Label" text="Consigne" />
+                    <TextArea id="Consigne" editable="true" rows="3"></TextArea>                    
+                    <Label design="Bold" id="PreCarriageBy_Label" text="Pre-Carriage By" />
+                    <Input id="PreCarriageBy" />
+                    <Label design="Bold" id="PlaceofReciept_Label" text="Place of Reciept" />
+                    <Input id="PlaceofReciept" editable="true"/>
+                    <Label design="Bold" id="VesselFlightNo_Label" text="Vessel / Flight No." />
+                    <Input id="VesselFlightNo" />
+                    <Label design="Bold" id="PortOfLoading_Label" text="Port of Loading" />
+                    <Input id="PortOfLoading" />
+                    <Label design="Bold" id="PortOfDischarge_Label" text="Port Of Discharge" />
+                    <Input id="PortOfDischarge" />
+                    <Label design="Bold" id="PortOfDestination_Label" text="Port Of Destination" />
+                    <Input id="PortOfDestination" />
+                    <!-- <Label design="Bold" id="ButtonLab"/>
+                    <Button id="GotoNextViewButton" text="Get" press="NextView"/> -->
+
+                    <C:Title id="coret"/>
+
+                    <Label design="Bold" id="SampleInvoiceNo_Label" text="Sample Invoice No. and Date" />
+                    <Input id="SampleInvoiceNo" editable="true"/>
+                    <DatePicker displayFormat="dd-MM-yyyy" valueFormat="yyyy-MM-dd" id="SampleInvoiceDate" />
+			        <Label design="Bold" id="Exporter_RefLab" text="Exporter's Ref." />
+                    <Input id="ExportersRef" editable="true"/>
+                    <Label design="Bold" id="BuyersOrderNo_Date_Label" text="Buyer's Order No. and Date" />
+                    <Input id="BuyersOrderNo" editable="true"/>
+                    <DatePicker displayFormat="dd-MM-yyyy" valueFormat="yyyy-MM-dd" id="BuyersOrderDate" />
+                    <Label design="Bold" id="OtherReference_Label" text="Other Reference(s)" />
+                    <Input id="OtherReference" editable="true"/>
+                    <Label design="Bold" id="Country_ofOrgin_of_Goods_Label" text="Country of Orgin of Goods" />
+                    <Input id="Country_ofOrgin_of_Goods" value="INDIA" editable="true"/> 
+                    <Label design="Bold" id="CountryofFinalDestination_Label" text="Country of Final Destination" />
+                    <Input id="CountryofFinalDestination" value="SPAIN" editable="true"/>
+                    <Label design="Bold" id="_Label" text="Terms of Delivery and Payment"></Label>
+                    <TextArea id="TermsofDeliveryandPayment" editable="true" rows="7"></TextArea>
+                </F:content>
+            </F:SimpleForm>
+            <Tab:Table id="FirstTable" visibleRowCountMode="Auto" rows="{oTableDataModel>/aTableData}" >
+                <Tab:extension>
+                    <OverflowToolbar id="Table_OverflowToolbar"  style="Clear">
+                        <ToolbarSpacer id="Table_ToolbarSpacer" />
+                        <Button id="Table_AddButton" icon="sap-icon://add" tooltip="Save Table records" press="AddSingleEmptyRow"/>
+                        <Button id="Table_DeleteButton" icon="sap-icon://delete" tooltip="Save Table records" press="DeleteTables_SelectedRow"/>
+                        <Button id="Table_SaveButton" icon="sap-icon://print" text="Print" press="CallPrint"/>
+                    </OverflowToolbar>
+                </Tab:extension>                    
+                <Tab:columns>
+                    <Tab:Column id="Table_tc1" >
+                        <Label id="Table_Label1" text="Containe No." />
+                        <Tab:template>
+                            <Input id="Table_Input1" type="Text" maxLength="40" editable="true" value="{oTableDataModel>ContaineNo}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column id="Table_tc2" >
+                        <Label id="Table_Label2" text="No. and Kind of Packages" />
+                        <Tab:template>
+                            <Input id="Table_Input2" type="Text" maxLength="40" editable="true" value="{oTableDataModel>NoandKindofPackages}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column id="Table_tc3" >
+                        <Label id="Table_Label3" text="Description of Goods" />
+                        <Tab:template>
+                            <Input id="Table_Input3" type="Text" maxLength="40" editable="true" value="{oTableDataModel>DescriptionofGoods}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column id="Table_tc4" >
+                        <Label id="Table_Label4" text="Quantity Kgs" />
+                        <Tab:template>
+                            <Input id="Table_Input4" type="Text" maxLength="40" editable="true" value="{oTableDataModel>Quantity}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column id="Table_tc5" >
+                        <Label id="Table_Label5" text="Rate(cif) USD" />
+                        <Tab:template>
+                            <Input id="Table_Input5" type="Text" maxLength="40" editable="true" value="{oTableDataModel>Rate}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column id="Table_tc6" >
+                        <Label id="Table_Label6" text="Amount(cif) USD" />
+                        <Tab:template>
+                            <Input id="Table_Input6" type="Text" maxLength="40" editable="true" value="{oTableDataModel>Amount}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                </Tab:columns>
+            </Tab:Table>
+        </content>
+    </Page>
+</mvc:View>

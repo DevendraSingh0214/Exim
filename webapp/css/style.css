@@ -1,0 +1,22 @@
+/* Enter your custom styles here */
+.myBackgroundStyle {
+    background-image: url('image.png');
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position:center; 
+}
+.Panel1_Class{
+    margin-top: 20px;
+}
+.RadioButton_Class{
+    color: rgb(219, 27, 27);
+}
+div[id*='Form1'] div h5 {
+    display: none !important;
+}
+.EximPreShipmentReport td{
+    border: 0.3px solid gray;
+}
+.TableClass{
+    margin: 15px;
+}

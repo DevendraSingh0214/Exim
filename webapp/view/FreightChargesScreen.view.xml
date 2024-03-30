@@ -1,0 +1,179 @@
+<mvc:View controllerName="zexim.controller.FreightChargesScreen" xmlns:table="sap.ui.table" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:form="sap.ui.layout.form" xmlns:mvc="sap.ui.core.mvc">
+    <Page id="page1" title="Freight Charges Screen">
+        <content>
+            <form:SimpleForm id="Form1">
+                <form:content>
+                    <table:Table id="table2" rows="{oTableItemModel>/aTableItem}" selectionMode="MultiToggle" ariaLabelledBy="title">
+                        <table:extension>
+                            <OverflowToolbar id="Table_OverflowToolbar1" style="Clear">
+                                <ToolbarSpacer id="Table_ToolbarSpacer1" />
+                                <!-- <Button icon="sap-icon://add" tooltip="Add item" press="onAddNewRows" /> -->
+                                <!-- <Button icon="sap-icon://save" tooltip="Delete Table records" press="onDeleteSelectedData" /> -->
+                                <Button id="Table_SaveButton" icon="sap-icon://save" tooltip="Save Table records" press="onSave" />
+                            </OverflowToolbar>
+                        </table:extension>
+                        <table:columns>
+                            <table:Column id="Table_Column1" width="11rem">
+                                <Label id="Table_Label1"  text="Invoice No" />
+                                <table:template>
+                                    <Text id="Table_Text1" text="{oTableItemModel>Docno}" wrapping="false" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column id="Table_Column2" width="11rem">
+                                <Label id="Table_Label2"  text="Delivery No" />
+                                <table:template>
+                                    <Text id="Table_Text2" text="{oTableItemModel>DeliveryNumber}" wrapping="false" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column id="Table_Column3" width="11rem">
+                                <Label id="Table_Label3"  text="Invoice Date" />
+                                <table:template>
+                                    <Text id="Table_Text3" text="{oTableItemModel>DocDate}" wrapping="false" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column id="Table_Column4" width="11rem">
+                                <Label id="Table_Label4"  text="Port of Discharge" />
+                                <table:template>
+                                    <Text  id="Table_Text4" text="{oTableItemModel>Portofdischarge}" wrapping="false" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column id="Table_Column5" width="11rem">
+                                <Label id="Table_Label5"  text="Forwarder" />
+                                <table:template>
+                                    <!-- <Input id="Table_Input5"  value="{oTableItemModel>Forwarder}" editable="true" /> -->
+                                    <ComboBox id="Table_ComboBox5" value="{oTableItemModel>Forwarder}">
+                                        <core:Item id="coreItem1" text="AQUASKY LOGISTICS PVT LTD"></core:Item>
+                                        <core:Item id="coreItem2" text="DAHNAY LOGISTICS PVT LTD"></core:Item>
+                                        <core:Item id="coreItem3" text="STAR INDIA CONTAINER LINE PVT LTD"></core:Item>
+                                        <core:Item id="coreItem4" text="RADARMAGIK VENTURE PRIVATE LIMITED"></core:Item>
+                                        <core:Item id="coreItem5" text="FLOMIC GLOBAL LOGISTICS LTD"></core:Item>
+                                        <core:Item id="coreItem6" text="GLOBESTAR LOGISTICS LLP"></core:Item>
+                                        <core:Item id="coreItem7" text="DIVYA SHIPPING LINE"></core:Item>
+                                    </ComboBox>
+                                </table:template>
+                            </table:Column>
+                            <table:Column id="Table_Column6" width="11rem">
+                                <Label id="Table_Label6"  text="Agency Name" />
+                                <table:template>
+                                    <!-- <Input id="Table_Input6"  maxLength="15" value="{oTableItemModel>Emptycontainer}" editable="true" /> -->
+                                    <ComboBox id="Table_ComboBox6" value="{oTableItemModel>Emptycontainer}">
+                                        <core:Item id="coreItem8" text="SEA ASISA SHIPPING SERVICES LLP"></core:Item>
+                                        <core:Item id="coreItem9" text="PS PRAJAPATI EXIM PVT LTD"></core:Item>
+                                    </ComboBox>
+                                </table:template>
+                            </table:Column>
+                            <table:Column id="Table_Column7" width="11rem">
+                                <Label id="Table_Label7"  text="Transporter Name" />
+                                <table:template>
+                                    <Input id="Table_Input7"  maxLength="40" value="{oTableItemModel>Transportername}" submit="fetchMaterial" editable="true" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column id="Table_Column8" width="11rem">
+                                <Label id="Table_Label8"  text="Container no." />
+                                <table:template>
+                                    <Input id="Table_Input8"  maxLength="40" value="{oTableItemModel>Frecontainerno}" submit="fetchMaterial" editable="true" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column id="Table_Column9" width="11rem">
+                                <Label id="Table_Label9"  text="Ocean Freight Bill No" />
+                                <table:template>
+                                    <Input id="Table_Input9"  maxLength="40" value="{oTableItemModel>Oceanfreightbillno}" submit="fetchMaterial" editable="true" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column id="Table_Column10" width="11rem">
+                                <Label id="Table_Label10"  text="Other Shipping Line Bill No" />
+                                <table:template>
+                                    <Input id="Table_Input10"  maxLength="40" value="{oTableItemModel>Othshiplinebillno}" submit="fetchMaterial" editable="true" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column id="Table_Column11" width="11rem">
+                                <Label id="Table_Label11"  text="Transporter Bill No" />
+                                <table:template>
+                                    <Input id="Table_Input11"  maxLength="40" value="{oTableItemModel>Traspoerterbillno}" submit="fetchMaterial" editable="true" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column id="Table_Column12" width="11rem">
+                                <Label id="Table_Label12"  text="Agency Bill No" />
+                                <table:template>
+                                    <Input id="Table_Input12"  maxLength="40" value="{oTableItemModel>Agencybillno}" submit="fetchMaterial" editable="true" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column id="Table_Column13" width="11rem">
+                                <Label id="Table_Label13"  text="BL Tellex Bill No" />
+                                <table:template>
+                                    <Input id="Table_Input13"  maxLength="40" value="{oTableItemModel>Bltellexbillno}" submit="fetchMaterial" editable="true" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column id="Table_Column14" width="11rem">
+                                <Label id="Table_Label14"  text="Cone Core Bill No" />
+                                <table:template>
+                                    <Input id="Table_Input14"  maxLength="40" value="{oTableItemModel>Conecorebillno}" submit="fetchMaterial" editable="true" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column id="Table_Column15" width="11rem">
+                                <Label id="Table_Label15"  text="Shipping Line" />
+                                <table:template>
+                                    <Input id="Table_Input15"  maxLength="40" value="{oTableItemModel>Shippingline}" editable="true" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column id="Table_Column16" width="11rem">
+                                <Label id="Table_Label16"  text="Port of Loading" />
+                                <table:template>
+                                    <Input id="Table_Input16"  maxLength="15" value="{oTableItemModel>Portofloading}"  editable="false" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column id="Table_Column17" width="11rem">
+                                <Label id="Table_Label17"  text="Ocean Freight" />
+                                <table:template>
+                                    <Input id="Table_Input17"  maxLength="15" value="{oTableItemModel>Oceanfreight}" submit="onChange" editable="true" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column id="Table_Column18" width="11rem">
+                                <Label id="Table_Label18"  text="Other Shipping Line Charge" />
+                                <table:template>
+                                    <Input id="Table_Input18"  maxLength="10" value="{oTableItemModel>Thc}" submit="onChange" editable="true" />
+                                </table:template>
+                            </table:Column>
+                            <!-- <table:Column id="Table_Column1" width="11rem">
+                                <Label id="Table_Label1"  text="Doc. Charg" />
+                                <table:template>
+                                    <Input id="Table_Input1"  maxLength="100" value="{oTableItemModel>Doccharge}" editable="true" />
+                                </table:template>
+                            </table:Column> -->
+                            <table:Column id="Table_Column19" width="11rem">
+                                <Label id="Table_Label19"  text="BL Tellex Bill Amt" />
+                                <table:template>
+                                    <Input id="Table_Input19"  maxLength="40" value="{oTableItemModel>Bltellexbillamt}" submit="onChange" editable="true" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column id="Table_Column20" width="11rem">
+                                <Label id="Table_Label20"  text="Cone Core Amt" />
+                                <table:template>
+                                    <Input id="Table_Input20"  maxLength="40" value="{oTableItemModel>Conecoreamt}" submit="onChange" editable="true" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column id="Table_Column21" width="11rem">
+                                <Label id="Table_Label21"  text="Inland Freight" />
+                                <table:template>
+                                    <Input id="Table_Input21"  maxLength="100" value="{oTableItemModel>Inlandfreight}" submit="onChange" editable="true" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column id="Table_Column22" width="11rem">
+                                <Label id="Table_Label22"  text="Agency Charge" />
+                                <table:template>
+                                    <Input id="Table_Input22"  maxLength="100" value="{oTableItemModel>Agencycharge}" submit="onChange" editable="true" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column id="Table_Column23" width="11rem">
+                                <Label id="Table_Label23"  text="Total Charge" />
+                                <table:template>
+                                    <Input id="Table_Input23"  maxLength="100" value="{oTableItemModel>Totalcharge}" editable="false" />
+                                </table:template>
+                            </table:Column>
+                        </table:columns>
+                    </table:Table>
+                </form:content>
+            </form:SimpleForm>
+        </content>
+    </Page>
+</mvc:View>

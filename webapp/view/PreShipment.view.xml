@@ -1,0 +1,492 @@
+<mvc:View xmlns:composite="sap.uiext.inbox.composite"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:table="sap.ui.table" controllerName="zexim.controller.PreShipment" displayBlock="true">
+    <Page id="page" title="{i18n>title}">
+        <content>
+            <Panel id="Panel1">
+                <content>
+                    <f:SimpleForm id="Form1" columnsL="3" layout="ResponsiveGridLayout" editable="true">
+                        <f:content>
+                            <Label id="InvoiceNumber_Label"  text="Invoice no." />
+                            <Input maxLength="10" id="idDoc" value="{oPayloadData>/Docno}" submit="onRead" />
+                            <Label id="InvoiceDate_Label" text="Invoice Date" />
+                            <DatePicker id="idInvDate" value="{oPayloadData>/DocDate}" />
+                            <Label id="DocumentType_Label" text="Doc Type" />
+                            <Input id="idDocType" value="{oPayloadData>/Doctype}" editable="false" />
+                            <!-- <Label/>
+                            <Button id="Calculation_SaveButton23243567" icon="sap-icon://save" text="Save" press="SaveEximData" />
+                            <Button id="Calculation_SaveButton23243567111111" icon="sap-icon://save" text="Update" press="UpdateEximData" /> -->
+                            <core:Title id="core_Title1" />
+                        </f:content>
+                    </f:SimpleForm>
+                    <IconTabBar id="idIconBar" select="onSelect">
+                        <items>
+                            <IconTabFilter id="idGeneral" key="1" text="General">
+                                <content>
+                                    <OverflowToolbar id="General_OverflowToolbar">
+                                        <Button text="Save" id="GeneralSave" icon="sap-icon://save" press="SaveEximData" />
+                                        <!-- <Button text="Save" id="GeneralSave" icon="sap-icon://save" press="onSave" /> -->
+                                        <!-- <Button text="Update" icon="sap-icon://save" press="onUpdateGeneralData" /> -->
+                                        <ToolbarSpacer id="ToolbarSpacer_General"/>
+                                    </OverflowToolbar>
+                                    <f:SimpleForm id="Form2" layout="ResponsiveGridLayout" editable="true">
+                                        <f:content>
+                                            <core:Title id="core_Title2" />
+                                            <Label id="BuyerReferenceNumber_Label" text="Buyer Reference No." />
+                                            <Input  maxLength="40" id="idRefNo" value="{oPayloadData>/RefreanceNo}" />
+                                            <Label id="BuyerReferenceDate_Label" text="Buyer Reference Date" />
+                                            <DatePicker id="idReferenceDate" displayFormat="yyyy-MM-dd" valueFormat="yyyy-MM-dd" value="{oPayloadData>/RefreanceDate}" />
+                                            <Label id="PerformaInvoiceNumber_Label" text="Performa Invoice No." />
+                                            <Input id="Peformano" maxLength="10" value="{oPayloadData>/Peformano}" />
+                                            <Label id="PerformaInvoiceDate_Label" text="Performa Invoice Date" />
+                                            <DatePicker id="idPerformaInvoiceDate" displayFormat="yyyy-MM-dd" valueFormat="yyyy-MM-dd" value="{oPayloadData>/Peformadate}" />
+                                            <Label id="DeliveryNumber_Label" text="Delivery No." />
+                                            <Input id="Deliveryno" maxLength="10" value="{oPayloadData>/Deliveryno}" />
+                                            <Label id="DeliveryDate_Label" text="Delivery Date" />
+                                            <DatePicker id="idDeliveryDate" displayFormat="yyyy-MM-dd" valueFormat="yyyy-MM-dd" value="{oPayloadData>/Deliverydate}" />
+                                            <Label id="TransporterName_Label" text="Transporter Name" />
+                                            <Input id="TransporterName" maxLength="100" value="{oPayloadData>/TransporterName}" />
+                                            <Label id="LrNumber_Label" text="LR No." />
+                                            <Input id="Lrno" maxLength="15" value="{oPayloadData>/Lrno}" />
+                                            <Label id="LrDate_Label" text="LR Date" />
+                                            <DatePicker id="idLrDate" displayFormat="yyyy-MM-dd" valueFormat="yyyy-MM-dd" value="{oPayloadData>/LrDate}" />
+                                            <Label id="TruckNumber_Label" text="Truck No." />
+                                            <Input id="TruckNo" maxLength="45" value="{oPayloadData>/TruckNo}" />
+                                            <Label id="ContainerNumber_Label" text="Container No." />
+                                            <Input id="Containerno" maxLength="100" value="{oPayloadData>/Containerno}" />
+                                            <Label id="ContainerSize_Label" text="Container Size" />
+                                            <ComboBox id="ContainerSize" value="{oPayloadData>/Containersize}" items="{oContainer>/ContainerSize}">
+                                                <core:ListItem id="coreListItem1" key="{oContainer>Key}" text="{oContainer>Description}" />
+                                            </ComboBox>
+                                            <Label id="RFIDNumber_Label" text="RFID no." />
+                                            <Input id="RfidNo" maxLength="100" value="{oPayloadData>/RfidNo}" />
+                                            <Label id="LineSealNumber_Label" text="Line Seal No." />
+                                            <Input id="Lineseal" maxLength="100" value="{oPayloadData>/Lineseal}" />
+                                            <Label id="Vessel_FlightNumber_Label" text="Vessel/Flight No." />
+                                            <Input id="Vesselno" maxLength="50" value="{oPayloadData>/Vesselno}" />
+                                            <Label id="ShipmentType_Label" text="Shipment Type" />
+                                            <ComboBox id="ShipmentType" items="{path : 'oShipType>/ShipmentType'}" value="{oPayloadData>/shipmenttype}" showSecondaryValues="true">
+                                                <core:ListItem id="coreListItem2" key="{oShipType>Description}" text="{oShipType>Key}" additionalText="{oShipType>Description}" />
+                                            </ComboBox>
+                                            <Label id="PrecarrierBy_ModeofTransport_Label" text="Precarrier By/Mode of Transport" />
+                                            <ComboBox id="TransportType" value="{oPayloadData>/Precarrier}" items="{oTransportType>/TransportType}">
+                                                <core:Item id="coreListItem3" key="{oTransportType>Key}" text="{oTransportType>Description}" />
+                                            </ComboBox>
+                                            <Label id="PortofLoading_Label" text="Port of Loading" />
+                                            <ComboBox id="Portofloading" value="{oPayloadData>/Portofloading}" items="{oPortLoadingModel>/Portofloading}">
+                                                <core:Item id="coreListItem4" key="{oPortLoadingModel>Key}" text="{oPortLoadingModel>Description}" />
+                                            </ComboBox>
+                                            <Label id="PortofDischarge_Label" text="Port of Discharge" />
+                                            <Input id="Portofdischarge" maxLength="100" value="{oPayloadData>/Portofdischarge}" />
+                                            <Label id="EPCG_MIESNo_Label" text="EPCG/MIES No." />
+                                            <Input id="Epcgno" maxLength="15" value="{oPayloadData>/Epcgno}" />
+                                            <Label id="EPCG_MIESDate_Label" text="EPCG/MIES Date" />
+                                            <DatePicker id="idEPCGDate" displayFormat="yyyy-MM-dd" valueFormat="yyyy-MM-dd" value="{oPayloadData>/Epcgdate}" />
+                                            <Label id="MaxPermissibleContainerWeight_Label" text="Max Permissible Container Weight" />
+                                            <Input id="Maxperwt" maxLength="15" value="{oPayloadData>/Maxperwt}" />
+                                            <Label id="ContainerWeight_Label" text="Container Weight" />
+                                            <Input id="Contareweight" maxLength="15" value="{oPayloadData>/Contareweight}" />
+                                            <Label id="WeighingSlipNo_Label" text="Weighing Slip No." />
+                                            <Input id="Weighslip" maxLength="15" value="{oPayloadData>/Weighslip}" />
+                                            <core:Title id="core_Title3" />
+                                            <Label id="PaymentTerms_Label" text="Payment Terms" />
+                                            <Input id="PaymentTerms" maxLength="40" value="{oPayloadData>/PaymentTerms}" />
+                                            <Label id="DeliveryTerms_Label" text="Delivery Terms" />
+                                            <Input id="Deliveryterms" maxLength="10" value="{oPayloadData>/Deliveryterms}" />
+                                            <Label id="IncotermsLocation_Label" text="Incoterms Location" />
+                                            <Input id="Incotermslocation" maxLength="100" value="{oPayloadData>/Incotermslocation}" />
+                                            <Label id="ShipmentMark_Label" text="Shipment Mark" />
+                                            <Input id="Shipmentmark" maxLength="10" value="{oPayloadData>/Shipmentmark}" />
+                                            <Label id="Shipment_Date_Label" text="Shipment Date" />
+                                            <DatePicker id="idShipmentDate" displayFormat="yyyy-MM-dd" valueFormat="yyyy-MM-dd" value="{oPayloadData>/Shipmentdate}" />
+                                            <Label id="WeightofContainer_Label" text="Weight of Cotainer" />
+                                            <Input id="Weightofcontainer" maxLength="20" value="{oPayloadData>/Weightofcontainer}" />
+
+                                            
+                                            <!-- <core:Title id="core_Title4" text="Export Data"/> -->
+                                            <Label id="ExportData_Label" class="sapUiSmallMarginTop" design="Bold" text="Export Data" />
+                                            <Text id="ExportData" class="sapUiSmallMarginTop" />
+                                            <Label id="ExportName1_Label" text="Name" />
+                                            <Input id="General_" maxLength="40" value="{oPayloadData>/Exportname1}" />
+                                            <Label id="Street1_Label" text="Street 1" />
+                                            <Input id="General_Street1" maxLength="40" value="{oPayloadData>/Street1}" />
+                                            <Label id="Street2_Label" text="Street 2" />
+                                            <Input id="General_Street2" maxLength="40" value="{oPayloadData>/Street2}" />
+                                            <Label id="Street3_Label" text="Street 3" />
+                                            <Input id="General_Street3" maxLength="40" value="{oPayloadData>/Street3}" />
+                                            <Label id="City_Label" text="City" />
+                                            <Input id="General_City" maxLength="40" value="{oPayloadData>/City}" />
+                                            <Label id="Country_Label" text="Country" />
+                                            <Input id="General_Country" maxLength="40" value="{oPayloadData>/Country}" />
+                                            <Label id="ExporterIECno_Label" text="Exporter IEC No." />
+                                            <Input id="Exporteriecno" maxLength="15" value="{oPayloadData>/Exporteriecno}" />
+                                            <Label id="AuthorisedSigntory_Label" class="sapUiSmallMarginTop" text="Authorized Signatory" />
+                                            <ComboBox change="changeDesignationACAuthorized" id="Authorisedsigntory" value="{oPayloadData>/Authorisedsigntory}" class="sapUiSmallMarginTop" items="{oSignatureType>/Signatory}">
+                                                <core:Item id="coreListItem5" key="{oSignatureType>Key}" text="{oSignatureType>Description}" />
+                                            </ComboBox>
+                                            <Label id="Designation_Label" text="Designation" />
+                                            <ComboBox id="Designation" value="{oPayloadData>/Designation}" items="{oDesignationType>/Designation}">
+                                                <core:Item id="coreListItem6" key="{oDesignationType>Key}" text="{oDesignationType>Description}" />
+                                            </ComboBox>
+                                            <Label id="NameofCustomsBroker_Label" text="Name of Customs Broker" />
+                                            <Input id="Nameofcustomsbroker" maxLength="40" value="{oPayloadData>/Nameofcustomsbroker}" />
+                                            <Label id="AuthorisedContactDetails_Label" text="Authorised Contact Details" />
+                                            <Input id="AuthorisedContactDetails" maxLength="20" value="{oPayloadData>/Authorisedsigntoryno}" />
+                                            <core:Title id="core_Title5" />
+                                            <Label id="Remarks_Label" text="Remarks" />
+                                            <Input id="Remarks" maxLength="100" value="{oPayloadData>/Remarks}" width="100%" />
+                                            <Label id="Remarks1_Label" text="Remarks 1" />
+                                            <Input id="Remarks1" maxLength="100" value="{oPayloadData>/Remarks1}" width="100%" />
+                                            <Label id="Remarks2_Label" text="Remarks 2" />
+                                            <Input maxLength="100"  id="Remarks2" value="{oPayloadData>/Remarks2}" width="100%" />
+                                            <core:Title id="core_Title6" />
+                                        </f:content>
+                                    </f:SimpleForm>
+                                </content>
+                            </IconTabFilter>
+                            <IconTabFilter  key="2" id="idBuyerData" text="Buyer Data">
+                                <content>
+                                    <OverflowToolbar id="Buyer_OverflowToolbar">
+                                        <Button id="Buyer_Save" icon="sap-icon://save" text="Save" press="onSave" />
+                                        <!-- <Button text="Update" icon="sap-icon://save" press="onUpdateBuyerData" /> -->
+                                        <ToolbarSpacer id="Buyer_ToolbarSpacer"/>
+                                    </OverflowToolbar>
+                                    <f:SimpleForm id="Form3" emptySpanL="0" columnsL="2" layout="ResponsiveGridLayout" editable="true">
+                                        <f:content>
+                                            <core:Title id="core_Title7" text="Buyer Data" />
+                                            <Label id="BuyerName_Label" text="Buyer Name" />
+                                            <Input id="Billtobuyrname" maxLength="100" value="{oBuyerPayload>/Billtobuyrname}" />
+                                            <Label id="Street1__Label" text="Street 1" />
+                                            <Input id="Street1" maxLength="100" value="{oBuyerPayload>/Billtostreet1}" />
+                                            <Label id="Street2__Label" text="Street 2" />
+                                            <Input id="Street2" maxLength="50" value="{oBuyerPayload>/Billtostreet2}" />
+                                            <Label id="Street3__Label" text="Street 3" />
+                                            <Input id="Street3" maxLength="50" value="{oBuyerPayload>/Billtostreet3}" />
+                                            <Label id="City__Label" text="City" />
+                                            <Input id="City" maxLength="50" value="{oBuyerPayload>/Billtocity}" />
+                                            <Label id="Country__Label" text="Country" />
+                                            <Input id="Country" maxLength="50" value="{oBuyerPayload>/Billtocountry}" />
+                                            <Label id="Tax_Label" text="Tax ID" />
+                                            <Input id="TaxId" maxLength="50" value="" />
+                                            <core:Title id="core_Title8" text="Consignee Data" />
+                                            <CheckBox id="idCheckBox" select="handleSelect" text="To be continued"></CheckBox>
+                                            <Label id="ConsigneeName_Label" text="Consignee Name" />
+                                            <Input id="ConsigneeName" maxLength="100" value="{oBuyerPayload>/Constoname}" editable="{oGeneralModel>/editable}"/>
+                                            <Label id="ConsigneeStreet1_Label" text="Street 1" />
+                                            <Input id="ConsigneeStreet1" maxLength="100" value="{oBuyerPayload>/Constostreet1}" editable="{oGeneralModel>/editable}"/>
+                                            <Label id="ConsigneeStreet2_Label" text="Street 2" />
+                                            <Input id="ConsigneeStreet2" maxLength="50" value="{oBuyerPayload>/Constostreet2}" editable="{oGeneralModel>/editable}"/>
+                                            <Label id="ConsigneeStreet3_Label" text="Street 3" />
+                                            <Input id="ConsigneeStreet3" maxLength="50" value="{oBuyerPayload>/Constostreet3}" editable="{oGeneralModel>/editable}"/>
+                                            <Label id="ConsigneeCity_Label" text="City" />
+                                            <Input id="ConsigneeCity" maxLength="50" value="{oBuyerPayload>/Constocity}" editable="{oGeneralModel>/editable}"/>
+                                            <Label id="ConsigneeCountry_Label" text="Country" />
+                                            <Input id="ConsigneeCountry" maxLength="50" value="{oBuyerPayload>/Constocountry}" editable="{oGeneralModel>/editable}"/>
+                                            <core:Title id="core_Title9" text="Notify Party" />
+                                            <Label id="Notifyname_Label" text="Notify Party 1 Name" />
+                                            <Input id="Notifyname" maxLength="100" value="{oBuyerPayload>/Notifyname}" />
+                                            <Label id="Notifystreet1_Label" text="Street 1" />
+                                            <Input id="Notifystreet1" maxLength="100" value="{oBuyerPayload>/Notifystreet1}" />
+                                            <Label id="Notifystreet2_Label" text="Street 2" />
+                                            <Input id="Notifystreet2" maxLength="50" value="{oBuyerPayload>/Notifystreet2}" />
+                                            <Label id="Notifystreet3_Label" text="Street 3" />
+                                            <Input id="Notifystreet3" maxLength="50" value="{oBuyerPayload>/Notifystreet3}" />
+                                            <Label id="Notifycity_Label" text="City" />
+                                            <Input id="Notifycity" maxLength="50" value="{oBuyerPayload>/Notifycity}" />
+                                            <Label id="Notifycountry_Label" text="Country" />
+                                            <Input id="Notifycountry" maxLength="50" value="{oBuyerPayload>/Notifycountry}" />
+                                            <Label id="Notify2name_Label" text="Notify Party 2 Name" class="sapUiSmallMarginTop" />
+                                            <Input id="Notify2name" maxLength="100" value="{oBuyerPayload>/Notify2name}" class="sapUiSmallMarginTop" />
+                                            <Label id="Notify2street1_Label" text="Street 1" />
+                                            <Input id="Notify2street1" maxLength="100" value="{oBuyerPayload>/Notify2street1}" />
+                                            <Label id="Notify2street2_Label" text="Street 2" />
+                                            <Input id="Notify2street2" maxLength="50" value="{oBuyerPayload>/Notify2street2}" />
+                                            <Label id="Notify2street3_Label" text="Street 3" />
+                                            <Input id="Notify2street3" maxLength="50" value="{oBuyerPayload>/Notify2street3}" />
+                                            <Label id="Notify2city_Label" text="City" />
+                                            <Input id="Notify2city" maxLength="50" value="{oBuyerPayload>/Notify2city}" />
+                                            <Label id="Notify2country_Label" text="Country" />
+                                            <Input id="Notify2country" maxLength="50" value="{oBuyerPayload>/Notify2country}" />
+                                            <core:Title id="core_Title10" text="Consignee in case of LC in B/L Draft" />
+                                            <Label id="Conslctoname_Label" text="Consignee Name" />
+                                            <Input id="Conslctoname" maxLength="100" value="{oBuyerPayload>/Conslctoname}" />
+                                            <Label id="Conslctostreet1_Label" text="Street 1" />
+                                            <Input id="Conslctostreet1" maxLength="100" value="{oBuyerPayload>/Conslctostreet1}" />
+                                            <Label id="Conslctostreet2_Label" text="Street 2" />
+                                            <Input id="Conslctostreet2" maxLength="50" value="{oBuyerPayload>/Conslctostreet2}" />
+                                            <Label id="Conslctostreet3_Label" text="Street 3" />
+                                            <Input id="Conslctostreet3" maxLength="50" value="{oBuyerPayload>/Conslctostreet3}" />
+                                            <Label id="Conslctocity_Label" text="City" />
+                                            <Input id="Conslctocity" maxLength="50" value="{oBuyerPayload>/Conslctocity}" />
+                                            <Label id="Conslctocountry_Label" text="Country" class="ssapUiSmallMargin" />
+                                            <Input id="Conslctocountry" maxLength="50" value="{oBuyerPayload>/Conslctocountry}" />
+                                            <Label id="Notify3name_Label" text="Notify Party 3 Name" class="sapUiSmallMarginTop" />
+                                            <Input id="Notify3name" maxLength="100" value="{oBuyerPayload>/Notify3name}" class="sapUiSmallMarginTop" />
+                                            <Label id="Notify3street1_Label" text="Street 1" />
+                                            <Input id="Notify3street1" maxLength="100" value="{oBuyerPayload>/Notify3street1}" />
+                                            <Label id="Notify3street2_Label" text="Street 2" />
+                                            <Input id="Notify3street2" maxLength="50" value="{oBuyerPayload>/Notify3street2}" />
+                                            <Label id="Notify3street3_Label" text="Street 3" />
+                                            <Input id="Notify3street3" maxLength="50" value="{oBuyerPayload>/Notify3street3}" />
+                                            <Label id="Notify3city_Label" text="City" />
+                                            <Input id="Notify3city" maxLength="50" value="{oBuyerPayload>/Notify3city}" />
+                                            <Label id="Notify3country_Label" text="Country" />
+                                            <Input id="Notify3country" maxLength="50" value="{oBuyerPayload>/Notify3country}" />
+                                        </f:content>
+                                    </f:SimpleForm>
+                                </content>
+                            </IconTabFilter>
+                            <IconTabFilter id="Calculation_IconTabFilter" text="Calculation">
+                                <content>
+                                    <OverflowToolbar id="Calculation_OverflowToolbar">
+                                        <Button id="Calculation_SaveButton" icon="sap-icon://save" text="Save" press="onSave" />
+                                        <!-- <Button icon="sap-icon://save" text="Update" press="onUpdateCalculationData" /> -->
+                                        <ToolbarSpacer id="Calculation_ToolbarSpacer" />
+                                    </OverflowToolbar>
+                                    <f:SimpleForm id="Form4" editable="true" layout="ResponsiveGridLayout">
+                                        <f:content>
+                                            <core:Title id="core_Title11" />
+                                            <Label id="Totalqty_Label" text="Total Qty." />
+                                            <Input id="idTotalQuan" value="{oCalculationPayload>/Totalqty}" />
+                                            <Label id="Totalnetqty_Label" text="Total Net Wt." />
+                                            <Input id="idTotalNetWt" value="{oCalculationPayload>/Totalnetqty}" />
+                                            <Label id="Totalgrosswt_Label" text="Total Gross Wt." />
+                                            <Input id="idTotalGrossWt" value="{oCalculationPayload>/Totalgrosswt}" />
+                                            <Label id="Totalpackages_Label" text="Total Packages" />
+                                            <Input id="idTotalPack" maxLength="6" value="{oCalculationPayload>/Totalpackages}" />
+                                            <Label id="Typeofpackages_Label" text="Type of Packages" />
+                                            <Input id="idTypeofPack" maxLength="20" value="{oCalculationPayload>/Typeofpackages}" />
+                                            <Label id="Doccurrency_Label" text="Doc. Currency" class="sapUiSmallMarginTop" />
+                                            <Input id="idDocCurr" maxLength="10" value="{oCalculationPayload>/Doccurrency}" class="sapUiSmallMarginTop" />
+                                            <Label id="Exchangerate_Label" text="Exchange Rate" />
+                                            <Input id="idExchange" value="{oCalculationPayload>/Exchangerate}" />
+                                            <Label id="Commission_Label" text="Commission" />
+                                            <Input id="idCommission" value="{oCalculationPayload>/Commission}" />
+                                            <Label id="Insurance_Label" text="Insurance" />
+                                            <Input id="idInsurance" value="{oCalculationPayload>/Insurance}" />
+                                            <Label id="Freight_Label" text="Freight" />
+                                            <Input id="idFreight" value="{oCalculationPayload>/Freight}" />
+                                            <Label id="Insurancepre_Label" text="Insurance Premium" />
+                                            <Input id="idInsurPre" value="{oCalculationPayload>/Insurancepre}" />
+                                            <Label id="Oceanfreight_Label" text="Ocean Freight" />
+                                            <Input id="idOceanFreight" value="{oCalculationPayload>/Oceanfreight}" />
+                                            <Label id="Dutycalculation_Label" text="Duty Calculation" />
+                                            <Input id="idDutyCalc" value="{oCalculationPayload>/Dutycalculation}" />
+                                            <Label id="Assessablevalueinrs_Label" text="Assessable value in Rs." />
+                                            <Input id="idAssessableValue" value="{oCalculationPayload>/Assessablevalueinrs}" />
+                                            <Label id="Gst_Label" text="GST" />
+                                            <Input id="idGst" value="{oCalculationPayload>/Gst}" />
+                                            <Label id="Invoiceamount_Label" class="sapUiSmallMarginTop" text="Invoice Amount" />
+                                            <Input id="idInvAmt" value="{oCalculationPayload>/Invoiceamount}" class="sapUiSmallMarginTop" />
+                                            <Label id="Addamt_Label" text="Add Amt." />
+                                            <Input id="idAddAmt" liveChange="addInvoiceAmount" submit="addInvoiceAmount" value="{oCalculationPayload>/Addamt}" />
+                                            <Label id="Lessamt_Label" text="Less Amt." />
+                                            <Input id="idLessAmt" submit="lessInvoiceAmount" liveChange="lessInvoiceAmount" value="{oCalculationPayload>/Lessamt}" />
+                                            <Label id="Grandtotalamount_Label" text="Grand Total Amount" />
+                                            <Input id="idGrandTotalAmt" value="{oCalculationPayload>/Grandtotalamount}" />
+                                            <Label id="Amountinwords_Label" text="Amount in Words" />
+                                            <Input id="Amountinwords" value="{oCalculationPayload>/Amountinwords}" />
+                                            <Label id="Frightchargetype_Label" text="Freight Charges Type"></Label>
+                                            <ComboBox id="Frightchargetype" value="{oCalculationPayload>/Frightchargetype}">
+                                                <core:Item id="Frightchargetype_Item1" text="Freight Prepaid"></core:Item>
+                                                <core:Item id="Frightchargetype_Item2" text="Freight Collect"></core:Item>
+                                            </ComboBox>
+                                            <core:Title id="core_Title12" />
+                                            <Label id="Lcno_Label" text="LC No." />
+                                            <Input id="Lcno" maxLength="40" value="{oCalculationPayload>/Lcno}" />
+                                            <Label id="Lcdate_Label" text="LC Date" />
+                                            <DatePicker id="idLcDate" value="{oCalculationPayload>/Lcdate}" displayFormat="yyyy-MM-dd" valueFormat="yyyy-MM-dd"/>
+                                            <Label id="Issueingbank_Label" text="Issuing Bank" />
+                                            <Input id="Issueingbank" maxLength="256" value="{oCalculationPayload>/Issueingbank}" />
+                                            <Label id="Bank_Label" text="Bank Name" />
+                                            <Input id="CalculationBank" maxLength="256" value="{oCalculationPayload>/Bank}" />
+                                            <Label id="Adcodebank_Label" text="AD Code Bank" />
+                                            <Input id="Adcodebank" maxLength="40" value="{oCalculationPayload>/Adcodebank}" />
+                                            <Label id="Foreignbank_Label" text="Foreign Bank Address" class="sapUiSmallMarginTop" />
+                                            <Input id="Foreignbank" maxLength="256" value="{oCalculationPayload>/Foreignbank}" class="sapUiSmallMarginTop" />
+                                            <Label id="Buyername_Label" text="Buyer Name" />
+                                            <Input id="Buyername" maxLength="100" value="{oCalculationPayload>/Buyername}" />
+                                            <Label id="CalculationStreet1_Label" text="Street 1" />
+                                            <Input id="CalculationStreet1" maxLength="100" value="{oCalculationPayload>/Street1}" />
+                                            <Label id="CalculationStreet2_Label" text="Street 2" />
+                                            <Input id="CalculationStreet2" maxLength="100" value="{oCalculationPayload>/Street2}" />
+                                            <Label id="CalculationStreet3_Label" text="Street 3" />
+                                            <Input id="CalculationStreet3" maxLength="100" value="{oCalculationPayload>/Street3}" />
+                                            <Label id="Calculation_Label" text="Shipping Line"></Label>
+                                            <Input id="Shippingline" value="{oCalculationPayload>/Shippingline}"></Input>
+                                            <Label id="Etddate_Label" text="ETD Date"></Label>
+                                            <DatePicker id="idETDDate" displayFormat="yyyy-MM-dd" valueFormat="yyyy-MM-dd" value="{oCalculationPayload>/Etddate}"></DatePicker>
+                                            <Label id="Etadate_Label" text="ETA Date"></Label>
+                                            <DatePicker id="idETADate" displayFormat="yyyy-MM-dd" valueFormat="yyyy-MM-dd" value="{oCalculationPayload>/Etadate}"></DatePicker>
+                                            <Label id="Stufffileno_Label" text="Stuff file perm No." class="sapUiSmallMarginTop" />
+                                            <Input id="Stufffileno" maxLength="40" value="{oCalculationPayload>/Stufffileno}" class="sapUiSmallMarginTop" />
+                                            <Label id="Stufffilpermdate_Label" text="Stuff file perm Date" />
+                                            <Input id="Stufffilpermdate" value="{oCalculationPayload>/Stufffilpermdate}" />
+                                            <Label id="Exportunder_Label" text="Export under" class="sapUiSmallMarginTop" />
+                                            <Input id="Exportunder" value="{oCalculationPayload>/Exportunder}" class="sapUiSmallMarginTop" />
+                                            <Label id="Advancelicense_Label" text="Advance License" />
+                                            <Input id="Advancelicense" value="{oCalculationPayload>/Advancelicense}" />
+                                        </f:content>
+                                    </f:SimpleForm>
+                                </content>
+                            </IconTabFilter>
+                            <IconTabFilter id="ItemDetails_IconTabFilter" text="Item Details">
+                                <content>
+                                    <OverflowToolbar id="table_OverflowToolbar0">
+                                        <Button id="table_OverflowToolbar1" icon="sap-icon://save" text="Save" press="onSave" />
+                                        <ToolbarSpacer id="table_ToolbarSpacer1"/>
+                                    </OverflowToolbar>
+                                    <table:Table id="table2" rows="{oTableItemModel>/aTableItem}" selectionMode="MultiToggle" ariaLabelledBy="title">
+                                        <table:extension>
+                                            <OverflowToolbar id="table_OverflowToolbar2" style="Clear">
+                                                <ToolbarSpacer id="table_ToolbarSpacer2"/>
+                                            </OverflowToolbar>
+                                        </table:extension>
+                                        <table:columns>
+                                            <table:Column id="table_Column1" width="11rem">
+                                                <Label id="table_Label1" text="Item No" />
+                                                <table:template>
+                                                    <Text id="table_Text1" text="{oTableItemModel>ItemNum}" wrapping="false" />
+                                                </table:template>
+                                            </table:Column>
+                                            <table:Column id="table_Column2" width="11rem">
+                                                <Label id="table_Label2" text="Material Code" />
+                                                <table:template>
+                                                    <Input id="table_Input2" value="{oTableItemModel>MaterialCode}" maxLength="30"/>
+                                                </table:template>
+                                            </table:Column>
+                                            <table:Column id="table_Column3" width="11rem">
+                                                <Label id="table_Label3" text="Material Description" />
+                                                <table:template>
+                                                    <Input id="table_Input3" value="{oTableItemModel>MaterialDescription}" maxLength="200" editable="true"/>
+                                                </table:template>
+                                            </table:Column>
+                                            <table:Column id="table_Column4" width="11rem">
+                                                <Label id="table_Label4" text="Lot no." />
+                                                <table:template>
+                                                    <Input id="table_Input4" value="{oTableItemModel>Lotno}" maxLength="25" editable="true"/>
+                                                </table:template>
+                                            </table:Column>
+                                            <table:Column id="table_Column5" width="11rem">
+                                                <Label id="table_Label5" text="From or To" />
+                                                <table:template>
+                                                    <Input id="table_Input5" maxLength="25" value="{oTableItemModel>Fromorto}" editable="true"/>
+                                                </table:template>
+                                            </table:Column>
+                                        </table:columns>
+                                    </table:Table>
+                                    <IconTabBar id="IconTabBar" class="sapUiSmallMarginTop">
+                                        <items>
+                                            <IconTabFilter id="Main_IconTabFilter" text="Main">
+                                                <content>
+                                                    <f:SimpleForm id="Form5" columnsL="3" layout="ResponsiveGridLayout" editable="true">
+                                                        <f:content>
+                                                            <Label id="ItemNumber_Label" text="Item Number" />
+                                                            <Input id="ItemNumber" />
+                                                            <Label id="Details_Label" text="Details" />
+                                                            <Input id="Details" />
+                                                            <core:Title id="core_Title13" />
+                                                        </f:content>
+                                                    </f:SimpleForm>
+                                                </content>
+                                            </IconTabFilter>
+                                            <IconTabFilter id="RateandWeightIconTabFilter" text="Rate and Weight">
+                                                <content>
+                                                    <f:SimpleForm id="Form6" columnsL="3" layout="ResponsiveGridLayout" editable="true">
+                                                        <f:content>
+                                                            <Label id="RateandWeightCurrency_Label" text="Currency" />
+                                                            <Input id="RateandWeightCurrency" />
+                                                            <Label id="RateandWeightQuantity_Label" text="Quantity" />
+                                                            <Input id="RateandWeightQuantity" />
+                                                            <Label id="RateandWeightRate_Label" text="Rate" />
+                                                            <Input id="RateandWeightRate" />
+                                                            <Label id="RateandWeightAmount_Label" text="Amount" />
+                                                            <Input id="RateandWeightAmount" />
+                                                            <Label id="RateandWeightNetWeight_Label" text="Net Weight" class="sapUiSmallMarginTop" />
+                                                            <Input id="RateandWeightNetWeight" class="sapUiSmallMarginTop" />
+                                                            <Label id="RateandWeightGrossWeight_Label" text="Gross Weight" />
+                                                            <Input id="RateandWeightGrossWeight" />
+                                                            <core:Title id="core_Title14" />
+                                                        </f:content>
+                                                    </f:SimpleForm>
+                                                </content>
+                                            </IconTabFilter>
+                                            <IconTabFilter id="Packages_IconTabFilter" text="Packages">
+                                                <content>
+                                                    <f:SimpleForm id="Form7" columnsL="3" layout="ResponsiveGridLayout" editable="true">
+                                                        <f:content>
+                                                            <Label id="NumberofPackage_Label" text="No. of Packages" />
+                                                            <Input id="NumberofPackage" />
+                                                            <Label id="KindofPackage_Label" text="Kind of Packages" />
+                                                            <Input id="KindofPackage" />
+                                                            <core:Title id="core_Title15" />
+                                                        </f:content>
+                                                    </f:SimpleForm>
+                                                </content>
+                                            </IconTabFilter>
+                                            <IconTabFilter id="DrawSerialNumberIconTabFilter" text="Draw Sr. No">
+                                                <content>
+                                                    <f:SimpleForm id="Form8" columnsL="3" layout="ResponsiveGridLayout" editable="true">
+                                                        <f:content>
+                                                            <Label id="HSNCode_Label" text="HSN Code" />
+                                                            <Input id="HSNCode" />
+                                                            <Label id="DrawbackSrNo_Label" text="Drawback Sr. No" />
+                                                            <Input id="DrawbackSrNo" />
+                                                            <Label id="DBKRate_Label" text="DBK Rate" />
+                                                            <Input id="DBKRate" />
+                                                            <Label id="CapValue_Label" text="Cap Value" />
+                                                            <Input id="CapValue" />
+                                                            <Label id="HeaderData_Label" text="Header Data" />
+                                                            <Input id="HeaderData" />
+                                                            <Label id="ItemData_Label" text="Item Data" />
+                                                            <Input id="ItemData" />
+                                                            <core:Title id="core_Title16" />
+                                                        </f:content>
+                                                    </f:SimpleForm>
+                                                </content>
+                                            </IconTabFilter>
+                                            <IconTabFilter id="Details_IconTabFilter" text="Details">
+                                                <content>
+                                                    <f:SimpleForm id="Form9">
+                                                        <f:content>
+                                                            <TextArea id="idDetails" value="{oDetailModel>/Details}" growing="true" rows="20"/>
+                                                        </f:content>
+                                                    </f:SimpleForm>
+                                                </content>
+                                            </IconTabFilter>
+                                        </items>
+                                    </IconTabBar>
+                                </content>
+                            </IconTabFilter>
+                            <IconTabFilter id="ExtraDetails_IconTabFilter" text="Extra Details">
+                                <content>
+                                    <OverflowToolbar id="ExtraDetails_OverflowToolbar">
+                                        <Button id="ExtraDetails_Save" text="Save" icon="sap-icon://save" press="SaveEximData" />
+                                        <!-- <Button text="Update" icon="sap-icon://save" press="onUpdateGeneralData" /> -->
+                                        <ToolbarSpacer id="ExtraDetails_ToolbarSpacer" />
+                                    </OverflowToolbar>
+                                    <f:SimpleForm  id="Form10">
+                                        <f:content>
+                                            <Text id="ExtraDetails_BLDraft" text="BL Draft"></Text>
+                                        </f:content>
+                                    </f:SimpleForm>
+                                    <f:SimpleForm  id="Form11">
+                                        <f:content>
+                                            <core:Title id="core_Title17" text="Marks and Numbers"/>
+                                            <TextArea maxLength="1100" id="idMarks" growing="true" rows="20"/>
+                                            <core:Title id="core_Title18" text="Description of Goods"/>
+                                            <TextArea maxLength="1100" id="idDescription" growing="true" rows="20"/>
+                                        </f:content>
+                                    </f:SimpleForm>
+                                </content>
+                            </IconTabFilter>
+                        </items>
+                    </IconTabBar>
+                </content>
+            </Panel>
+        </content>
+    </Page>
+</mvc:View>

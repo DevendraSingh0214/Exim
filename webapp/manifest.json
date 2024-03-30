@@ -1,0 +1,352 @@
+{
+    "_version": "1.59.0",
+    "sap.app": {
+        "id": "zexim",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "0.0.1"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "sourceTemplate": {
+            "id": "@sap/generator-fiori:basic",
+            "version": "1.12.3",
+            "toolsId": "2156bf21-3964-4ac5-b6c6-0063c3f82633"
+        },
+        "dataSources": {
+            "ZEXIM_V2API": {
+                "uri": "/sap/opu/odata/sap/ZEXIM_V2API",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/ZEXIM_V2API/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "YEXIMALLCDS": {
+                "uri": "/sap/opu/odata/sap/YEXIMALLCDS",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/YEXIMALLCDS/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "ZFREGHT_CAP_SERVICE_BIN": {
+                "uri": "/sap/opu/odata/sap/ZFREGHT_CAP_SERVICE_BIN",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/ZFREGHT_CAP_SERVICE_BIN/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            }
+        },
+        "crossNavigation": {
+            "inbounds": {
+                "ZEXIM-Display": {
+                    "semanticObject": "ZEXIM",
+                    "action": "Display",
+                    "title": "{{flpTitle}}",
+                    "subTitle": "{{flpSubtitle}}",
+                    "signature": {
+                        "parameters": {},
+                        "additionalParameters": "allowed"
+                    }
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": false,
+        "dependencies": {
+            "minUI5Version": "1.120.6",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.f": {},
+                "sap.suite.ui.generic.template": {},
+                "sap.ui.comp": {},
+                "sap.ui.generic.app": {},
+                "sap.ui.table": {},
+                "sap.ushell": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "zexim.i18n.i18n"
+                }
+            },
+            "": {
+                "preload": true,
+                "dataSource": "ZEXIM_V2API",
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "YEXIMALLCDS": {
+                "dataSource": "YEXIMALLCDS",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "ZFREGHT_CAP_SERVICE_BIN": {
+                "dataSource": "ZFREGHT_CAP_SERVICE_BIN",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "async": true,
+                "viewPath": "zexim.view",
+                "controlAggregation": "pages",
+                "controlId": "app",
+                "clearControlAggregation": false
+            },
+            "routes": [
+                {
+                    "name": "RouteFirstScreen",
+                    "pattern": ":?query:",
+                    "target": [
+                        "TargetFirstScreen"
+                    ]
+                },
+                {
+                    "name": "PreShipment",
+                    "pattern": "PreShipment",
+                    "target": [
+                        "PreShipment"
+                    ]
+                },
+                {
+                    "name": "DrawBackReport",
+                    "pattern": "DrawBackReport",
+                    "target": [
+                        "DrawBackReport"
+                    ]
+                },
+                {
+                    "name": "PostShipment",
+                    "pattern": "PostShipment",
+                    "target": [
+                        "PostShipment"
+                    ]
+                },
+                {
+                    "name": "BRCRegister",
+                    "pattern": "BRCRegister",
+                    "target": [
+                        "BRCRegister"
+                    ]
+                },
+                {
+                    "name": "BRCRegisterScreen",
+                    "pattern": "BRCRegisterScreen",
+                    "target": [
+                        "BRCRegisterScreen"
+                    ]
+                },
+                {
+                    "name": "FreightCharges",
+                    "pattern": "FreightCharges",
+                    "target": [
+                        "FreightCharges"
+                    ]
+                },
+                {
+                    "name": "FreightChargesScreen",
+                    "pattern": "FreightChargesScreen",
+                    "target": [
+                        "FreightChargesScreen"
+                    ]
+                },
+                {
+                    "name": "FreightChargesreport",
+                    "pattern": "FreightChargesreport",
+                    "target": [
+                        "FreightChargesreport"
+                    ]
+                },
+                {
+                    "name": "BRCRegisterReport",
+                    "pattern": "BRCRegisterReport",
+                    "target": [
+                        "BRCRegisterReport"
+                    ]
+                },
+                {
+                    "name": "SampleInvoice",
+                    "pattern": "SampleInvoice",
+                    "target": [
+                        "SampleInvoice"
+                    ]
+                },
+                {
+                    "name": "FrightCapturingReport",
+                    "pattern": "FrightCapturingReport",
+                    "target": [
+                        "FrightCapturingReport"
+                    ]
+                },
+                {
+                    "name": "PreShipmentReport",
+                    "pattern": "PreShipmentReport",
+                    "target": [
+                        "PreShipmentReport"
+                    ]
+                }
+            ],
+            "targets": {
+                "TargetFirstScreen": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "FirstScreen",
+                    "viewName": "FirstScreen"
+                },
+                "PreShipment": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "PreShipment",
+                    "viewName": "PreShipment"
+                },
+                "DrawBackReport": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "DrawBackReport",
+                    "viewName": "DrawBackReport"
+                },
+                "SampleInvoice": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "SampleInvoice",
+                    "viewName": "SampleInvoice"
+                },
+                "PostShipment": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "PostShipment",
+                    "viewName": "PostShipment"
+                },
+                "BRCRegister": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "BRCRegister",
+                    "viewName": "BRCRegister"
+                },
+                "BRCRegisterScreen": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "BRCRegisterScreen",
+                    "viewName": "BRCRegisterScreen"
+                },
+                "FrightCapturingReport": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "FrightCapturingReport",
+                    "viewName": "FrightCapturingReport"
+                },
+                "FreightCharges": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "FreightCharges",
+                    "viewName": "FreightCharges"
+                },
+                "FreightChargesScreen": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "FreightChargesScreen",
+                    "viewName": "FreightChargesScreen"
+                },
+                "FreightChargesreport": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "FreightChargesreport",
+                    "viewName": "FreightChargesreport"
+                },
+                "BRCRegisterReport": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "BRCRegisterReport",
+                    "viewName": "BRCRegisterReport"
+                },
+                "PreShipmentReport": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "PreShipmentReport",
+                    "viewName": "PreShipmentReport"
+                }
+            }
+        },
+        "rootView": {
+            "viewName": "zexim.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "App"
+        }
+    }
+}

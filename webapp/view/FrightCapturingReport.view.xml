@@ -1,0 +1,256 @@
+<mvc:View controllerName="zexim.controller.FrightCapturingReport" 
+xmlns:table="sap.ui.table" xmlns:l="sap.ui.layout" xmlns="sap.m" xmlns:F="sap.ui.layout.form" xmlns:C="sap.ui.core" xmlns:Tab="sap.ui.table"
+xmlns:mvc="sap.ui.core.mvc"
+    xmlns:flexi="sap.ui.fl">
+    <Page  id="Page1" titleAlignment="Center" title="Freight Capturing Report">
+        <content>
+            <F:SimpleForm id="Form1" layout="ResponsiveGridLayout" columnsL="3" columnsXL="3" columnsM="2" editable="true">
+                <F:content>
+                    <Label design="Bold" id="InvoiceNumberLab" text="Invoice Number" />
+                    <MultiInput id="InvoiceNumber" showValueHelp="false"></MultiInput>
+                    <!-- <Input id="InvoiceNumber" editable="true"/> -->
+
+                    <Label design="Bold" id="TransportarNameLab" text="Transportar Name" />
+                    <Input  width="100%" showValueHelp="true" valueLiveUpdate="true" showSuggestion="true" suggestionRows="{path : 'oTransporterDataModel>/aTransporterData', length:5000}" id="TransportarName" editable="true" valueHelpRequest="handleValueHelpTransportarName">
+                        <suggestionColumns>
+                        <Column id="TransportarName_Column1">
+                            <Label id="TransportarName_Column_Label1" text="Transporter Code"/>
+                        </Column>
+                        <Column id="TransportarName_Column2">
+                            <Label id="TransportarName_Column_Label2" text="Transportar Name"/>
+                        </Column>
+                    </suggestionColumns>
+                    <suggestionRows>
+                        <ColumnListItem id="TransportarName_ColumnListItem1">
+                            <Label id="TransportarName_ColumnListItem_Label1" text="{oTransporterDataModel>TransporterCode}" />
+                            <Label id="TransportarName_ColumnListItem_Label2" text="{oTransporterDataModel>Transportername}" />
+                        </ColumnListItem>
+                    </suggestionRows>
+                    </Input>
+                    <Label design="Bold"  id="InvoiceDateLab" text="Invoice Date" />
+                    <DatePicker id="FromInvoiceDate" placeholder="From Date" displayFormat="dd-MM-YYYY" valueFormat="YYYY-MM-dd" />
+                    <DatePicker id="ToInvoiceDate" placeholder="To Date" displayFormat="dd-MM-YYYY" valueFormat="YYYY-MM-dd" />
+                    <Label id="ButtonLab"/>
+                    <Button id="GotoNextViewButton" text="Get" press="GetTableData"/>
+                    <C:Title id="coret"/>
+                </F:content>
+            </F:SimpleForm>
+            <Tab:Table class="sapUiTinyMargin" id="FrightCapturingReport_Table" rowMode="Auto"  ariaLabelledBy="title" flexi:flexibility="sap/m/flexibility/EngineFlex"  rows="{oTableDataModel>/aTableData}" >
+                <Tab:extension>
+                    <OverflowToolbar  id="Table_OverflowToolbar"  style="Clear">
+                        <Button id="FilterBarHideShowButton1"  press="FilterBarHideFunction"/>
+                        <ToolbarSpacer id="Table_ToolbarSpacer" />
+                        <Button id="Table_SettingsButton" icon="sap-icon://action-settings" tooltip="Select Table Column" press="openPersoDialog"/>
+                        <Button id="Table_SaveButton" icon="sap-icon://save" tooltip="Save Table records" press="SaveTableData"/>
+                        <Button id="Table_ExportButton" icon="sap-icon://excel-attachment" tooltip="Export Table records" press="onExport"/>
+                    </OverflowToolbar>
+                </Tab:extension>
+                <Tab:noData>
+                    <IllustratedMessage illustrationSize="Auto" id="IllustratedMessage" title="No Data Found!!" ariaTitleLevel="H5" enableFormattedText="true" description="Add data to the table using the Add button above" />
+                </Tab:noData>                       
+                <Tab:columns>
+                    <Tab:Column sortProperty="SRN" filterProperty="SRN" width="12rem" id="SRN_col" >
+                        <Label id="Table_Label1" text="SRN" />
+                        <Tab:template>
+                            <Text id="Table_Input1"  text="{oTableDataModel>SRN}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column sortProperty="InvoiceNumber" filterProperty="InvoiceNumber" width="12rem" id="InvoiceNumber_col" >
+                        <Label id="Table_Label2" text="Invoice Number" />
+                        <Tab:template>
+                            <Text id="Table_Input2" text="{oTableDataModel>InvoiceNumber}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column sortProperty="DistributionChannel" filterProperty="DistributionChannel" width="12rem" id="DistributionChannel_col" >
+                        <Label id="Table_Label211" text="Distribution Channel" />
+                        <Tab:template>
+                            <Text id="Table_Input211" text="{oTableDataModel>DistributionChannel}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column sortProperty="InvoiceDate" filterProperty="InvoiceDate" width="12rem" id="InvoiceDate_col" >
+                        <Label id="Table_Label3" text="Invoice Date" />
+                        <Tab:template>
+                            <!-- <DatePicker id="Table_Input3" editable="false" displayFormat="dd-MM-YYYY" value="{oTableDataModel>InvoiceDate}" valueFormat="YYYY-MM-dd" /> -->
+                            <Text id="Table_Input3" text="{oTableDataModel>InvoiceDate}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <!-- <Tab:Column sortProperty="" filterProperty="" width="12rem" id="Table_tc4" >
+                        <Label id="Table_Label4" text="Product" />
+                        <Tab:template>
+                            <Text id="Table_Input4" text="{oTableDataModel>Product}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column sortProperty="" filterProperty="" width="12rem" id="Table_tc41" >
+                        <Label id="Table_Label41" text="Product Description" />
+                        <Tab:template>
+                            <Text id="Table_Input41" text="{oTableDataModel>ProductDescription}"/>
+                        </Tab:template>
+                    </Tab:Column> -->
+                    <Tab:Column sortProperty="InvoiceType" filterProperty="InvoiceType" width="12rem" id="InvoiceType_col" >
+                        <Label id="Table_Label5" text="Invoice Type" />
+                        <Tab:template>
+                            <!-- <Input id="Table_Input5" type="Text" maxLength="40" editable="false" value="{oTableDataModel>InvoiceType}"/> -->
+                            <Text id="Table_Input5" text="{oTableDataModel>InvoiceType}" ></Text>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column sortProperty="StorageLocation" filterProperty="StorageLocation" width="14rem" id="StorageLocation_col" >
+                        <Label id="Table_Label611" text="Storage Location" />
+                        <Tab:template>
+                            <Text id="Table_Input611" text="{oTableDataModel>StorageLocation}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column sortProperty="Buyer" filterProperty="Buyer" width="12rem" id="Buyer_col" >
+                        <Label id="Table_Label6" text="Buyer" />
+                        <Tab:template>
+                            <Text id="Table_Input6" text="{oTableDataModel>Buyer}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column sortProperty="GrossWeight" filterProperty="GrossWeight" width="12rem" id="GrossWeight_col" >
+                        <Label id="Table_Label7" text="Gross Weight" />
+                        <Tab:template>
+                            <Text id="Table_Input7" text="{oTableDataModel>GrossWeight}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column sortProperty="NetWeight" filterProperty="NetWeight" width="12rem" id="NetWeight_col" >
+                        <Label id="Table_Label8" text="Net Weight" />
+                        <Tab:template>
+                            <Text id="Table_Input8" text="{oTableDataModel>NetWeight}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column sortProperty="InvoiceAmount" filterProperty="InvoiceAmount" width="12rem" id="InvoiceAmount_col" >
+                        <Label id="Table_Label9" text="Invoice Amount" />
+                        <Tab:template>
+                            <Text id="Table_Input9" text="{oTableDataModel>InvoiceAmount}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column sortProperty="InvoiceQuantity" filterProperty="InvoiceQuantity" width="12rem" id="InvoiceQuantity_col" >
+                        <Label id="Table_LabelInvoiceQuantity" text="Invoice Quantity" />
+                        <Tab:template>
+                            <Text id="Table_InputInvoiceQuantity" text="{oTableDataModel>InvoiceQuantity}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column sortProperty="TransporterName" filterProperty="TransporterName" width="12rem" id="TransporterName_col" >
+                        <Label id="Table_Label10" text="Transporter Name" />
+                        <Tab:template>
+                            <Input id="Table_Input10" type="Text" maxLength="40" editable="true" value="{oTableDataModel>TransporterName}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column sortProperty="TransporterInvoiceNumber" filterProperty="TransporterInvoiceNumber" width="12rem" id="TransporterInvoiceNumber_col" >
+                        <Label id="Table_Label11" text="Transporter Invoice Number" />
+                        <Tab:template>
+                            <Input id="Table_Input11" type="Text" maxLength="40" liveChange="TransporterInvoiceNumber_LiveChange"  editable="true" value="{oTableDataModel>TransporterInvoiceNumber}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column sortProperty="TransporterInvoiceDate" filterProperty="TransporterInvoiceDate" width="12rem" id="TransporterInvoiceDate_col" >
+                        <Label id="Table_Label12" text="Transporter Invoice Date" />
+                        <Tab:template>
+                            <DatePicker id="Table_Input12" displayFormat="dd-MM-YYYY" editable="true" value="{oTableDataModel>TransporterInvoiceDate}" valueFormat="YYYY-MM-dd" />
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column sortProperty="TransporterInvoiceDate1" filterProperty="TransporterInvoiceDate1" width="12rem" id="TransporterInvoiceDate_col1" >
+                        <Label id="Table_Label121" text="Transporter Invoice Date" />
+                        <Tab:template>
+                            <DatePicker id="Table_Input121" displayFormat="dd-MM-YYYY" editable="true" value="{oTableDataModel>TransporterInvoiceDate1}" valueFormat="YYYY-MM-dd" />
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column sortProperty="LrNo" filterProperty="LrNo" width="12rem" id="LrNo_col" >
+                        <Label id="Table_Label13" text="Lr No" />
+                        <Tab:template>
+                            <Input id="Table_Input13" type="Text" maxLength="40" editable="true" value="{oTableDataModel>LrNo}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column sortProperty="LrDate" filterProperty="LrDate" width="12rem" id="LrDate_col" >
+                        <Label id="Table_Label14" text="Lr Date" />
+                        <Tab:template>
+                            <DatePicker id="Table_Input14" displayFormat="dd-MM-YYYY" editable="true" valueFormat="YYYY-MM-dd" value="{oTableDataModel>LrDate}" />
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column sortProperty="LrDate1" filterProperty="LrDate1" width="12rem" id="LrDate_col1" >
+                        <Label id="Table_Label141" text="Lr Date" />
+                        <Tab:template>
+                            <DatePicker id="Table_Input141" displayFormat="dd-MM-YYYY" editable="true" valueFormat="YYYY-MM-dd" value="{oTableDataModel>LrDate1}" />
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column sortProperty="" filterProperty="" width="12rem" id="NoOfBox_col" >
+                        <Label id="Table_Label15" text="No Of Box" />
+                        <Tab:template>
+                            <Input id="Table_Input15" type="Text" maxLength="40" editable="true" value="{oTableDataModel>NoOfBox}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column sortProperty="TransportCharges" filterProperty="TransportCharges" width="12rem" id="TransportCharges_col" >
+                        <Label id="Table_Label16" text="Transport Charges" />
+                        <Tab:template>
+                            <Input id="Table_Input16" type="Text" maxLength="40" editable="true" liveChange="TotalChargesCalculate_ac_TransportCharges" value="{oTableDataModel>TransportCharges}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column sortProperty="DetentionatPlant" filterProperty="DetentionatPlant" width="12rem" id="DetentionatPlant_col" >
+                        <Label id="Table_Label17" text="Detention at Plant" />
+                        <Tab:template>
+                            <Input id="Table_Input17" type="Text" maxLength="40" editable="true" liveChange="TotalChargesCalculate_ac_DetentionatPlant" value="{oTableDataModel>DetentionatPlant}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column sortProperty="DetentionatDestination" filterProperty="DetentionatDestination" width="12rem" id="DetentionatDestination_col" >
+                        <Label id="Table_Label18" text="Detention at Destination" />
+                        <Tab:template>
+                            <Input id="Table_Input18" type="Text" maxLength="40" editable="true" liveChange="TotalChargesCalculate_ac_DetentionatDestination" value="{oTableDataModel>DetentionatDestination}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column sortProperty="Loading_Unloading" filterProperty="Loading_Unloading" width="12rem" id="Loading_Unloading_col" >
+                        <Label id="Table_Label19" text="Loading / Unloading" />
+                        <Tab:template>
+                            <Input id="Table_Input19" type="Text" maxLength="40" editable="true" liveChange="TotalChargesCalculate_ac_Loading_Unloading" value="{oTableDataModel>Loading_Unloading}"/>
+                        </Tab:template>
+                    </Tab:Column>                   
+                    <Tab:Column sortProperty="DoubleDelivery" filterProperty="DoubleDelivery" width="12rem" id="DoubleDelivery_col" >
+                        <Label id="Table_Label20" text="Double Delivery" />
+                        <Tab:template>
+                            <Input id="Table_Input20" type="Text" maxLength="40" editable="true" liveChange="TotalChargesCalculate_ac_DoubleDelivery" value="{oTableDataModel>DoubleDelivery}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column sortProperty="LiftonLiftCharges" filterProperty="LiftonLiftCharges" width="12rem" id="LiftonLiftCharges_col" >
+                        <Label id="Table_Label21" text="Lift on Lift Charges" />
+                        <Tab:template>
+                            <Input id="Table_Input21" type="Text" maxLength="40" editable="true" liveChange="TotalChargesCalculate_ac_LiftonLiftCharges" value="{oTableDataModel>LiftonLiftCharges}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column sortProperty="OtherCharges" filterProperty="OtherCharges" width="12rem" id="OtherCharges_col" >
+                        <Label id="Table_Label22" text="Other Charges" />
+                        <Tab:template>
+                            <Input id="Table_Input22" type="Text" maxLength="40" editable="true" value="{oTableDataModel>OtherCharges}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column sortProperty="TotalCharges" filterProperty="TotalCharges" width="12rem" id="TotalCharges_col" >
+                        <Label id="Table_Label23" text="Total Charges" />
+                        <Tab:template>
+                            <Text id="Table_Input23" text="{oTableDataModel>TotalCharges}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column sortProperty="GSTCode" filterProperty="GSTCode" width="12rem" id="GSTCode_col" >
+                        <Label id="Table_Label24" text="GST Code" />
+                        <Tab:template>
+                            <Input id="Table_Input24" type="Text" maxLength="40" editable="true" value="{oTableDataModel>GSTCode}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column sortProperty="TaxType" filterProperty="TaxType" width="12rem" id="TaxType_col" >
+                        <Label id="Table_Label25" text="Tax Type" />
+                        <Tab:template>
+                            <Input id="Table_Input25" type="Text" maxLength="40" editable="true" value="{oTableDataModel>TaxType}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column sortProperty="TaxCode" filterProperty="TaxCode" width="12rem" id="TaxCode_col" >
+                        <Label id="Table_Label26" text="Tax Code" />
+                        <Tab:template>
+                            <Input id="Table_Input26" type="Text" maxLength="40" editable="true" value="{oTableDataModel>TaxCode}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                    <Tab:Column sortProperty="TDSBase" filterProperty="TDSBase" width="12rem" id="TDSBase_col" >
+                        <Label id="Table_Label27" text="TDS Base" />
+                        <Tab:template>
+                            <Input id="Table_Input27" type="Text" maxLength="40" editable="true" value="{oTableDataModel>TDSBase}"/>
+                        </Tab:template>
+                    </Tab:Column>
+                </Tab:columns>
+            </Tab:Table>
+        </content>
+    </Page>
+</mvc:View>

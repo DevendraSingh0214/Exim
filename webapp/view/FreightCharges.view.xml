@@ -1,0 +1,30 @@
+<mvc:View controllerName="zexim.controller.FreightCharges" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:form="sap.ui.layout.form" xmlns:mvc="sap.ui.core.mvc">
+    <Page id="page1" title="Freight Charges">
+        <content>
+            <Panel id="Panel1" >
+                <form:SimpleForm columnsL="3" columnsM="2" columnsXL="2" editable="true" id="Form1" layout="ResponsiveGridLayout">
+                    <form:content>
+                        <Label id="label1" text="Invoice No." design="Bold" />
+                        <Input id="idInvoiceNumber" type="Text" maxLength="10" submit="onSubmit" />
+                        <!-- <Input id="to1" type="Text" placeholder="To" /> -->
+                    <!-- </form:content>
+                    <form:content> -->
+                        <Label id="label2" text="Invoice Date" design="Bold" />
+                        <DatePicker id="fromDate" value="{oDataModel>/fromDate}" displayFormat="dd-MM-yyyy" valueFormat="dd-MM-yyyy" />
+                        <DatePicker id="toDate" value="{oDataModel>/toDate}" displayFormat="dd-MM-yyyy" valueFormat="dd-MM-yyyy" />
+                        <!-- <DatePicker id="ToDate" placeholder="Enter To Date" /> -->
+                    </form:content>
+
+                    <core:Title id="core1" />
+                </form:SimpleForm>
+                <form:SimpleForm id="Form2" class="sapUiTinyMarginTop">
+                    <VBox id="VBox1">
+                        <HBox id="HBox1" direction="Column">
+                            <Button icon="sap-icon://sys-next-page" text="Execute" id="Execute_Button" press="onSubmit" />
+                        </HBox>
+                    </VBox>
+                </form:SimpleForm>
+            </Panel>
+        </content>
+    </Page>
+</mvc:View>
